@@ -1,0 +1,28 @@
+.main-page {
+  text-align: center;
+}
+
+.todo {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    text-align: left;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 2rem;
+    margin-bottom: 1rem;
+    .done {
+
+    }
+    .rm {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 100%;
+    }
+  }
+}

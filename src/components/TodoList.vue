@@ -2,9 +2,11 @@
   <div class="todo">
     <ul class="todo__list">
       <TodoItem
-          v-for="todo of todos"
+          v-for="(todo, i) of todos"
           :todo="todo"
-          :key="todo.id"/>
+          :index="i"
+          :key="todo.id"
+      />
     </ul>
   </div>
 </template>

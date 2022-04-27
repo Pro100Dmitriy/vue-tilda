@@ -1,43 +1,29 @@
-.main-page {
-  text-align: center;
-}
+.projects {
+  padding-bottom: 150px;
+  &__wrapper {}
+  &__buttons {
+    padding-top: 50px;
+    padding-bottom: 30px;
 
-.todo {
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  &__item {
-    text-align: left;
-    border: 1px solid #ccc;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: .5rem 2rem;
-    margin-bottom: 1rem;
-    .done {
-      text-decoration: line-through;
-    }
-    .rm {
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 100%;
-    }
-    input {
-      margin-right: 1rem;
+    flex-direction: row;
+  }
+  &__plus-buttons {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
-}
+  &__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-.add-todo {
-  margin:  20px auto;
-  &__input {
-    width: 400px;
+    & > * {
+      flex: 1 0 auto;
+    }
   }
-  &__button {}
-}
-
-select {
-  margin-bottom: 20px;
 }

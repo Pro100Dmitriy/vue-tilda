@@ -1,3 +1,75 @@
 .footer {
-	
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  background: @color-durk;
+  &__wrapper {
+    text-align: center;
+  }
+  .social {
+    &__list {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    &__item {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    &__link {
+      padding: 8px;
+
+      display: inline-block;
+      line-height: 0;
+      font-size: 0;
+
+      border-radius: 100%;
+      background-color: transparent;
+
+      &:hover {
+        svg {
+          path {
+            fill: @color-blue;
+          }
+        }
+      }
+      svg {
+        path {
+          fill: @color-white;
+
+          transition: @transition-all-3;
+          &:hover {
+            fill: @color-blue;
+          }
+        }
+      }
+    }
+  }
+  .pages {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    &__list {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    &__item {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    &__link {
+      color: @color-white;
+
+      transition: @transition-all-3;
+      &:hover {
+        color: @color-blue;
+      }
+    }
+  }
+  .text {
+    color: @color-white;
+    a {
+      color: @color-blue;
+    }
+  }
 }

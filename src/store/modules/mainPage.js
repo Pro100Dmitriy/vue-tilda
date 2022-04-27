@@ -1,60 +1,22 @@
 export default {
-    actions: {
-        async fetchTodos(ctx, limit = 3) {
-            const res = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
-            const todos = await res.json()
-            ctx.commit('updateTodos', todos)
-        }
-    },
+    actions: {},
     mutations: {
-        updateTodos( state, todos ) {
-            state.loading = false
-            state.todos = todos
-        },
-        createTodo( state, newTodo ) {
-            state.todos.push( newTodo )
-        },
-        removeTodo( state, removeId ) {
-            console.log( removeId )
-            state.todos = state.todos.filter( todo => todo.id !== removeId )
-        },
-        updateFilter( state, newValue ) {
-            state.filter = newValue
-        },
-        completedTodo( state, completedId ) {
-            state.todos = state.todos.map( todo => {
-                if( todo.id === completedId ){
-                    todo.completed = !todo.completed
-                }
-                return todo
-            } )
+        createNewProject( state, newProject ) {
+            console.log( newProject )
+            state.projects.push(newProject)
         }
     },
     state: {
-        todos: [],
-        loading: true,
-        filter: 'all'
+        projects: [
+            {id: 1, title: 'My Project'},
+            {id: 2, title: 'My Project 1'},
+            {id: 3, title: 'My Project 2'},
+            {id: 4, title: 'My Project 3'}
+        ]
     },
     getters: {
-        getAllTodos( state ) {
-            return state.todos
-        },
-        getFilteredTodos( state ) {
-            if( state.filter === 'all' ) {
-                return state.todos
-            }
-            if( state.filter === 'completed' ) {
-                return state.todos.filter( item => item.completed )
-            }
-            if( state.filter === 'not-completed' ) {
-                return state.todos.filter( item => !item.completed )
-            }
-        },
-        getFilter( state ) {
-            return state.filter
-        },
-        getLoading( state ) {
-            return state.loading
+        getProjects( state ) {
+            return state.projects
         }
     }
 }

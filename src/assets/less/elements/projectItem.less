@@ -1,0 +1,102 @@
+.wrapper {
+  padding: 20px;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 265px;
+  width: 100%;
+
+  background: @color-white;
+  border: 1px solid @color-gray;
+  border-radius: 8px;
+  color: @color-black;
+
+  transition: @transition-all-3;
+  &:hover {
+    background-color: transparent;
+  }
+  &__top {
+    position: relative;
+
+    padding: 30px 40px 0 40px;
+
+    height: 100%;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      content: '';
+      display: inline-block;
+      width: 97%;
+      height: 1px;
+
+      background-color: @color-gray;
+
+      transform: translateX(-50%);
+    }
+  }
+  &__bottom {
+    padding: 10px 40px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    .edit-page {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      &__svg {
+        margin-right: 10px;
+
+        path,
+        polygon,
+        rect{
+          fill: @color-blue;
+        }
+      }
+      &__link {
+        color: @color-black;
+
+        .project-edit-font-style();
+
+        transition: @transition-all-3;
+        &:hover {
+          color: @color-blue;
+        }
+      }
+    }
+    .visit-page {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      &__svg {
+        margin-right: 10px;
+
+        path,
+        polygon,
+        rect{
+          fill: @color-blue;
+        }
+      }
+      &__link {
+        color: @color-black;
+
+        .project-visit-font-style();
+
+        transition: @transition-all-3;
+        &:hover {
+          color: @color-blue;
+        }
+      }
+    }
+  }
+  &__title {
+    .h3-font-style()
+  }
+}

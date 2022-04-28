@@ -1,8 +1,16 @@
 <template>
   <div class="wrapper">
-    <router-link :to="'/project/?projectId=' + project.id"
+    <router-link :to="'/project/' + project.id"
                  v-if="project.id !== null">
       <div class="project-item">
+        <div class="project-setting">
+          <SettingPopup :listSettings="listSettings"
+                        :projectId="project.id"
+                        :openPopup="openPopup"
+                        ref="settingPopup"/>
+          <DotsButton class="project-setting__button"
+                      @click.stop.prevent="openSettingPopup"/>
+        </div>
         <div class="project-item__top">
           <div class="project-item__title">
             <h3>{{ project.title }}</h3>
@@ -39,11 +47,55 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
+import SettingPopup from "@/components/SettingPopup"
+
 export default {
   name: "ProjectItem",
 
   props: {
     project: {type: Object, required: true}
+  },
+
+  components: {
+    SettingPopup
+  },
+
+  computed: mapGetters( ['getListSettings'] ),
+
+  data() {
+    return {
+      listSettings: [
+        { title: 'Delete', link: '#', method: this.deleteProject }
+      ],
+      openPopup: false
+    }
+  },
+
+  methods: {
+    ...mapActions( ['fetchProjects'] ),
+    openSettingPopup() {
+      this.openPopup = !this.openPopup
+    },
+    request( url, method ) {
+      return new Promise( (resolve, reject) => {
+        const response = fetch( url, {
+          method: method,
+          headers: {'Content-Type': 'application/json'}
+        } )
+        if( response ){
+          resolve( response )
+        }else {
+          reject()
+        }
+      } )
+    },
+    deleteProject() {
+      this.request( `http://localhost:8081/projects/${this.project.id}`, 'DELETE' )
+          .then( () => this.fetchProjects() )
+          .catch( error => console.log( error ) )
+    }
   }
 }
 </script>

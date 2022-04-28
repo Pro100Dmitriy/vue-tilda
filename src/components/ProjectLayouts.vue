@@ -40,6 +40,14 @@ export default {
 
   computed: mapGetters( ['getProjects'] ),
 
+  data() {
+    return {
+      listSettings: [
+        { title: 'Delete', link: '#', method: this.deleteProject }
+      ]
+    }
+  },
+
   methods: {
     ...mapActions( ['fetchProjects'] ),
     request( url, body ) {
@@ -64,7 +72,7 @@ export default {
       this.request( 'http://localhost:8081/projects', newProject )
         .then( () => this.fetchProjects() )
         .catch( error => console.log( error ) )
-    },
+    }
   },
 
   async mounted() {

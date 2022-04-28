@@ -1,11 +1,11 @@
-import {createRouter, createWebHashHistory} from "vue-router"
+import {createRouter, createWebHistory} from "vue-router"
 
 import MainPage from "@/pages/MainPage"
 import ProjectPage from "@/pages/ProjectPage"
 import EditProjectPage from "@/pages/EditProjectPage"
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',
@@ -13,8 +13,8 @@ const router = createRouter({
             component: MainPage
         },
         {
-            path: '/project',
-            query: { projectId: 'public' },
+            path: '/project/:projectId',
+            params: { projectId: 'public' },
             name: 'Project',
             component: ProjectPage
         },

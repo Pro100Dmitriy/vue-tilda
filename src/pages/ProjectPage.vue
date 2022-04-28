@@ -24,7 +24,7 @@ export default {
   },
 
   mounted() {
-    console.log( useRoute().query.projectId )
+    console.log( useRoute().params.projectId )
   }
 }
 </script>

@@ -40,6 +40,9 @@ export default {
         },
         getError( state ) {
             return state.error
+        },
+        getListSettings( state ) {
+            return state.listSettings
         }
     }
 }

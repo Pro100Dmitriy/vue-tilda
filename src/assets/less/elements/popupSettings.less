@@ -1,0 +1,42 @@
+.setting-popup {
+  position: relative;
+  &__list {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+
+    max-width: 200px;
+
+    visibility: hidden;
+    opacity: 0;
+    background: white;
+    box-shadow: 0 4px 10px 0 rgba(@color-black, .2);
+
+    transition: @transition-all-3;
+  }
+  &__item {}
+  &__link {
+    padding: 4px 12px;
+
+    display: block;
+
+    color: @color-black;
+
+    .project-visit-font-style();
+
+    transition: @transition-all-3;
+
+    &:hover {
+      color: @color-blue;
+      background-color: @color-gray;
+    }
+  }
+}
+
+.setting-popup_open {
+  .setting-popup__list {
+    visibility: visible;
+    opacity: 1;
+  }
+}

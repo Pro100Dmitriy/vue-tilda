@@ -12,6 +12,8 @@
 
 
 .project-item {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,6 +29,12 @@
   transition: @transition-all-3;
   &:hover {
     background-color: transparent;
+  }
+  .project-setting {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
   }
   &__top {
     position: relative;

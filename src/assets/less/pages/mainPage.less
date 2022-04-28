@@ -40,7 +40,15 @@
     }
 
   }
-  &__list {}
+  &__list {
+    .empty {
+      &__subscribe {
+        text-align: center;
+
+        .h4-font-style();
+      }
+    }
+  }
   &__list-wrapper {
     margin-left: -13px;
     margin-right: -13px;

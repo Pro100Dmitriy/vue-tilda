@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import HeaderLayout from "@/layouts/HeaderLayout";
-import ProjectLayouts from "@/layouts/ProjectLayouts";
-import FooterLayout from "@/layouts/FooterLayout";
+import HeaderLayout from "@/components/base/HeaderLayout"
+import FooterLayout from "@/components/base/FooterLayout"
+import ProjectLayouts from "@/components/ProjectLayouts"
 
 export default {
   name: "MainPage",

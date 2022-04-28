@@ -1,4 +1,6 @@
 body {
+  min-width: 380px;
+
   background-color: rgb(240, 240, 240);
 
   font-family: @main-font;
@@ -25,4 +27,12 @@ a{
 .container {
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: @breakpoint-xl) {
+    padding-left: 18px;
+    padding-right: 18px;
+
+    max-width: @breakpoint-lg;
+  }
+
 }

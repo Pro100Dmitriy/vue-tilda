@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <router-link to="/">
+    <router-link :to="'/project/?projectId=' + project.id"
+                 v-if="project.id !== null">
       <div class="project-item">
         <div class="project-item__top">
           <div class="project-item__title">
@@ -25,17 +26,22 @@
                 <polygon points="16.14 0 16.14 3 21.02 3 7.24 16.78 9.36 18.9 23.14 5.12 23.14 10 26.14 10 26.14 0 16.14 0"></polygon>
               </g>
             </svg>
-            <router-link class="visit-page__link" to="/about">http://project5505388.tilda.ws</router-link>
+            <router-link class="visit-page__link" to="/">http://project5505388.tilda.ws</router-link>
           </div>
         </div>
       </div>
     </router-link>
+
+    <div class="empty-project-item"
+         v-else>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "ProjectItem",
+
   props: {
     project: {type: Object, required: true}
   }

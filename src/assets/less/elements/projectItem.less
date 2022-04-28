@@ -1,6 +1,15 @@
-.wrapper {
-  padding: 20px;
+.empty-project-item {
+  height: 265px;
+  width: 100%;
+
+  border: 1px dashed @color-gray;
+  border-radius: 8px;
 }
+
+.wrapper {
+  padding: 15px;
+}
+
 
 .project-item {
   display: flex;
@@ -47,10 +56,22 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (max-width: @breakpoint-sm) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .edit-page {
       height: 60px;
       display: flex;
       align-items: center;
+
+      @media (max-width: @breakpoint-sm) {
+        height: 40px;
+      }
+
       &__svg {
         margin-right: 10px;
 
@@ -75,6 +96,11 @@
       height: 60px;
       display: flex;
       align-items: center;
+
+      @media (max-width: @breakpoint-sm) {
+        height: 40px;
+      }
+
       &__svg {
         margin-right: 10px;
 

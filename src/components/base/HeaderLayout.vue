@@ -14,13 +14,13 @@
           </router-link>
         </div>
         <ul class="header__nav-list">
-          <li class="header__nav-item"><router-link class="header__nav-link header__nav-link_active" to="javascript:void(0)">My pages</router-link></li>
-          <li class="header__nav-item"><router-link class="header__nav-link" to="javascript:void(0)">Profile</router-link></li>
+          <li class="header__nav-item"><router-link class="header__nav-link header__nav-link_active" to="/">My pages</router-link></li>
+          <li class="header__nav-item"><router-link class="header__nav-link" to="/">Profile</router-link></li>
         </ul>
       </div>
       <div class="header__nav-right">
         <ul class="header__nav-list">
-          <li class="header__nav-item"><router-link class="header__nav-link" to="javascript:void(0)">Exit</router-link></li>
+          <li class="header__nav-item"><router-link class="header__nav-link" to="/">Exit</router-link></li>
         </ul>
       </div>
     </nav>

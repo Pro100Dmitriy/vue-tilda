@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "ContainerComponent"
+  name: "ContainerLayout"
 }
 </script>

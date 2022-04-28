@@ -13,7 +13,8 @@ const router = createRouter({
             component: MainPage
         },
         {
-            path: '/:projectId',
+            path: '/project',
+            query: { projectId: 'public' },
             name: 'Project',
             component: ProjectPage
         },

@@ -9,7 +9,8 @@
                         :openPopup="openPopup"
                         ref="settingPopup"/>
           <DotsButton class="project-setting__button"
-                      @click.stop.prevent="openSettingPopup"/>
+                      @click.stop.prevent="openSettingPopup"
+                      @blur="closeSettingPopup"/>
         </div>
         <div class="project-item__top">
           <div class="project-item__title">
@@ -49,6 +50,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import http from '@/server/http'
+
 import SettingPopup from "@/components/SettingPopup"
 
 export default {
@@ -67,7 +70,8 @@ export default {
   data() {
     return {
       listSettings: [
-        { title: 'Delete', link: '#', method: this.deleteProject }
+        { title: 'Delete', link: '#', method: this.deleteProject },
+        { title: 'Rename', link: '#', method: this.renameProject }
       ],
       openPopup: false
     }
@@ -78,23 +82,16 @@ export default {
     openSettingPopup() {
       this.openPopup = !this.openPopup
     },
-    request( url, method ) {
-      return new Promise( (resolve, reject) => {
-        const response = fetch( url, {
-          method: method,
-          headers: {'Content-Type': 'application/json'}
-        } )
-        if( response ){
-          resolve( response )
-        }else {
-          reject()
-        }
-      } )
+    closeSettingPopup() {
+      this.openPopup = false
     },
     deleteProject() {
-      this.request( `http://localhost:8081/projects/${this.project.id}`, 'DELETE' )
+      http( `http://localhost:8081/projects/${this.project.id}`, 'DELETE' )
           .then( () => this.fetchProjects() )
           .catch( error => console.log( error ) )
+    },
+    renameProject() {
+      console.log('rename')
     }
   }
 }

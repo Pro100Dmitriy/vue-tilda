@@ -28,6 +28,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import http from '@/server/http'
+
 import ContainerLayout from "@/layouts/ContainerLayout"
 import ProjectList from "@/components/ProjectList"
 
@@ -40,36 +42,14 @@ export default {
 
   computed: mapGetters( ['getProjects'] ),
 
-  data() {
-    return {
-      listSettings: [
-        { title: 'Delete', link: '#', method: this.deleteProject }
-      ]
-    }
-  },
-
   methods: {
     ...mapActions( ['fetchProjects'] ),
-    request( url, body ) {
-      return new Promise( (resolve, reject) => {
-        const response = fetch( url, {
-          method: 'POST',
-          body: JSON.stringify( body ),
-          headers: {'Content-Type': 'application/json'}
-        } )
-        if( response ){
-          resolve( response )
-        }else {
-          reject()
-        }
-      } )
-    },
     createProject() {
       const newProject = {
         id: Date.now(),
         title: `My Project ${this.getProjects.length}`
       }
-      this.request( 'http://localhost:8081/projects', newProject )
+      http( 'http://localhost:8081/projects', 'POST', newProject )
         .then( () => this.fetchProjects() )
         .catch( error => console.log( error ) )
     }

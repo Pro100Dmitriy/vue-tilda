@@ -6,7 +6,7 @@
                    :key="project.id"
                    :project="project"/>
       <div class="wrapper"
-           v-if="projectsData.length % 2 !== 0 && windowWidth > 839">
+           v-if="projectsData.length % 2 !== 0 && windowWidth > 856">
         <div class="empty-project-item"></div>
       </div>
     </div>

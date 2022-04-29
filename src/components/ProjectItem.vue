@@ -21,7 +21,15 @@
         </div>
         <div class="project-item__top">
           <div class="project-item__title">
-            <h3>{{ project.title }}</h3>
+            <input type="text"
+                   :value="project.title"
+                   @click.stop.prevent
+                   @input.stop.prevent
+                   @blur="changeName"
+                   @keypress.enter="changeName"
+                   ref="inputTitle"
+                   v-if="renameActive">
+            <h3 v-else>{{ project.title }}</h3>
           </div>
         </div>
         <div class="project-item__bottom">
@@ -77,6 +85,7 @@ export default {
         { title: 'Delete', link: '#', method: this.deleteProject },
         { title: 'Rename', link: '#', method: this.renameProject }
       ],
+      renameActive: false,
       openPopup: false
     }
   },
@@ -88,6 +97,7 @@ export default {
     },
     closeSettingPopup() {
       this.openPopup = false
+      this.renameActive = false
     },
     deleteProject() {
       http( `http://localhost:8081/projects/${this.project.id}`, 'DELETE' )
@@ -95,7 +105,21 @@ export default {
           .catch( error => console.log( error ) )
     },
     renameProject() {
-      console.log('rename')
+      this.renameActive = !this.renameActive
+    },
+    changeName( event) {
+      this.renameActive = false
+
+      const oldProject = http( `http://localhost:8081/projects/${this.project.id}` )
+
+      const changedProject = {
+        ...oldProject,
+        title: event.target.value
+      }
+
+      http( `http://localhost:8081/projects/${this.project.id}`, 'PUT', changedProject )
+          .then( () => this.fetchProjects() )
+          .catch( error => console.log( error ) )
     }
   }
 }

@@ -2,6 +2,8 @@
   <div>
     <HeaderSection/>
 
+    <ProjectInfoSection/>
+
     <div class="project-page">
       <h1>Project Page</h1>
     </div>
@@ -15,12 +17,13 @@ import { useRoute } from 'vue-router'
 
 import HeaderSection from "@/components/base/HeaderSection"
 import FooterSection from "@/components/base/FooterSection"
+import ProjectInfoSection from "@/components/sections/ProjectInfoSection"
 
 export default {
   name: "ProjectPage",
 
   components: {
-    HeaderSection, FooterSection
+    HeaderSection, FooterSection, ProjectInfoSection
   },
 
   mounted() {

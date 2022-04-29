@@ -14,4 +14,18 @@ const http = (
     } )
 }
 
+
+const isUnique = ( array, value ) => {
+    const candidate = array.filter( item => item.title === value )
+    if( candidate ) {
+        return false
+    } else {
+        return true
+    }
+}
+
+
+export {
+    isUnique
+}
 export default http

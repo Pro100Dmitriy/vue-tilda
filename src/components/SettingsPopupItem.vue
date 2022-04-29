@@ -2,7 +2,8 @@
   <li class="setting-popup__item">
     <a class="setting-popup__link"
        :href="link ?? '#'"
-       @click.stop.prevent="method">
+       @click.stop.prevent="method"
+       :aria-label="title">
       {{ title }}
     </a>
   </li>

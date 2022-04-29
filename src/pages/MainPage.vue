@@ -9,7 +9,7 @@
 <script>
 import HeaderSection from "@/components/base/HeaderSection"
 import FooterSection from "@/components/base/FooterSection"
-import ProjectSection from "@/components/ProjectSection"
+import ProjectSection from "@/components/sections/ProjectSection"
 
 export default {
   name: "MainPage",

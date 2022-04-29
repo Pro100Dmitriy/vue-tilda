@@ -1,12 +1,12 @@
 <template>
-  <div :style="style" ref="lottieContainer"></div>
+  <div :style="style" ref="lottieDiv"></div>
 </template>
 
 <script>
 import lottie from 'lottie-web'
 
 export default {
-  name: "LottieComponent",
+  name: "LottieConstructor",
 
   props: {
     options:{ type: Object, require: true },
@@ -27,7 +27,7 @@ export default {
 
   mounted () {
     this.anim = lottie.loadAnimation({
-          container: this.$refs.lottieContainer,
+          container: this.$refs.lottieDiv,
           renderer: 'svg',
           loop: this.options.loop !== false,
           autoplay: this.options.autoplay !== false,

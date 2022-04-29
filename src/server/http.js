@@ -4,7 +4,6 @@ const http = (
     body = {},
     headers = { 'Content-Type': 'application/json' }
 ) => {
-    console.log( url )
     return new Promise( (resolve, reject) => {
         const response = fetch( url, {method, body: body ? JSON.stringify( body ) : false, headers} )
         if( response ) {

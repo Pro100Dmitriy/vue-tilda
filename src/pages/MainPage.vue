@@ -1,20 +1,20 @@
 <template>
   <div>
-    <HeaderLayout/>
-    <ProjectLayouts/>
-    <FooterLayout/>
+    <HeaderSection/>
+    <ProjectSection/>
+    <FooterSection/>
   </div>
 </template>
 
 <script>
-import HeaderLayout from "@/components/base/HeaderLayout"
-import FooterLayout from "@/components/base/FooterLayout"
-import ProjectLayouts from "@/components/ProjectLayouts"
+import HeaderSection from "@/components/base/HeaderSection"
+import FooterSection from "@/components/base/FooterSection"
+import ProjectSection from "@/components/ProjectSection"
 
 export default {
   name: "MainPage",
   components: {
-    HeaderLayout, ProjectLayouts, FooterLayout
+    HeaderSection, ProjectSection, FooterSection
   }
 }
 </script>

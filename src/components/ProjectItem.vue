@@ -1,16 +1,23 @@
 <template>
   <div class="wrapper">
-    <router-link :to="'/project/' + project.id"
-                 v-if="project.id !== null">
+
+    <router-link :to="'/project/' + project.id">
       <div class="project-item">
         <div class="project-setting">
           <SettingPopup :listSettings="listSettings"
                         :projectId="project.id"
                         :openPopup="openPopup"
                         ref="settingPopup"/>
-          <DotsButton class="project-setting__button"
-                      @click.stop.prevent="openSettingPopup"
-                      @blur="closeSettingPopup"/>
+          <button class="dots-button project-setting__button"
+                  aria-label="Open settings popup"
+                  @click.stop.prevent="openSettingPopup"
+                  @blur="closeSettingPopup">
+            <svg class="dots-button__svg" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="1"/>
+              <circle cx="12" cy="12" r="1"/>
+              <circle cx="12" cy="16" r="1"/>
+            </svg>
+          </button>
         </div>
         <div class="project-item__top">
           <div class="project-item__title">
@@ -41,9 +48,6 @@
       </div>
     </router-link>
 
-    <div class="empty-project-item"
-         v-else>
-    </div>
   </div>
 </template>
 
@@ -58,7 +62,7 @@ export default {
   name: "ProjectItem",
 
   props: {
-    project: {type: Object, required: true}
+    project: { type: Object, required: true }
   },
 
   components: {

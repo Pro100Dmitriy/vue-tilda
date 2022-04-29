@@ -13,7 +13,7 @@
                 class="projects__plus-buttons"
                 title="Create a new project"
                 @click="createProject"/>
-            <PlusButton class="projects__plus-buttons" title="Create mailing list" disabled="true"/>
+            <PlusButton class="projects__plus-buttons" title="Create mailing list" :disabled="true"/>
           </div>
         </div>
 
@@ -45,9 +45,25 @@ export default {
   methods: {
     ...mapActions( ['fetchProjects'] ),
     createProject() {
+      let title = ''
+
+      if( this.getProjects.length === 0 ) {
+        title = `My Project`
+      } else if( this.getProjects.length === 1 ) {
+        const oldIndex = this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )
+        if( oldIndex ) {
+          title = `My Project ${ Number( oldIndex[0] ) + 1}`
+        } else {
+          title = `My Project 1`
+        }
+      } else {
+        const oldIndex = Number( this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )[0] )
+        title = `My Project ${oldIndex + 1}`
+      }
+      
       const newProject = {
         id: Date.now(),
-        title: `My Project ${this.getProjects.length}`
+        title
       }
       http( 'http://localhost:8081/projects', 'POST', newProject )
         .then( () => this.fetchProjects() )

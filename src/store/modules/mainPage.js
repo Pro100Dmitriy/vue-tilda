@@ -12,11 +12,7 @@ export default {
     },
     mutations: {
         updateProjects( state, projects ) {
-            if( projects.length % 2 !== 0 ){
-                state.projects = [ ...projects, {id: null, title: null} ]
-            }else{
-                state.projects = projects
-            }
+            state.projects = projects
             state.loading = false
             state.error = false
         },

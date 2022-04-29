@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "HeaderLayout",
+  name: "HeaderSection",
   data() {
     return {
 

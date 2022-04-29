@@ -5,11 +5,15 @@
       <ProjectItem v-for="project of projectsData"
                    :key="project.id"
                    :project="project"/>
+      <div class="wrapper"
+           v-if="projectsData.length % 2 !== 0">
+        <div class="empty-project-item"></div>
+      </div>
     </div>
 
     <div class="empty"
          v-else-if="!getLoading && !getError && !projectsData.length">
-      <LottieComponent :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+      <LottieConstructor :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
       <div class="empty__subscribe">
         <h2>Projects are not created, click the "Create a new project"</h2>
       </div>
@@ -17,12 +21,12 @@
 
     <div class="error"
          v-else-if="getError">
-      <LottieComponent :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+      <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
     </div>
 
     <div class="loader"
          v-else>
-      <LottieComponent :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+      <LottieConstructor :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
     </div>
   </div>
 </template>

@@ -70,7 +70,7 @@
 import ContainerLayout from "@/layouts/ContainerLayout"
 
 export default {
-  name: "FooterLayout",
+  name: "FooterSection",
 
   components: {
     ContainerLayout

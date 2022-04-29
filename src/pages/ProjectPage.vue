@@ -1,26 +1,26 @@
 <template>
   <div>
-    <HeaderLayout/>
+    <HeaderSection/>
 
     <div class="project-page">
       <h1>Project Page</h1>
     </div>
 
-    <FooterLayout/>
+    <FooterSection/>
   </div>
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
 
-import HeaderLayout from "@/components/base/HeaderLayout"
-import FooterLayout from "@/components/base/FooterLayout"
+import HeaderSection from "@/components/base/HeaderSection"
+import FooterSection from "@/components/base/FooterSection"
 
 export default {
   name: "ProjectPage",
 
   components: {
-    HeaderLayout, FooterLayout
+    HeaderSection, FooterSection
   },
 
   mounted() {

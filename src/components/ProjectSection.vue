@@ -57,8 +57,12 @@ export default {
           title = `My Project 1`
         }
       } else {
-        const oldIndex = Number( this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )[0] )
-        title = `My Project ${oldIndex + 1}`
+        const oldIndex = this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )
+        if( oldIndex ) {
+          title = `My Project ${ Number( oldIndex[0] ) + 1}`
+        } else {
+          title = `Name will be realize coming soon!`
+        }
       }
       
       const newProject = {

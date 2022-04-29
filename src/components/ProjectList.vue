@@ -6,7 +6,7 @@
                    :key="project.id"
                    :project="project"/>
       <div class="wrapper"
-           v-if="projectsData.length % 2 !== 0">
+           v-if="projectsData.length % 2 !== 0 && windowWidth > 839">
         <div class="empty-project-item"></div>
       </div>
     </div>
@@ -54,7 +54,8 @@ export default {
     return {
       lottieLoadingOptions: {animationData: animationLoadingLottie},
       lottieErrorOptions: {animationData: animationErrorLottie},
-      lottieEmptyOptions: {animationData: animationEmptyLottie}
+      lottieEmptyOptions: {animationData: animationEmptyLottie},
+      windowWidth: window.innerWidth
     }
   },
 
@@ -65,5 +66,9 @@ export default {
       this.anim = anim
     }
   },
+
+  mounted() {
+    window.addEventListener('resize', () => this.windowWidth = window.innerWidth )
+  }
 }
 </script>

@@ -3,10 +3,7 @@
     <HeaderSection/>
 
     <ProjectInfoSection/>
-
-    <div class="project-page">
-      <h1>Project Page</h1>
-    </div>
+    <ProjectPagesSection/>
 
     <FooterSection/>
   </div>
@@ -14,20 +11,31 @@
 
 <script>
 import { useRoute } from 'vue-router'
+import { mapActions } from 'vuex'
 
 import HeaderSection from "@/components/base/HeaderSection"
 import FooterSection from "@/components/base/FooterSection"
 import ProjectInfoSection from "@/components/sections/ProjectInfoSection"
+import ProjectPagesSection from "@/components/sections/ProjectPagesSection"
 
 export default {
   name: "ProjectPage",
 
   components: {
-    HeaderSection, FooterSection, ProjectInfoSection
+    HeaderSection, FooterSection, ProjectInfoSection, ProjectPagesSection
+  },
+
+  methods: {
+    ...mapActions( ['fetchProjectInfo'] )
   },
 
   mounted() {
-    console.log( useRoute().params.projectId )
+    const projectId = useRoute().params.projectId
+    try {
+      this.fetchProjectInfo( projectId )
+    }catch( error ){
+      console.log( error )
+    }
   }
 }
 </script>

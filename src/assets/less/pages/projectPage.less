@@ -14,7 +14,43 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    .controls-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      &__item {
+        margin-right: 45px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      &__button {
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+        background: none;
 
+        font-family: 'Jost', sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: .5px;
+        font-weight: 400;
+
+        transition: @transition-all-3;
+        &:hover {
+          color: @color-blue;
+        }
+
+        svg {
+          padding-right: 10px;
+          path,
+          use {
+            fill: @color-blue
+          }
+        }
+
+      }
+    }
     &__link-page {
       display: flex;
       flex-direction: row;
@@ -89,5 +125,235 @@
         margin-left: 10px;
       }
     }
+  }
+}
+
+.project-pages {
+  padding-bottom: 150px;
+  &__wrapper {}
+  &__small {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  &__pages {
+    .pages-list {
+      &__item {
+        border-bottom: 1px solid @color-gray;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.page-card {
+  position: relative;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  &:hover {
+    .card-left__title {
+      color: @color-blue;
+    }
+    .card-right__info {
+      visibility: hidden;
+      opacity: 0;
+    }
+    .card-right__controls {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .card-left {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    &__image {
+      position: relative;
+
+      margin-right: 50px;
+
+      width: 75px;
+      height: 75px;
+
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    &__img-tag {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+
+      width: 100%;
+      object-fit: cover;
+
+      transform: translate(-50%, -50%);
+    }
+    &__title {
+      font-family: 'Jost', sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 100%;
+
+      transition: @transition-all-3;
+    }
+  }
+  .card-right {
+    &__info {
+      text-align: right;
+      visibility: visible;
+      opacity: 1;
+
+      transition: @transition-all-3;
+    }
+    &__info-name {
+      margin-bottom: 5px;
+      color: @color-black;
+
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      font-style: normal;
+      line-height: 100%;
+    }
+    &__info-status {
+      color: @color-gray;
+
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      font-style: normal;
+      line-height: 100%;
+    }
+    &__controls {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 2;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transform: translateY(-50%);
+      transition: @transition-all-3;
+
+      .controls-list {
+        display: inline-flex;
+        align-items: center;
+        flex-direction: row;
+        &__item {
+          margin-left: 20px;
+        }
+        &__button {
+          text-transform: uppercase;
+          border: none;
+          outline: none;
+          background: none;
+
+          font-family: 'Jost', sans-serif;
+          font-size: 13px;
+          line-height: 13px;
+          letter-spacing: .5px;
+          font-weight: 400;
+
+          transition: @transition-all-3;
+          &:hover {
+            color: @color-blue;
+            svg {
+              path,
+              use {
+                fill: @color-blue
+              }
+            }
+          }
+
+          svg {
+            padding-right: 10px;
+            path,
+            use {
+              fill: @color-black;
+
+              transition: @transition-all-3;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.settings-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  opacity: 0;
+  visibility: hidden;
+
+  width: 100%;
+  height: 100%;
+
+  transition: @transition-all-3;
+  &__wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+  }
+  &__bg {
+    position: absolute;
+    z-index: 101;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    background: rgba( @color-black, .4 );
+
+    transition: @transition-all-3;
+  }
+  .popup-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 102;
+
+    opacity: 0;
+    visibility: hidden;
+    background: @color-white;
+
+    transition: @transition-all-3;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.settings-popup_open {
+  opacity: 1;
+  visibility: visible;
+  .settings-popup__bg {
+    opacity: 1;
+    visibility: visible;
+  }
+  .popup-content {
+    top: 50%;
+
+    opacity: 1;
+    visibility: visible;
   }
 }

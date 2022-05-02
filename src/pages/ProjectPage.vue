@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
 import { mapActions } from 'vuex'
 
 import HeaderSection from "@/components/base/HeaderSection"
@@ -25,17 +24,12 @@ export default {
     HeaderSection, FooterSection, ProjectInfoSection, ProjectPagesSection
   },
 
-  methods: {
-    ...mapActions( ['fetchProjectInfo'] )
-  },
+  methods: mapActions({
+    fetchProjectInfo: 'projectPage/fetchProjectInfo'
+  } ),
 
   mounted() {
-    const projectId = useRoute().params.projectId
-    try {
-      this.fetchProjectInfo( projectId )
-    }catch( error ){
-      console.log( error )
-    }
+    this.fetchProjectInfo( this.$route.params.projectId )
   }
 }
 </script>

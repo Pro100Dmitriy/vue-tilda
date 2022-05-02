@@ -2,5 +2,6 @@ export default {
     actions: {},
     mutations: {},
     state: {},
-    getters: {}
+    getters: {},
+    namespaced: true
 }

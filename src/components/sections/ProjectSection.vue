@@ -12,12 +12,12 @@
             <PlusButton
                 class="projects__plus-buttons"
                 title="Create a new project"
-                @click="createProject"/>
+                @click="createProjectTest"/>
             <PlusButton class="projects__plus-buttons" title="Create mailing list" :disabled="true"/>
           </div>
         </div>
 
-        <ProjectList :projectsData="getProjects"/>
+        <ProjectList/>
 
       </div>
 
@@ -26,9 +26,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-
-import http from '@/server/http'
+import { mapActions, mapState } from "vuex"
+import useCreateProject from "@/hooks/useCreateProject"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
 import ProjectList from "@/components/ProjectList"
@@ -40,46 +39,17 @@ export default {
     ContainerLayout, ProjectList
   },
 
-  computed: mapGetters( ['getProjects'] ),
+  computed: mapState( {
+    projectsList: state => state.mainPage.projectsList
+  } ),
 
   methods: {
-    ...mapActions( ['fetchProjects'] ),
-    createProject() {
-      let title = ''
-
-      if( this.getProjects.length === 0 ) {
-        title = `My Project`
-      } else if( this.getProjects.length === 1 ) {
-        const oldIndex = this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )
-        if( oldIndex ) {
-          title = `My Project ${ Number( oldIndex[0] ) + 1}`
-        } else {
-          title = `My Project 1`
-        }
-      } else {
-        const oldIndex = this.getProjects[this.getProjects.length-1].title.match( /[0-9]+/gm )
-        if( oldIndex ) {
-          title = `My Project ${ Number( oldIndex[0] ) + 1}`
-        } else {
-          title = `Name will be realize coming soon!`
-        }
-      }
-      
-      const newProject = {
-        id: Date.now(),
-        title
-      }
-      http( 'http://localhost:8081/projects', 'POST', newProject )
-        .then( () => this.fetchProjects() )
-        .catch( error => console.log( error ) )
-    }
-  },
-
-  async mounted() {
-    try {
-      this.fetchProjects()
-    }catch( error ){
-      console.log( error )
+    ...mapActions( {
+      fetchProjects: 'mainPage/fetchProjects'
+    } ),
+    createProjectTest() {
+      const { createProject } = useCreateProject(this.projectsList, this.fetchProjects)
+      createProject()
     }
   }
 }

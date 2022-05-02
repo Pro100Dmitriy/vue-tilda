@@ -1,4 +1,4 @@
-const http = (
+const useHttp = (
     url,
     method = 'GET',
     body = null,
@@ -6,7 +6,7 @@ const http = (
 ) => {
     return new Promise( (resolve, reject) => {
         const response = fetch( url, {method, body: body ? JSON.stringify( body ) : null, headers} )
-        if( response ) {
+        if( response.ok ) {
             resolve( response )
         }else{
             reject()
@@ -14,18 +14,4 @@ const http = (
     } )
 }
 
-
-const isUnique = ( array, value ) => {
-    const candidate = array.filter( item => item.title === value )
-    if( candidate ) {
-        return false
-    } else {
-        return true
-    }
-}
-
-
-export {
-    isUnique
-}
-export default http
+export default useHttp

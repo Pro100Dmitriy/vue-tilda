@@ -3,16 +3,16 @@
     <ContainerLayout>
       <div class="project-info__wrapper">
         <div class="info-top">
-          <ButtonsList/>
+          <ControlsList :buttonList="buttonList"/>
           <div class="info-top__link-page">
             <svg v-sprite="{hash: 'pageUrl', width: '14px', height: '14px'}"></svg>
             <p>Page URL:</p>
-            <router-link to="/">{{ pageURL }}</router-link>
+            <router-link to="/">{{ projectInfo.siteURL }}</router-link>
           </div>
         </div>
         <div class="info-bottom">
           <div class="info-bottom__title">
-            <h1>{{ getProjectInfo.title }}</h1>
+            <h1>{{ projectInfo.title }}</h1>
           </div>
           <div class="info-bottom__controls">
             <FillButton class="control-settings"
@@ -23,6 +23,7 @@
             </FillButton>
             <FillButton class="control-add-page"
                         :iconSrc="plusIcon"
+                        @click.prevent="addPage"
                         ariaLabel="Add new page">
               Add new page
             </FillButton>
@@ -34,12 +35,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import useCreatePage from "@/hooks/useCreatePage"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
-import ButtonsList from "@/components/ButtonsList"
+import ControlsList from "@/components/ControlsList/ControlsList"
 
-import gearIcon from '@/assets/img/svg/gear.svg'
 import plusIcon from '@/assets/img/svg/plus.svg'
 
 export default {
@@ -51,23 +52,36 @@ export default {
 
   data() {
     return {
-      gearIcon: gearIcon,
       plusIcon: plusIcon,
-      // Page info
-      title: 'Something',
-      pageURL: 'http://project5505388.tilda.ws',
-      pagesList: []
+      buttonList: [
+        {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }},
+        {id: 2, title: 'Publishing all pages', svgIcon: {hash: 'publishPageIcon', width: '17px', height: '14px' }},
+        {id: 3, title: 'Requests', svgIcon: {hash: 'requestsList', width: '20px', height: '14px' }},
+      ]
     }
   },
 
   components: {
-    ContainerLayout, ButtonsList
+    ContainerLayout, ControlsList
   },
 
-  computed: mapGetters( ['getProjectInfo'] ),
+  computed: mapState( {
+    projectInfo: state => state.projectPage.projectInfo
+  } ),
+
+  methods: {
+    ...mapActions( {
+      fetchProjectInfo: 'projectPage/fetchProjectInfo'
+    } ),
+    addPage() {
+      console.log( this.id )
+      const { createPage } = useCreatePage(this.projectInfo.id, this.fetchProjectInfo)
+      createPage()
+    }
+  },
 
   mounted() {
-    console.log( this.getProjectInfo )
+    console.log( this.projectInfo )
   }
 }
 </script>

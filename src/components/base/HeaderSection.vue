@@ -20,7 +20,7 @@
       </div>
       <div class="header__nav-right">
         <ul class="header__nav-list">
-          <li class="header__nav-item"><router-link to="/exit">Exit</router-link></li>
+          <li class="header__nav-item"><router-link to="/">Exit</router-link></li>
         </ul>
       </div>
     </nav>

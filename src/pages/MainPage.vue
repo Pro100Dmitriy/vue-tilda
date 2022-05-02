@@ -13,8 +13,9 @@ import ProjectSection from "@/components/sections/ProjectSection"
 
 export default {
   name: "MainPage",
+
   components: {
     HeaderSection, ProjectSection, FooterSection
-  }
+  },
 }
 </script>

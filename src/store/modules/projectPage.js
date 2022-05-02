@@ -20,16 +20,26 @@ export default {
             state.projectInfo = {}
             state.pagesListLoading = true
             state.pagesListError = true
+        },
+        openPageSettingsPopup( state, pageId ) {
+            state.pageActiveId = pageId
+            state.pageSettingsPopup = true
+        },
+        closePageSettingsPopup( state ) {
+            state.pageActiveId = null
+            state.pageSettingsPopup = false
         }
     },
     state: {
         projectInfo: {},
         projectInfoLoading: true,
-        projectInfoError: false
+        projectInfoError: false,
+        pageSettingsPopup: true,
+        pageActiveId: null
     },
     getters: {
-        getProjectInfo( state ) {
-            return state.projectInfo
+        getPages( state ) {
+            return state.projectInfo.pagesList
         },
         getProjectInfoLoading( state ) {
             return state.pagesListLoading
@@ -37,6 +47,6 @@ export default {
         getProjectInfoError( state ) {
             return state.pagesListError
         }
-
-    }
+    },
+    namespaced: true
 }

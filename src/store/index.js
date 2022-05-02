@@ -5,9 +5,9 @@ import editProjectPageStore from '@/store/modules/editProjectPage'
 
 const store = createStore({
     modules: {
-        mainPageStore,
-        projectPageStore,
-        editProjectPageStore
+        mainPage: mainPageStore,
+        projectPage: projectPageStore,
+        editProject: editProjectPageStore
     }
 })
 

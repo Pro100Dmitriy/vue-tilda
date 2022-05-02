@@ -1,44 +1,32 @@
 export default {
     actions: {
-        async fetchProjects( ctx ) {
+        async fetchProjects( {commit} ) {
             try {
                 const response = await fetch(`http://localhost:8081/projects`)
                 const data = await response.json()
-                ctx.commit('updateProjects', data)
+                commit('updateProjects', data)
             }catch( error ){
-                ctx.commit('errorUpdateProjects')
+                commit('errorUpdateProjects')
             }
         }
     },
     mutations: {
         updateProjects( state, projects ) {
-            state.projects = projects
-            state.loading = false
-            state.error = false
+            state.projectsList = projects
+            state.isProjectLoading = false
+            state.isProjectError = false
         },
         errorUpdateProjects( state ) {
-            state.projects = []
-            state.loading = false
-            state.error = true
+            state.projectsList = []
+            state.isProjectLoading = false
+            state.isProjectError = true
         }
     },
     state: {
-        projects: [],
-        loading: true,
-        error: false
+        projectsList: [],
+        isProjectLoading: true,
+        isProjectError: false
     },
-    getters: {
-        getProjects( state ) {
-            return state.projects
-        },
-        getLoading( state ) {
-            return state.loading
-        },
-        getError( state ) {
-            return state.error
-        },
-        getListSettings( state ) {
-            return state.listSettings
-        }
-    }
+    getters: {},
+    namespaced: true
 }

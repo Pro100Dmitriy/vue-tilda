@@ -60,9 +60,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-
-import http from '@/server/http'
+import { mapActions } from 'vuex'
+import useDeleteProject from "@/hooks/useDeleteProject"
+import useUpdateProject from "@/hooks/useUpdateProject"
 
 import SettingPopup from "@/components/SettingPopup"
 
@@ -77,21 +77,21 @@ export default {
     SettingPopup
   },
 
-  computed: mapGetters( ['getListSettings'] ),
-
   data() {
     return {
       listSettings: [
-        { title: 'Delete', link: '#', method: this.deleteProject },
+        { title: 'Delete', link: '#', method: this.deleteProjectTest },
         { title: 'Rename', link: '#', method: this.renameProject }
       ],
       renameActive: false,
-      openPopup: false
+      openPopup: false,
     }
   },
 
   methods: {
-    ...mapActions( ['fetchProjects'] ),
+    ...mapActions( {
+      fetchProjects: 'mainPage/fetchProjects'
+    } ),
     openSettingPopup() {
       this.openPopup = !this.openPopup
     },
@@ -99,27 +99,17 @@ export default {
       this.openPopup = false
       this.renameActive = false
     },
-    deleteProject() {
-      http( `http://localhost:8081/projects/${this.project.id}`, 'DELETE' )
-          .then( () => this.fetchProjects() )
-          .catch( error => console.log( error ) )
+    deleteProjectTest() {
+      const { deleteProject } = useDeleteProject(this.fetchProjects)
+      deleteProject( this.project.id )
     },
     renameProject() {
       this.renameActive = !this.renameActive
     },
-    changeName( event) {
+    changeName( event ) {
       this.renameActive = false
-
-      const oldProject = http( `http://localhost:8081/projects/${this.project.id}` )
-
-      const changedProject = {
-        ...oldProject,
-        title: event.target.value
-      }
-
-      http( `http://localhost:8081/projects/${this.project.id}`, 'PUT', changedProject )
-          .then( () => this.fetchProjects() )
-          .catch( error => console.log( error ) )
+      const { updateProject } = useUpdateProject(this.fetchProjects)
+      updateProject(this.project.id, event.target.value)
     }
   }
 }

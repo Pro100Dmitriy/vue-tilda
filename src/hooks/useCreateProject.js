@@ -1,7 +1,8 @@
 import useHttp from "@/hooks/useHttp"
 
 export default function useCreateProject( projects, fetchProjects ) {
-    const createProject = () => {
+    const { request } = useHttp()
+    const createProject = async () => {
         let title
 
         if( projects.length === 0 ) {
@@ -33,12 +34,10 @@ export default function useCreateProject( projects, fetchProjects ) {
             pagesList: []
         }
 
-        useHttp( 'http://localhost:8081/projects', 'POST', newProject )
+        await request( 'http://localhost:8081/projects', 'POST', newProject )
             .then( fetchProjects() )
             .catch( error => console.log( error ) )
     }
 
-    return {
-        createProject
-    }
+    return {createProject}
 }

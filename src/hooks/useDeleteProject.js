@@ -1,24 +1,12 @@
-// import http from "@/hooks/http";
+import useHttp from "@/hooks/useHttp";
 
 export default function useDeleteProject( fetchProjects ) {
+    const { request } = useHttp()
     const deleteProject = async (projectId) => {
-        try {
-            const response = await fetch( `http://localhost:8081/projects/${projectId}`, {method: 'DELETE'} )
-            if( response.ok ){
-                await fetchProjects()
-            }
-        }catch(error){
-            console.log( error )
-        }
-        // http( `http://localhost:8081/projects/${projectId}`, 'DELETE' )
-        //     .then( async () => {
-        //         console.log( fetchProjects )
-        //         await fetchProjects()
-        //     } )
-        //     .catch( error => console.log( error ) )
+        await request( `http://localhost:8081/projects/${projectId}`, 'DELETE' )
+            .then( fetchProjects() )
+            .catch( error => console.log( error ) )
     }
 
-    return {
-        deleteProject
-    }
+    return {deleteProject}
 }

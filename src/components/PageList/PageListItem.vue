@@ -21,6 +21,21 @@
         <div class="card-right__controls">
           <ControlsList :buttonList="buttonList"/>
         </div>
+        <div class="card-right__context">
+          <ContextPopup :listSettings="listSettings"
+                        :openPopup="openContext"
+                        ref="settingPopup"/>
+          <button class="dots-button project-setting__button"
+                  aria-label="Open settings popup"
+                  @click.stop.prevent="openContextPopup"
+                  @blur="closeContextPopup">
+            <svg class="dots-button__svg" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="8" r="1"/>
+              <circle cx="12" cy="12" r="1"/>
+              <circle cx="12" cy="16" r="1"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -31,6 +46,7 @@ import {mapActions, mapMutations, mapState} from 'vuex'
 import useDeletePage from "@/hooks/useDeletePage"
 
 import ControlsList from "@/components/ControlsList/ControlsList"
+import ContextPopup from "@/components/popups/ContextPopup";
 
 export default {
   name: "PageListItem",
@@ -47,12 +63,18 @@ export default {
         {id: 1, title: 'Settings', svgIcon: {hash: 'gearIcon', width: '14px', height: '14px' }, handler: this.openSettings},
         {id: 2, title: 'Publish', svgIcon: {hash: 'publishCloud', width: '14px', height: '14px' }},
         {id: 3, title: 'Delete', svgIcon: {hash: 'trashIcon', width: '14px', height: '14px' }, handler: this.deletePageTest},
-      ]
+      ],
+      listSettings: [
+        {title: 'Settings', link: '#', method: this.openSettings},
+        {title: 'Publish', link: '#'},
+        {title: 'Delete', link: '#', method: this.deletePageTest},
+      ],
+      openContext: false
     }
   },
 
   components: {
-    ControlsList
+    ControlsList, ContextPopup
   },
 
   computed: mapState({
@@ -66,6 +88,12 @@ export default {
     ...mapMutations({
       openPageSettingsPopup: 'projectPage/openPageSettingsPopup'
     }),
+    openContextPopup() {
+      this.openContext = true
+    },
+    closeContextPopup() {
+      this.openContext = false
+    },
     openSettings() {
       this.openPageSettingsPopup(this.pageId)
     },

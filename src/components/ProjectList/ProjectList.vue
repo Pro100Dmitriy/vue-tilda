@@ -3,8 +3,8 @@
     <div class="projects__list-wrapper"
          v-if="!isLoading && !isError && projectsList.length">
       <ProjectListItem v-for="project of projectsList"
-                   :project="project"
-                   :key="project.id"/>
+                       :project="project"
+                       :key="project.id"/>
       <div class="wrapper"
            v-if="projectsList.length % 2 !== 0 && windowWidth > 856">
         <div class="empty-project-item"></div>

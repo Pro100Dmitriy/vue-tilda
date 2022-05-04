@@ -2,7 +2,7 @@
   <div class="input-group"
        :class="{ 'input-group_focus': inputFocus }">
     <label class="input-group__label"
-           :class="{ 'input-active': inputValue !== '' }"
+           :class="{ 'input-active': inputValue !== '' || inputFocus }"
            :for="inputId">{{ inputLabel }}</label>
     <input class="input-group__input"
            :id="inputId"

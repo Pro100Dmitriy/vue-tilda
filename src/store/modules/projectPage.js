@@ -13,19 +13,36 @@ export default {
     mutations: {
         updateProjectsInfo( state, data ) {
             state.projectInfo = data
-            state.pagesListLoading = false
-            state.pagesListError = false
+            state.projectInfoLoading = false
+            state.projectInfoError = false
         },
         errorUpdateProjectsInfo( state ) {
             state.projectInfo = {}
-            state.pagesListLoading = true
-            state.pagesListError = true
+            state.projectInfoLoading = true
+            state.projectInfoError = true
         },
         openPageSettingsPopup( state, pageId ) {
+            document.body.style.overflow = 'hidden'
+
+            /*
+            * @TODO Doing here
+            * */
+
             state.pageActiveId = pageId
             state.pageSettingsPopup = true
         },
         closePageSettingsPopup( state ) {
+            document.body.style.overflow = 'auto'
+            state.pageActiveId = null
+            state.pageSettingsPopup = false
+        },
+        saveClosePageSettingsPopup( state ) {
+            document.body.style.overflow = 'auto'
+
+            /*
+            * @TODO Doing here
+            * */
+
             state.pageActiveId = null
             state.pageSettingsPopup = false
         }
@@ -34,12 +51,16 @@ export default {
         projectInfo: {},
         projectInfoLoading: true,
         projectInfoError: false,
-        pageSettingsPopup: true,
+        pageSettingsPopup: false,
         pageActiveId: null
     },
     getters: {
         getPages( state ) {
-            return state.projectInfo.pagesList
+            if( state.projectInfo.pagesList ) {
+                return state.projectInfo.pagesList
+            } else {
+                return []
+            }
         },
         getProjectInfoLoading( state ) {
             return state.pagesListLoading

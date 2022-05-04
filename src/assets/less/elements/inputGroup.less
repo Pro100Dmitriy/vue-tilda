@@ -40,6 +40,11 @@
 
     transition: @transition-all-3;
     transform: translateY(-50%);
+
+    @media ( max-width: @breakpoint-md ) {
+      font-size: 18px;
+    }
+
   }
   .input-active {
     top: 0;
@@ -47,6 +52,11 @@
     font-size: 14px;
 
     transform: translateY(-50%);
+
+    @media ( max-width: @breakpoint-md ) {
+      transform: translateY(-60%);
+    }
+
   }
   &__input {
     padding: 5px 0;
@@ -63,6 +73,11 @@
     font-weight: 300;
     font-style: normal;
     line-height: 100%;
+
+    @media ( max-width: @breakpoint-md ) {
+      font-size: 18px;
+    }
+
   }
 }
 

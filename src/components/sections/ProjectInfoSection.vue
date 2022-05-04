@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import useCreatePage from "@/hooks/useCreatePage"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
@@ -54,7 +54,7 @@ export default {
     return {
       plusIcon: plusIcon,
       buttonList: [
-        {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }},
+        {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }, handler: this.openPageSettingsPopup},
         {id: 2, title: 'Publishing all pages', svgIcon: {hash: 'publishPageIcon', width: '17px', height: '14px' }},
         {id: 3, title: 'Requests', svgIcon: {hash: 'requestsList', width: '20px', height: '14px' }},
       ]
@@ -73,8 +73,10 @@ export default {
     ...mapActions( {
       fetchProjectInfo: 'projectPage/fetchProjectInfo'
     } ),
+    ...mapMutations( {
+      openPageSettingsPopup: 'projectPage/openPageSettingsPopup'
+    } ),
     addPage() {
-      console.log( this.id )
       const { createPage } = useCreatePage(this.projectInfo.id, this.fetchProjectInfo)
       createPage()
     }

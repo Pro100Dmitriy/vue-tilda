@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "SettingsPopupItem",
+  name: "ContextPopupItem",
 
   props: {
     title: { type: String, required: true },

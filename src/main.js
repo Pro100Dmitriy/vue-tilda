@@ -10,10 +10,12 @@ import App from '@/App.vue'
 import PlusButton from "@/components/UI/PlusButton"
 import LottieConstructor from "@/components/UI/LottieConstructor"
 import FillButton from "@/components/UI/FillButton"
+import CrossButton from "@/components/UI/CrossButton"
+import InputTextGroup from "@/components/UI/InputTextGroup";
 
 // Components register hear
 const components = [
-    PlusButton, LottieConstructor, FillButton
+    PlusButton, LottieConstructor, FillButton, CrossButton, InputTextGroup
 ]
 
 

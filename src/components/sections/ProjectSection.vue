@@ -30,7 +30,7 @@ import { mapActions, mapState } from "vuex"
 import useCreateProject from "@/hooks/useCreateProject"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
-import ProjectList from "@/components/ProjectList"
+import ProjectList from "@/components/ProjectList/ProjectList"
 
 export default {
   name: "ProjectLayouts",

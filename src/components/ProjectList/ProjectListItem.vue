@@ -4,7 +4,7 @@
     <router-link :to="'/project/' + project.id">
       <div class="project-item">
         <div class="project-setting">
-          <SettingPopup :listSettings="listSettings"
+          <ContextPopup :listSettings="listSettings"
                         :projectId="project.id"
                         :openPopup="openPopup"
                         ref="settingPopup"/>
@@ -64,17 +64,17 @@ import { mapActions } from 'vuex'
 import useDeleteProject from "@/hooks/useDeleteProject"
 import useUpdateProject from "@/hooks/useUpdateProject"
 
-import SettingPopup from "@/components/SettingPopup"
+import ContextPopup from "@/components/popups/ContextPopup"
 
 export default {
-  name: "ProjectItem",
+  name: "ProjectListItem",
 
   props: {
     project: { type: Object, required: true }
   },
 
   components: {
-    SettingPopup
+    ContextPopup
   },
 
   data() {

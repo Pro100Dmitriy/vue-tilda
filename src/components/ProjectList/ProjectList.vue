@@ -2,7 +2,7 @@
   <div class="projects__list">
     <div class="projects__list-wrapper"
          v-if="!isLoading && !isError && projectsList.length">
-      <ProjectItem v-for="project of projectsList"
+      <ProjectListItem v-for="project of projectsList"
                    :project="project"
                    :key="project.id"/>
       <div class="wrapper"
@@ -34,7 +34,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 
-import ProjectItem from "@/components/ProjectItem"
+import ProjectListItem from "@/components/ProjectList/ProjectListItem"
 import * as animationLoadingLottie from "@/assets/img/json/loader.json"
 import * as animationErrorLottie from "@/assets/img/json/error.json"
 import * as animationEmptyLottie from "@/assets/img/json/empty.json"
@@ -44,7 +44,7 @@ export default {
   name: "ProjectList",
 
   components: {
-    ProjectItem
+    ProjectListItem
   },
 
   data() {

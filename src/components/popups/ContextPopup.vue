@@ -3,7 +3,7 @@
 
     <div class="setting-popup__wrapper">
       <ul class="setting-popup__list">
-        <SettingsPopupItem v-for="setting of listSettings"
+        <ContextPopupItem v-for="setting of listSettings"
                            :title="setting.title"
                            :link="setting.link"
                            :method="setting.method"
@@ -15,10 +15,10 @@
 
 <script>
 import { mapGetters } from "vuex"
-import SettingsPopupItem from "@/components/SettingsPopupItem"
+import ContextPopupItem from "@/components/popups/ContextPopupItem"
 
 export default {
-  name: "SettingPopup",
+  name: "ContextPopup",
 
   props: {
     listSettings: { type: Array, required: true },
@@ -28,7 +28,7 @@ export default {
   computed: mapGetters( ['getOpenPopup'] ),
 
   components: {
-    SettingsPopupItem
+    ContextPopupItem
   }
 }
 </script>

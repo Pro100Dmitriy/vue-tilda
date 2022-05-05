@@ -61,10 +61,11 @@ export default {
       tabsNav: ['Main', 'Preview'],
       selected: 'Main',
       imgUrl: imgTest,
+      pageActiveInfoCope: this.pageActiveInfo,
       formData: [
-        {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: 'Something'},
-        {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: 'Else'},
-        {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: 'Else'},
+        {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: ''},
+        {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: ''},
+        {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: ''},
       ]
     }
   },
@@ -86,19 +87,23 @@ export default {
       closePageSettingsPopup: 'projectPage/closePageSettingsPopup',
       saveClosePageSettingsPopup: 'projectPage/saveClosePageSettingsPopup'
     }),
+    changeTitle() {
+      return this.pageActiveInfo.title
+    },
     setSelected( tab ) {
       this.selected = tab
     },
     changeData( value ) {
-      console.log( value )
+      this.inputsData = {
+        ...this.inputsData,
+        ...value
+      }
+
+      console.log(this.inputsData)
     },
     saveTabForm() {
       this.saveClosePageSettingsPopup()
     }
-  },
-
-  mounted() {
-    console.log( this.pageActiveInfo )
   }
 }
 </script>

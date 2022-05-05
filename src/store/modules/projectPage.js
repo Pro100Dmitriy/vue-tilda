@@ -31,11 +31,13 @@ export default {
             document.body.style.overflow = 'hidden'
 
             const pagesList = state.projectInfo.pagesList
-            const pageActiveInfo = pagesList.filter( page => page.pageId === pageId )
+            const [ pageActiveInfo ] = pagesList.filter( page => page.pageId === pageId )
+
+            console.log( pageActiveInfo )
 
             state.pageActiveId = pageId
-            state.pageActiveInfo = pageActiveInfo[0]
             state.pageSettingsPopup = true
+            state.pageActiveInfo = pageActiveInfo
         },
         closePageSettingsPopup( state ) {
             document.body.style.overflow = 'auto'

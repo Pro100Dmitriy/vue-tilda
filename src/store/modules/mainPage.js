@@ -1,8 +1,10 @@
-import createProject from "@/store/modules/projectModules/createProject";
+import createProject from "@/store/modules/projectModules/createProject"
+import deleteProject from "@/store/modules/projectModules/deleteProject"
+import updateProject from "@/store/modules/projectModules/updateProject"
 
 export default {
     modules: {
-        createProject
+        createProject, deleteProject, updateProject
     },
     actions: {
         async fetchProjects( {commit} ) {

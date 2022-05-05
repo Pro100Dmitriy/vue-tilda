@@ -33,7 +33,8 @@ export default {
   },
 
   methods: {
-    setChangedData() {
+    setChangedData( {target} ) {
+      this.inputValueModel = target.value
       this.$emit('changeData', {[this.propName]: this.inputValueModel})
     }
   }

@@ -1,4 +1,4 @@
-import useHttp from "@/hooks/useHttp"
+import useHttp from "@/api/useHttp"
 import testImage from "@/assets/img/testImg.jpg";
 
 export default {

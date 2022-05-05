@@ -61,8 +61,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import useDeleteProject from "@/hooks/useDeleteProject"
-import useUpdateProject from "@/hooks/useUpdateProject"
 
 import ContextPopup from "@/components/popups/ContextPopup"
 
@@ -80,7 +78,7 @@ export default {
   data() {
     return {
       listSettings: [
-        { title: 'Delete', link: '#', method: this.deleteProjectTest },
+        { title: 'Delete', link: '#', method: () => this.deleteProject(this.project.id) },
         { title: 'Rename', link: '#', method: this.renameProject }
       ],
       renameActive: false,
@@ -90,7 +88,8 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchProjects: 'mainPage/fetchProjects'
+      deleteProject: 'mainPage/deleteProject',
+      updateProject: 'mainPage/updateProject'
     } ),
     openSettingPopup() {
       this.openPopup = !this.openPopup
@@ -99,17 +98,12 @@ export default {
       this.openPopup = false
       this.renameActive = false
     },
-    deleteProjectTest() {
-      const { deleteProject } = useDeleteProject(this.fetchProjects)
-      deleteProject( this.project.id )
-    },
     renameProject() {
       this.renameActive = !this.renameActive
     },
     changeName( event ) {
       this.renameActive = false
-      const { updateProject } = useUpdateProject(this.fetchProjects)
-      updateProject(this.project.id, event.target.value)
+      this.updateProject([this.project.id, event.target.value])
     }
   }
 }

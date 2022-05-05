@@ -11,7 +11,6 @@
           :propName="entity.propName"
           @changeData="changeData"/>
     </div>
-
   </form>
 </template>
 
@@ -25,7 +24,6 @@ export default {
 
   methods: {
     changeData( element ) {
-
       this.$emit('changeData', element)
     },
   }

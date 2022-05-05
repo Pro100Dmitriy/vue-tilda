@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <ContainerLayout>
+    <ContainerWrapper>
       <div class="footer__wrapper">
         <div class="social">
           <ul class="social__list">
@@ -62,18 +62,12 @@
           <p>Если у вас есть вопросы, пожалуйста, пишите: <a href="#">team@tilda.cc</a> <router-link to="/">Пользовательское соглашение</router-link></p>
         </div>
       </div>
-    </ContainerLayout>
+    </ContainerWrapper>
   </footer>
 </template>
 
 <script>
-import ContainerLayout from "@/layouts/ContainerLayout"
-
 export default {
-  name: "FooterSection",
-
-  components: {
-    ContainerLayout
-  }
+  name: "FooterSection"
 }
 </script>

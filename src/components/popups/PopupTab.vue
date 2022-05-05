@@ -11,10 +11,10 @@
           <div class="tab-submit__right">
             <FillButton class="tab-submit__button fill-button_stroke"
                         ariaLabel="Close popup"
-                        @click.prevent="closePageSettingsPopup">Close</FillButton>
+                        @click.prevent="closeModals">Close</FillButton>
             <FillButton class="tab-submit__button"
                         ariaLabel="Close popup"
-                        @click.prevent="saveSettings">Save changes</FillButton>
+                        @click.prevent="saveAndCloseModals">Save changes</FillButton>
           </div>
         </div>
       </div>
@@ -30,9 +30,10 @@ export default {
   name: "PopupTab",
 
   props: {
-    isSelected: { type: Boolean },
-    saveSettings: { type: Function }
+    isSelected: { type: Boolean }
   },
+
+  inject: ['closeModals', 'saveAndCloseModals'],
 
   components: {
     FillButton

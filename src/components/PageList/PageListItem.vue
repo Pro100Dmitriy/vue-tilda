@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import {mapActions, mapMutations, mapState} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 
 import ControlsList from "@/components/ControlsList/ControlsList"
 import ContextPopup from "@/components/popups/ContextPopup";
@@ -59,18 +59,20 @@ export default {
   data() {
     return {
       buttonList: [
-        {id: 1, title: 'Settings', svgIcon: {hash: 'gearIcon', width: '14px', height: '14px' }, handler: this.openSettings},
+        {id: 1, title: 'Settings', svgIcon: {hash: 'gearIcon', width: '14px', height: '14px' }, handler: () => this.openModals(this.pageId)},
         {id: 2, title: 'Publish', svgIcon: {hash: 'publishCloud', width: '14px', height: '14px' }},
-        {id: 3, title: 'Delete', svgIcon: {hash: 'trashIcon', width: '14px', height: '14px' }, handler: this.deletePageTest},
+        {id: 3, title: 'Delete', svgIcon: {hash: 'trashIcon', width: '14px', height: '14px' }, handler: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],
       listSettings: [
-        {title: 'Settings', link: '#', method: this.openSettings},
+        {title: 'Settings', link: '#', method: this.openModals},
         {title: 'Publish', link: '#'},
-        {title: 'Delete', link: '#', method: this.deletePageTest},
+        {title: 'Delete', link: '#', method: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],
       openContext: false
     }
   },
+
+  inject: ['openModals'],
 
   components: {
     ControlsList, ContextPopup
@@ -84,20 +86,11 @@ export default {
     ...mapActions({
       deletePage: 'projectPage/deletePage'
     }),
-    ...mapMutations({
-      openPageSettingsPopup: 'projectPage/openPageSettingsPopup'
-    }),
     openContextPopup() {
       this.openContext = true
     },
     closeContextPopup() {
       this.openContext = false
-    },
-    openSettings() {
-      this.openPageSettingsPopup(this.pageId)
-    },
-    deletePageTest() {
-      this.deletePage( [this.projectInfo.id, this.pageId])
     }
   }
 }

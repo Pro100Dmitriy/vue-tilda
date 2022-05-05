@@ -1,6 +1,6 @@
 <template>
   <div class="projects">
-    <ContainerLayout>
+    <ContainerWrapper>
 
       <div class="projects__wrapper">
 
@@ -21,21 +21,20 @@
 
       </div>
 
-    </ContainerLayout>
+    </ContainerWrapper>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex"
 
-import ContainerLayout from "@/layouts/ContainerLayout"
 import ProjectList from "@/components/ProjectList/ProjectList"
 
 export default {
   name: "ProjectLayouts",
 
   components: {
-    ContainerLayout, ProjectList
+    ProjectList
   },
 
   computed: mapState( {

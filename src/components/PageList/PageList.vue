@@ -1,7 +1,5 @@
 <template>
   <div class="pages-list">
-
-
     <div class="pages-list-wrapper"
          v-if="!projectInfoLoading && !projectInfoError && getPages.length">
       <PageListItem v-for="page of getPages"

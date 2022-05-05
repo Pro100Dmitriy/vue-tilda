@@ -1,9 +1,10 @@
 import createPage from "@/store/modules/pageModules/createPage"
 import deletePage from "@/store/modules/pageModules/deletePage"
+import updatePage from "@/store/modules/pageModules/updatePage"
 
 export default {
     modules: {
-        createPage, deletePage
+        createPage, deletePage, updatePage
     },
     actions: {
         async fetchProjectInfo( {commit}, id ) {
@@ -27,41 +28,10 @@ export default {
             state.projectInfoLoading = true
             state.projectInfoError = true
         },
-        openPageSettingsPopup( state, pageId ) {
-            document.body.style.overflow = 'hidden'
-
+        getSelectedPageInfo( state, pageId ) {
             const pagesList = state.projectInfo.pagesList
-            const [ pageActiveInfo ] = pagesList.filter( page => page.pageId === pageId )
-
-            console.log( pageActiveInfo )
-
-            state.pageActiveId = pageId
-            state.pageSettingsPopup = true
-            state.pageActiveInfo = pageActiveInfo
-        },
-        closePageSettingsPopup( state ) {
-            document.body.style.overflow = 'auto'
-            state.pageActiveId = null
-            state.pageSettingsPopup = false
-        },
-        saveClosePageSettingsPopup( state ) {
-            document.body.style.overflow = 'auto'
-
-            /*
-            * @TODO Doing here
-            * */
-
-            state.pageActiveId = null
-            state.pageActiveInfo = {}
-            state.pageSettingsPopup = false
-        },
-        openProjectDomenPopup( state ) {
-            document.body.style.overflow = 'hidden'
-            state.projectDomenPopup = true
-        },
-        closeProjectDomenPopup( state ) {
-            document.body.style.overflow = 'auto'
-            state.projectDomenPopup = false
+            const pageActiveInfo = pagesList.filter( page =>  page.pageId === pageId )
+            state.pageActiveInfo = pageActiveInfo[0]
         }
     },
     state: {
@@ -69,11 +39,7 @@ export default {
         projectInfoLoading: true,
         projectInfoError: false,
 
-        pageSettingsPopup: false,
-        pageActiveId: null,
-        pageActiveInfo: {},
-
-        projectDomenPopup: false
+        pageActiveInfo: null
     },
     getters: {
         getPages( state ) {
@@ -88,6 +54,13 @@ export default {
         },
         getProjectInfoError( state ) {
             return state.pagesListError
+        },
+        getPageActiveInfo( state ) {
+            if( state.pageActiveInfo ) {
+                return state.pageActiveInfo
+            } else {
+                return ''
+            }
         }
     },
     namespaced: true

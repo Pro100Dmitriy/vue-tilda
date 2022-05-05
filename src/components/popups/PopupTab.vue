@@ -14,7 +14,7 @@
                         @click.prevent="closePageSettingsPopup">Close</FillButton>
             <FillButton class="tab-submit__button"
                         ariaLabel="Close popup"
-                        @click.prevent="saveClosePageSettingsPopup">Save changes</FillButton>
+                        @click.prevent="saveSettings">Save changes</FillButton>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default {
 
   props: {
     isSelected: { type: Boolean },
-    setHeight: { type: Function }
+    saveSettings: { type: Function }
   },
 
   components: {
@@ -41,7 +41,6 @@ export default {
   methods: {
     ...mapMutations( {
       closePageSettingsPopup: 'projectPage/closePageSettingsPopup',
-      saveClosePageSettingsPopup: 'projectPage/saveClosePageSettingsPopup'
     } )
   }
 }

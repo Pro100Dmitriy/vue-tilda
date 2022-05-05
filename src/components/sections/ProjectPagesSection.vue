@@ -1,5 +1,6 @@
 <template>
   <div class="project-pages">
+    <DomenPopup/>
     <SettingsPopup/>
     <ContainerLayout>
       <div class="project-pages__wrapper">
@@ -18,12 +19,13 @@
 import ContainerLayout from "@/layouts/ContainerLayout"
 import PageList from "@/components/PageList/PageList"
 import SettingsPopup from "@/components/popups/SettingsPopup"
+import DomenPopup from "@/components/popups/DomenPopup"
 
 export default {
   name: "ProjectPagesSection",
 
   components: {
-    ContainerLayout, PageList, SettingsPopup
+    ContainerLayout, PageList, SettingsPopup, DomenPopup
   }
 }
 </script>

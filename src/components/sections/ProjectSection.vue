@@ -12,7 +12,7 @@
             <PlusButton
                 class="projects__plus-buttons"
                 title="Create a new project"
-                @click="createProjectTest"/>
+                @click="createProject(projectsList)"/>
             <PlusButton class="projects__plus-buttons" title="Create mailing list" :disabled="true"/>
           </div>
         </div>
@@ -27,7 +27,6 @@
 
 <script>
 import { mapActions, mapState } from "vuex"
-import useCreateProject from "@/hooks/useCreateProject"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
 import ProjectList from "@/components/ProjectList/ProjectList"
@@ -45,12 +44,8 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchProjects: 'mainPage/fetchProjects'
-    } ),
-    createProjectTest() {
-      const { createProject } = useCreateProject(this.projectsList, this.fetchProjects)
-      createProject()
-    }
+      createProject: 'mainPage/createProject'
+    } )
   }
 }
 </script>

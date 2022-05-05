@@ -1,4 +1,9 @@
+import createProject from "@/store/modules/projectModules/createProject";
+
 export default {
+    modules: {
+        createProject
+    },
     actions: {
         async fetchProjects( {commit} ) {
             try {

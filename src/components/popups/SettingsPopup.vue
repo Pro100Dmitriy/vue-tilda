@@ -11,21 +11,17 @@
                          @click.prevent="closePageSettingsPopup"/>
           </div>
         </div>
-        <div class="tabs popup-content__tabs">
+        <div v-if="pageActiveInfo !== {}"
+             class="tabs popup-content__tabs">
           <PopupTabNav :tabsNav="tabsNav"
                        :selected="selected"
                        @selected="setSelected"/>
           <div class="tabs-content">
             <div class="tabs-content__wrapper">
-              <PopupTab :isSelected="selected === 'Main'">
-                <form class="tab-form" method="POST">
-                  <InputTextGroup inputId="page-title"
-                                  inputLabel="Title"/>
-                  <InputTextGroup inputId="page-description"
-                                  inputLabel="Description"/>
-                  <InputTextGroup inputId="page-link"
-                                  inputLabel="Link"/>
-                </form>
+              <PopupTab :isSelected="selected === 'Main'"
+                        :saveSettings="saveTabForm">
+                <FormConstructor :formData="formData"
+                                 @changeData="changeData"/>
               </PopupTab>
               <PopupTab :isSelected="selected === 'Preview'">
                 <div class="tab-uploader">
@@ -53,6 +49,7 @@ import { mapState, mapMutations } from 'vuex'
 
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
+import FormConstructor from "@/components/popups/FormConstructor"
 
 import imgTest from '@/assets/img/testImg.jpg'
 
@@ -63,26 +60,45 @@ export default {
     return {
       tabsNav: ['Main', 'Preview'],
       selected: 'Main',
-      imgUrl: imgTest
+      imgUrl: imgTest,
+      formData: [
+        {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: 'Something'},
+        {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: 'Else'},
+        {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: 'Else'},
+      ]
     }
   },
 
   components: {
-    PopupTabNav, PopupTab
+    PopupTabNav, PopupTab, FormConstructor
   },
 
-  computed: mapState( {
-    pageSettingsPopup: state => state.projectPage.pageSettingsPopup,
-    pageActiveId: state => state.projectPage.pageActiveId
-  } ),
+  computed: {
+    ...mapState( {
+      pageSettingsPopup: state => state.projectPage.pageSettingsPopup,
+      pageActiveId: state => state.projectPage.pageActiveId,
+      pageActiveInfo: state => state.projectPage.pageActiveInfo
+    } )
+  },
 
   methods: {
     ...mapMutations({
-      closePageSettingsPopup: 'projectPage/closePageSettingsPopup'
+      closePageSettingsPopup: 'projectPage/closePageSettingsPopup',
+      saveClosePageSettingsPopup: 'projectPage/saveClosePageSettingsPopup'
     }),
     setSelected( tab ) {
       this.selected = tab
+    },
+    changeData( value ) {
+      console.log( value )
+    },
+    saveTabForm() {
+      this.saveClosePageSettingsPopup()
     }
+  },
+
+  mounted() {
+    console.log( this.pageActiveInfo )
   }
 }
 </script>

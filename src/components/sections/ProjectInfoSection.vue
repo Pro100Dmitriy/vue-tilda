@@ -36,7 +36,6 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
-import useCreatePage from "@/hooks/useCreatePage"
 
 import ContainerLayout from "@/layouts/ContainerLayout"
 import ControlsList from "@/components/ControlsList/ControlsList"
@@ -54,7 +53,7 @@ export default {
     return {
       plusIcon: plusIcon,
       buttonList: [
-        {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }, handler: this.openPageSettingsPopup},
+        {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }, handler: this.openProjectDomenPopup},
         {id: 2, title: 'Publishing all pages', svgIcon: {hash: 'publishPageIcon', width: '17px', height: '14px' }},
         {id: 3, title: 'Requests', svgIcon: {hash: 'requestsList', width: '20px', height: '14px' }},
       ]
@@ -71,14 +70,13 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchProjectInfo: 'projectPage/fetchProjectInfo'
+      createPage: 'projectPage/createPage'
     } ),
     ...mapMutations( {
-      openPageSettingsPopup: 'projectPage/openPageSettingsPopup'
+      openProjectDomenPopup: 'projectPage/openProjectDomenPopup'
     } ),
     addPage() {
-      const { createPage } = useCreatePage(this.projectInfo.id, this.fetchProjectInfo)
-      createPage()
+      this.createPage(this.projectInfo.id)
     }
   },
 

@@ -43,7 +43,6 @@
 
 <script>
 import {mapActions, mapMutations, mapState} from 'vuex'
-import useDeletePage from "@/hooks/useDeletePage"
 
 import ControlsList from "@/components/ControlsList/ControlsList"
 import ContextPopup from "@/components/popups/ContextPopup";
@@ -83,7 +82,7 @@ export default {
 
   methods: {
     ...mapActions({
-      fetchProjectInfo: 'projectPage/fetchProjectInfo'
+      deletePage: 'projectPage/deletePage'
     }),
     ...mapMutations({
       openPageSettingsPopup: 'projectPage/openPageSettingsPopup'
@@ -98,9 +97,7 @@ export default {
       this.openPageSettingsPopup(this.pageId)
     },
     deletePageTest() {
-      console.log( this.pageId )
-      const { deletePage } = useDeletePage(this.projectInfo.id, this.fetchProjectInfo)
-      deletePage(this.pageId)
+      this.deletePage( [this.projectInfo.id, this.pageId])
     }
   }
 }

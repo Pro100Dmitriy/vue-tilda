@@ -1,12 +1,18 @@
+import createPage from "@/store/modules/pageModules/createPage"
+import deletePage from "@/store/modules/pageModules/deletePage"
+
 export default {
+    modules: {
+        createPage, deletePage
+    },
     actions: {
-        async fetchProjectInfo( ctx, id ) {
+        async fetchProjectInfo( {commit}, id ) {
             try {
                 const response = await fetch(`http://localhost:8081/projects/${id}`)
                 const data = await response.json()
-                ctx.commit('updateProjectsInfo', data)
+                commit('updateProjectsInfo', data)
             }catch( error ){
-                ctx.commit('errorUpdateProjectsInfo')
+                commit('errorUpdateProjectsInfo')
             }
         }
     },
@@ -24,11 +30,11 @@ export default {
         openPageSettingsPopup( state, pageId ) {
             document.body.style.overflow = 'hidden'
 
-            /*
-            * @TODO Doing here
-            * */
+            const pagesList = state.projectInfo.pagesList
+            const pageActiveInfo = pagesList.filter( page => page.pageId === pageId )
 
             state.pageActiveId = pageId
+            state.pageActiveInfo = pageActiveInfo[0]
             state.pageSettingsPopup = true
         },
         closePageSettingsPopup( state ) {
@@ -44,15 +50,28 @@ export default {
             * */
 
             state.pageActiveId = null
+            state.pageActiveInfo = {}
             state.pageSettingsPopup = false
+        },
+        openProjectDomenPopup( state ) {
+            document.body.style.overflow = 'hidden'
+            state.projectDomenPopup = true
+        },
+        closeProjectDomenPopup( state ) {
+            document.body.style.overflow = 'auto'
+            state.projectDomenPopup = false
         }
     },
     state: {
         projectInfo: {},
         projectInfoLoading: true,
         projectInfoError: false,
+
         pageSettingsPopup: false,
-        pageActiveId: null
+        pageActiveId: null,
+        pageActiveInfo: {},
+
+        projectDomenPopup: false
     },
     getters: {
         getPages( state ) {

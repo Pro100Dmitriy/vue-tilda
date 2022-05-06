@@ -11,7 +11,7 @@
           <div class="projects__buttons-right">
             <button class="plus-button projects__plus-buttons"
                     aria-label="Create a new project"
-                    @click="createProject(projectsList)">
+                    @click="addNewProject">
               <span class="plus-button__img">
                  <img :src="plusIcon" alt="Plus Icon" aria-hidden="true">
               </span>
@@ -59,7 +59,12 @@ export default {
   methods: {
     ...mapActions( {
       createProject: 'mainPage/createProject'
-    } )
+    } ),
+    addNewProject( event ) {
+      event.target.disabled
+      this.createProject(this.projectsList)
+      setTimeout( () => event.target.enable, 200 )
+    }
   },
 
   computed: {

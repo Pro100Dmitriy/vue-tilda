@@ -24,8 +24,7 @@ export default {
             projectData.pagesList.push(newPageListItem)
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', projectData )
-                .then( dispatch('fetchProjectInfo', projectId) )
-                .catch( error => console.log( error ) )
+            dispatch('fetchProjectInfo', projectId)
         }
     }
 }

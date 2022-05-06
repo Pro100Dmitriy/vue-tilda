@@ -36,8 +36,7 @@ export default {
             }
 
             await request( 'http://localhost:8081/projects', 'POST', newProject )
-                .then( dispatch('fetchProjects') )
-                .catch( error => console.log( error ) )
+            dispatch('fetchProjects')
         }
     }
 }

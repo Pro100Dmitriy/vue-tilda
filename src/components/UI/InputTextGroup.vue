@@ -1,6 +1,7 @@
 <template>
   <div class="input-group"
-       :class="{ 'input-group_focus': inputFocus }">
+       :class="{ 'input-group_focus': inputFocus,
+                 'input-group_error': inputError }">
     <label class="input-group__label"
            :class="{ 'input-active': modelValue !== '' || inputFocus }"
            :for="inputId">{{ inputLabel }}</label>
@@ -21,17 +22,22 @@ export default {
   props: {
     inputId: { type: String, required: true },
     inputLabel: { type: String, required: true },
-    modelValue: [ String, Number ]
+    modelValue: [ String, Number ],
+    handler: { type: Function }
   },
 
   data() {
     return {
-      inputFocus: false
+      inputFocus: false,
+      inputError: false
     }
   },
 
   methods: {
     onInput( event ) {
+      if( this.handler )
+        this.inputError = this.handler( event.target.value )
+
       this.$emit('changeChecker')
       this.$emit('update:modelValue', event.target.value)
     }

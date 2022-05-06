@@ -7,6 +7,7 @@
           v-if="entity.type === 'input'"
           :inputId="entity.inputId"
           :inputLabel="entity.inputLabel"
+          :handler='entity.handler'
           @changeChecker="changeChecker"
           v-model="formChangedData[entity.propName]"/>
     </div>
@@ -54,7 +55,8 @@ export default {
 
   watch: {
     changed() {
-      this.$emit('changeData', this.formChangedData)
+      if( this.changed )
+        this.$emit('changeData', [this.formChangedData, this.target])
       this.changed = false
     }
   }

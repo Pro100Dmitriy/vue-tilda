@@ -155,65 +155,67 @@
         transform: translate(-50%, -50%);
       }
     }
-    .tab-submit {
-      padding-top: 40px;
+  }
+}
 
+
+.tab-submit {
+  padding-top: 40px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @media ( max-width: @breakpoint-sm ) {
+    flex-direction: column;
+  }
+
+  &__left {
+    flex: 1 0 auto;
+  }
+  &__right {
+    flex: 0 0 auto;
+
+    @media ( max-width: @breakpoint-sm ) {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+    }
+
+  }
+  &__link {
+    display: inline-block;
+
+    color: @color-black;
+
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 100%;
+
+    @media ( max-width: @breakpoint-sm ) {
+      margin-bottom: 20px;
+    }
+
+  }
+  &__button {
+    padding: 11px 29px;
+
+    @media ( max-width: @breakpoint-sm ) {
+      text-align: center;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+    }
+
+    &:last-child {
+      margin-left: 15px;
 
       @media ( max-width: @breakpoint-sm ) {
-        flex-direction: column;
+        margin-top: 15px;
+        margin-left: 0;
       }
 
-      &__left {
-        flex: 1 0 auto;
-      }
-      &__right {
-        flex: 0 0 auto;
-
-        @media ( max-width: @breakpoint-sm ) {
-          display: flex;
-          flex-direction: column;
-        }
-
-      }
-      &__link {
-        display: inline-block;
-
-        color: @color-black;
-
-        font-family: 'Jost', sans-serif;
-        font-size: 14px;
-        font-weight: 300;
-        font-style: normal;
-        line-height: 100%;
-
-        @media ( max-width: @breakpoint-sm ) {
-          margin-bottom: 20px;
-        }
-
-      }
-      &__button {
-        padding: 11px 29px;
-
-        @media ( max-width: @breakpoint-sm ) {
-          text-align: center;
-          align-items: center;
-          justify-content: center;
-        }
-
-        &:last-child {
-          margin-left: 15px;
-
-          @media ( max-width: @breakpoint-sm ) {
-            margin-top: 15px;
-            margin-left: 0;
-          }
-
-        }
-      }
     }
   }
 }

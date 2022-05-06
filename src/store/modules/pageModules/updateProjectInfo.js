@@ -2,7 +2,7 @@ import useHttp from "@/api/useHttp"
 
 export default {
     actions: {
-        async updateProject( {dispatch}, [projectId, newObject] ) {
+        async updateProjectInfo( {dispatch}, [projectId, newObject] ) {
             const { request } = useHttp()
             const projectData = await request( `http://localhost:8081/projects/${projectId}` )
             if( !projectData )
@@ -14,7 +14,7 @@ export default {
             }
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', changedProject )
-                .then( dispatch('fetchProjects') )
+                .then( dispatch('fetchProjectInfo', projectId) )
                 .catch( error => console.log( error ) )
         }
     }

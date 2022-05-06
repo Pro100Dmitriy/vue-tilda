@@ -15,6 +15,19 @@
               <PopupTab :isSelected="selected === 'Main'">
                 <FormConstructor :formData="formData"
                                  @changeData="changeData"/>
+                <div class="tab-submit">
+                  <div class="tab-submit__left">
+                    <a class="tab-submit__link" href="#">Move to the page properties</a>
+                  </div>
+                  <div class="tab-submit__right">
+                    <FillButton class="tab-submit__button fill-button_stroke"
+                                ariaLabel="Close popup"
+                                @click.prevent="closeModals">Close</FillButton>
+                    <FillButton class="tab-submit__button"
+                                ariaLabel="Close popup"
+                                @click.prevent="saveAndCloseModals">Save changes</FillButton>
+                  </div>
+                </div>
               </PopupTab>
               <PopupTab :isSelected="selected === 'Preview'">
                 <div class="tab-uploader">
@@ -26,6 +39,19 @@
                   </div>
                   <div class="tab-uploader__image-wrapper">
                     <img class="tab-uploader__image" :src="imgUrl" alt="Test Image">
+                  </div>
+                </div>
+                <div class="tab-submit">
+                  <div class="tab-submit__left">
+                    <a class="tab-submit__link" href="#">Move to the page properties</a>
+                  </div>
+                  <div class="tab-submit__right">
+                    <FillButton class="tab-submit__button fill-button_stroke"
+                                ariaLabel="Close popup"
+                                @click.prevent="closeModals">Close</FillButton>
+                    <FillButton class="tab-submit__button"
+                                ariaLabel="Close popup"
+                                @click.prevent="saveAndCloseModals">Save changes</FillButton>
                   </div>
                 </div>
               </PopupTab>
@@ -56,7 +82,7 @@ import PageList from "@/components/PageList/PageList"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/popups/FormConstructor"
-import imgTest from "@/assets/img/testImg.jpg";
+import imgTest from "@/assets/img/testImg.jpg"
 
 export default {
   name: "ProjectPagesSection",
@@ -67,9 +93,9 @@ export default {
       selected: 'Main',
       imgUrl: imgTest,
       formData: {
-        title: {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: '', handler: ''},
-        description: {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: '', handler: ''},
-        URL: {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: '', handler: ''}
+        title: {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: ''},
+        description: {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: ''},
+        URL: {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: ''}
       },
       dataForSave: {},
       showModals: false,
@@ -79,9 +105,7 @@ export default {
 
   provide() {
     return {
-      openModals: this.openModals,
-      closeModals: this.closeModals,
-      saveAndCloseModals: this.saveAndCloseModals
+      openModals: this.openModals
     }
   },
 

@@ -103,7 +103,7 @@ export default {
     },
     changeName( event ) {
       this.renameActive = false
-      this.updateProject([this.project.id, event.target.value])
+      this.updateProject([this.project.id, {title: event.target.value}])
     }
   }
 }

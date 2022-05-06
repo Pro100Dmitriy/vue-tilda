@@ -1,10 +1,11 @@
 import createPage from "@/store/modules/pageModules/createPage"
 import deletePage from "@/store/modules/pageModules/deletePage"
 import updatePage from "@/store/modules/pageModules/updatePage"
+import updateProjectInfo from "@/store/modules/pageModules/updateProjectInfo"
 
 export default {
     modules: {
-        createPage, deletePage, updatePage
+        createPage, deletePage, updatePage, updateProjectInfo
     },
     actions: {
         async fetchProjectInfo( {commit}, id ) {

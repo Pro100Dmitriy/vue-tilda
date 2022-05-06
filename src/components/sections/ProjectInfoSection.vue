@@ -3,9 +3,23 @@
     <ModalsWrapper :show="showModals"
                    titleModal="Change domain name?"
                    :closeFunction="closeModals">
-      <div class="project-info__modals">
-<!--        <FormConstructor :formData="formData"-->
-<!--                         @changeData="changeData"/>-->
+      <div v-if="!modalLoad"
+           class="project-info__modals">
+        <FormConstructor :formData="formData"
+                         @changeData="changeData"/>
+        <div class="tab-submit">
+          <div class="tab-submit__left">
+            <a class="tab-submit__link" href="#">Move to the page properties</a>
+          </div>
+          <div class="tab-submit__right">
+            <FillButton class="tab-submit__button fill-button_stroke"
+                        ariaLabel="Close popup"
+                        @click.prevent="closeModals">Close</FillButton>
+            <FillButton class="tab-submit__button"
+                        ariaLabel="Close popup"
+                        @click.prevent="saveAndCloseModals">Save changes</FillButton>
+          </div>
+        </div>
       </div>
     </ModalsWrapper>
     <ContainerWrapper>
@@ -43,10 +57,10 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import {mapState, mapActions} from 'vuex'
 
 import ControlsList from "@/components/ControlsList/ControlsList"
-// import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/popups/FormConstructor"
 import ModalsWrapper from "@/layouts/ModalsWrapper"
 
 import plusIcon from '@/assets/img/svg/plus.svg'
@@ -61,20 +75,23 @@ export default {
   data() {
     return {
       plusIcon: plusIcon,
-      showModals: false,
       buttonList: [
         {id: 1, title: 'Domen connect', svgIcon: {hash: 'earthIcon', width: '14px', height: '14px' }, handler: this.openModals},
         {id: 2, title: 'Publishing all pages', svgIcon: {hash: 'publishPageIcon', width: '17px', height: '14px' }},
         {id: 3, title: 'Requests', svgIcon: {hash: 'requestsList', width: '20px', height: '14px' }},
       ],
-      formData: [
-        {type: 'input', propName: 'domain', inputId: 'page-domain', inputLabel: 'Domain Name', inputValue: 'newpage.com'},
-      ]
+      formData: {
+        siteURL: {type: 'input', propName: 'siteURL', inputId: 'page-domain', inputLabel: 'Domain Name', inputValue: 'newpage.com', handler: this.validateDomain},
+      },
+      dataForSave: {},
+      showModals: false,
+      modalLoad: true,
+      modalError: false
     }
   },
 
   components: {
-    ControlsList, ModalsWrapper
+    ControlsList, FormConstructor, ModalsWrapper
   },
 
   computed: {
@@ -85,16 +102,60 @@ export default {
 
   methods: {
     ...mapActions( {
-      createPage: 'projectPage/createPage'
+      createPage: 'projectPage/createPage',
+      updateProjectInfo: 'projectPage/updateProjectInfo'
     } ),
     addPage() {
       this.createPage(this.projectInfo.id)
     },
     openModals() {
-      this.showModals = true
+      document.body.style.overflow = 'hidden'
+      if( this.projectInfo ) {
+        this.modalLoad = false
+        this.formData.siteURL.inputValue = this.projectInfo.siteURL
+        this.showModals = true
+      }
     },
     closeModals() {
+      document.body.style.overflow = 'auto'
+
       this.showModals = false
+      setTimeout( () => {
+        this.dataForSave = {}
+        this.modalLoad = true
+      }, 300 )
+    },
+    saveAndCloseModals() {
+      if( !this.modalError ){
+        document.body.style.overflow = 'auto'
+
+        this.updateProjectInfo( [this.projectInfo.id, this.dataForSave] )
+
+        this.showModals = false
+        setTimeout( () => {
+          this.dataForSave = {}
+          this.modalLoad = true
+        }, 300 )
+      }
+    },
+    changeData( [value] ) {
+      this.dataForSave = value
+    },
+    validateDomain( value ) {
+      if( !this.isDomain(value) ){
+        this.modalError = true
+        return true
+      }
+      this.modalError = false
+      return false
+    },
+    isDomain( value ) {
+      const regex = /^(?!:\/\/)([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,6}?$/gm
+      const check = value.match(regex)
+      if( check && check[0] === value )
+        return true
+
+      return false
     }
   }
 }

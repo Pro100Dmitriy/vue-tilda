@@ -86,3 +86,14 @@
     width: 100%;
   }
 }
+
+.input-group_error {
+  &::after {
+    width: 100%;
+
+    background: @color-red;
+  }
+  .input-group__label {
+    color: @color-red;
+  }
+}

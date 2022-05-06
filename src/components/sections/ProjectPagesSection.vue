@@ -35,10 +35,11 @@
                     <h4 class="tab-uploader__desc-title">Current preview image</h4>
                     <p class="tab-uploader__desc-paragraph">By default, the first image on the page is used for the badge. You can upload your own image.</p>
                     <input type="file" hidden>
-                    <button class="tab-uploader__desc-button">Upload file</button>
+                    <button class="tab-uploader__desc-button"
+                            @click.prevent="openImageSeletor">Upload file</button>
                   </div>
                   <div class="tab-uploader__image-wrapper">
-                    <img class="tab-uploader__image" :src="imgUrl" alt="Test Image">
+                    <img class="tab-uploader__image" :src="currentMainImg" alt="Test Image">
                   </div>
                 </div>
                 <div class="tab-submit">
@@ -51,7 +52,7 @@
                                 @click.prevent="closeModals">Close</FillButton>
                     <FillButton class="tab-submit__button"
                                 ariaLabel="Close popup"
-                                @click.prevent="saveAndCloseModals">Save changes</FillButton>
+                                @click.prevent="saveAndCloseImageTabModals">Save changes</FillButton>
                   </div>
                 </div>
               </PopupTab>
@@ -61,6 +62,30 @@
 
       </div>
     </ModalsWrapper>
+    <div class="imageSelectModals"
+         :class="{'imageSelectModals_open': imageSelectModalsOpen}">
+      <div class="imageSelectModals__wrapper">
+        <div class="imageSelectModals__bg"
+             @click="closeImageSelector"></div>
+        <div class="imageSelectModals__content">
+          <div class="imageSelectModals__images">
+            <ul class="imageSelectModals__list">
+              <li v-for="img of imgList"
+                  class="imageSelectModals__item"
+                  :class="{'img-selected': img.urls.regular === selectedUrl}"
+                  :key="img.id">
+                <img :src="img.urls.regular"
+                     @click="selectImage"
+                     :alt="img.alt_description">
+              </li>
+            </ul>
+          </div>
+          <FillButton class="imageSelectModals__button"
+                      ariaLabel="Close popup"
+                      @click="saveSelectImage">Select</FillButton>
+        </div>
+      </div>
+    </div>
     <ContainerWrapper>
       <div class="project-pages__wrapper">
         <div class="project-pages__small">
@@ -75,14 +100,13 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations} from 'vuex'
+import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 
 import ModalsWrapper from "@/layouts/ModalsWrapper";
 import PageList from "@/components/PageList/PageList"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/popups/FormConstructor"
-import imgTest from "@/assets/img/testImg.jpg"
 
 export default {
   name: "ProjectPagesSection",
@@ -91,7 +115,6 @@ export default {
     return {
       tabsNav: ['Main', 'Preview'],
       selected: 'Main',
-      imgUrl: imgTest,
       formData: {
         title: {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: ''},
         description: {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: ''},
@@ -99,7 +122,11 @@ export default {
       },
       dataForSave: {},
       showModals: false,
-      modalLoad: true
+      modalLoad: true,
+
+      imageSelectModalsOpen: false,
+      selectedUrl: '',
+      currentMainImg: ''
     }
   },
 
@@ -115,7 +142,8 @@ export default {
 
   methods: {
     ...mapActions( {
-      updatePage: 'projectPage/updatePage'
+      updatePage: 'projectPage/updatePage',
+      fetchPhotosFromUnsplash: 'projectPage/fetchPhotosFromUnsplash'
     } ),
     ...mapMutations( {
       getSelectedPageInfo: 'projectPage/getSelectedPageInfo'
@@ -125,9 +153,13 @@ export default {
 
       if( this.getPageActiveInfo ) {
         document.body.style.overflow = 'hidden'
+        this.selected = 'Main',
+
         this.formData.title.inputValue = this.getPageActiveInfo.title
         this.formData.description.inputValue = this.getPageActiveInfo.description
         this.formData.URL.inputValue = this.getPageActiveInfo.URL
+        this.currentMainImg = this.getPageActiveInfo.prevImage
+
         this.modalLoad = false
         this.showModals = true
       }
@@ -157,9 +189,43 @@ export default {
     changeData( value ) {
       this.dataForSave = value
     },
+    async openImageSeletor() {
+      this.imageSelectModalsOpen = true
+      // this.fetchPhotosFromUnsplash()
+    },
+    closeImageSelector() {
+      this.imageSelectModalsOpen = false
+    },
+    selectImage( event ) {
+      this.selectedUrl = event.target.getAttribute('src')
+    },
+    saveSelectImage() {
+      this.currentMainImg = this.selectedUrl
+      this.imageSelectModalsOpen = false
+    },
+    saveAndCloseImageTabModals() {
+      document.body.style.overflow = 'auto'
+      this.showModals = false
+
+      const newImage = {
+        prevImage: this.currentMainImg
+      }
+
+      this.updatePage( [this.getPageActiveInfo.projectId, this.getPageActiveInfo.pageId, newImage] )
+
+      setTimeout( () => {
+        this.currentMainImg = ''
+        this.modalLoad = true
+      }, 300 )
+    }
   },
 
   computed: {
+    ...mapState( {
+      imgList: state => state.projectPage.imgList,
+      imgListLoading: state => state.projectPage.imgListLoading,
+      imgListError: state => state.projectPage.imgListError
+    } ),
     ...mapGetters( {
       getPageActiveInfo: 'projectPage/getPageActiveInfo'
     } )

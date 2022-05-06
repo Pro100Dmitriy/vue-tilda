@@ -2,11 +2,11 @@
   <div class="pages-list__item">
     <div class="page-card">
       <div class="card-left">
-        <div class="card-left__image">
-          <router-link :to="'/page/' + pageId">
-            <img class="card-left__img-tag" :src="imgSrc" alt="Page Image">
-          </router-link>
-        </div>
+        <router-link :to="'/page/' + pageId">
+          <div class="card-left__image">
+              <img class="card-left__img-tag" :src="imgSrc" alt="Page Image">
+          </div>
+        </router-link>
         <router-link :to="'/page/' + pageId">
           <div class="card-left__title">
               <h3>{{ title }}</h3>

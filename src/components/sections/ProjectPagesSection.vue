@@ -69,7 +69,9 @@
              @click="closeImageSelector"></div>
         <div class="image-select-modals__content">
           <div class="image-select-modals__images">
-            <ul class="image-select-modals__list">
+
+            <ul v-if="imgList.length && !imgListLoading && !imgListError"
+                class="image-select-modals__list">
               <li v-for="img of imgList"
                   class="image-select-modals__item"
                   :class="{'img-selected': img.urls.regular === selectedUrl}"
@@ -79,6 +81,25 @@
                      :alt="img.alt_description">
               </li>
             </ul>
+
+            <div class="empty"
+                 v-else-if="!imgListLoading && !imgListError && !imgList.length">
+              <LottieConstructor :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+              <div class="empty__subscribe">
+                <h2>Projects are not created, click the "Create a new project"</h2>
+              </div>
+            </div>
+
+            <div class="error"
+                 v-else-if="imgListError">
+              <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+            </div>
+
+            <div class="loader"
+                 v-else>
+                <LottieConstructor :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+            </div>
+
           </div>
           <FillButton class="image-select-modals__button"
                       ariaLabel="Close popup"
@@ -108,6 +129,10 @@ import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/popups/FormConstructor"
 
+import * as animationLoadingLottie from "@/assets/img/json/loader.json";
+import * as animationErrorLottie from "@/assets/img/json/error.json";
+import * as animationEmptyLottie from "@/assets/img/json/empty.json";
+
 export default {
   name: "ProjectPagesSection",
 
@@ -123,6 +148,10 @@ export default {
       dataForSave: {},
       showModals: false,
       modalLoad: true,
+
+      lottieLoadingOptions: {animationData: animationLoadingLottie},
+      lottieErrorOptions: {animationData: animationErrorLottie},
+      lottieEmptyOptions: {animationData: animationEmptyLottie},
 
       imageSelectModalsOpen: false,
       selectedUrl: '',
@@ -153,7 +182,7 @@ export default {
 
       if( this.getPageActiveInfo ) {
         document.body.style.overflow = 'hidden'
-        this.selected = 'Main',
+        this.selected = 'Main'
 
         this.formData.title.inputValue = this.getPageActiveInfo.title
         this.formData.description.inputValue = this.getPageActiveInfo.description
@@ -200,7 +229,9 @@ export default {
       this.selectedUrl = event.target.getAttribute('src')
     },
     saveSelectImage() {
-      this.currentMainImg = this.selectedUrl
+      if( this.selectedUrl ) {
+        this.currentMainImg = this.selectedUrl
+      }
       this.imageSelectModalsOpen = false
     },
     saveAndCloseImageTabModals() {
@@ -217,6 +248,9 @@ export default {
         this.currentMainImg = ''
         this.modalLoad = true
       }, 300 )
+    },
+    handleAnimation( anim ) {
+      this.anim = anim
     }
   },
 

@@ -5,8 +5,7 @@ export default {
         async deleteProject( {dispatch}, projectId ) {
             const { request } = server()
             await request( `http://localhost:8081/projects/${projectId}`, 'DELETE' )
-                .then( dispatch('fetchProjects') )
-                .catch( dispatch('fetchProjects') )
+            dispatch('fetchProjects')
         }
     }
 }

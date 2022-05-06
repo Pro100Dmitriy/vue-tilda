@@ -1,0 +1,193 @@
+/* Plus Button */
+.plus-button {
+  display: inline-flex;
+  align-items: center;
+
+  border: none;
+  outline: none;
+  background: none;
+
+  font-family: 'Jost', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 100%;
+
+  transition: @transition-all-3;
+
+  &__img {
+    padding: 5px;
+    margin-right: 10px;
+
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: @color-blue;
+    border-radius: 100%;
+
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: @color-blue;
+  }
+
+  &:disabled {
+    color: @color-gray;
+
+    .plus-button__img {
+      background: @color-gray;
+    }
+  }
+}
+
+/* Cross Button */
+.cross-button {
+  position: relative;
+
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  background: none;
+  text-indent: -99999px;
+  &:focus,
+  &:hover {
+    &::before {
+      background: @color-blue;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    &::after {
+      background: @color-blue;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    content: '';
+    width: 18px;
+    height: 2px;
+
+    border-radius: 10px;
+    background: @color-black;
+
+    transform-origin: center center;
+    transition: @transition-all-3;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+/* Dots Button */
+.dots-button {
+  display: inline-flex;
+  align-items: center;
+
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+
+  transition: @transition-all-3;
+
+  &__svg {
+    width: 30px;
+    height: 30px;
+
+    use {
+      fill: @color-black;
+
+      transition: @transition-all-3;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    .dots-button__svg {
+      use {
+        fill: @color-blue;
+      }
+    }
+  }
+
+  &:disabled {
+    color: @color-gray;
+
+    .dots-button__svg {
+      background: @color-gray;
+    }
+  }
+}
+
+/* Fill Button */
+.fill-button {
+  padding: 12px 25px;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: @color-blue;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  color: @color-white;
+  box-shadow: 0 5px 8px rgba( @color-black, 0 );
+
+  font-family: 'Jost', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 100%;
+
+  transition: @transition-all-3;
+
+  &:active,
+  &:hover {
+    box-shadow: 0 5px 8px rgba( @color-black, .1 );
+  }
+
+  & > img,
+  & > svg {
+    padding-right: 10px;
+
+    flex: 1 0 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  & > svg {
+    path,
+    use {
+      fill: @color-white;
+    }
+  }
+}
+
+.fill-button_stroke {
+  background: transparent;
+  border: 1px solid @color-gray;
+  color: @color-black;
+
+  &:active,
+  &:hover {
+    box-shadow: none;
+    border: 1px solid @color-blue;
+  }
+}

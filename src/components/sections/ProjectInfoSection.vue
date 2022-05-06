@@ -1,5 +1,5 @@
 <template>
-  <div class="project-info">
+  <section class="project-info">
     <ModalsWrapper :show="showModals"
                    titleModal="Change domain name?"
                    :closeFunction="closeModals">
@@ -53,7 +53,7 @@
         </div>
       </div>
     </ContainerWrapper>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -81,7 +81,7 @@ export default {
         {id: 3, title: 'Requests', svgIcon: {hash: 'requestsList', width: '20px', height: '14px' }},
       ],
       formData: {
-        siteURL: {type: 'input', propName: 'siteURL', inputId: 'page-domain', inputLabel: 'Domain Name', inputValue: 'newpage.com', handler: this.validateDomain},
+        siteURL: {type: 'input', propName: 'siteURL', inputId: 'page-domain', inputLabel: 'Domain Name', inputValue: '', handler: this.validateDomain},
       },
       dataForSave: {},
       showModals: false,
@@ -92,12 +92,6 @@ export default {
 
   components: {
     ControlsList, FormConstructor, ModalsWrapper
-  },
-
-  computed: {
-    ...mapState( {
-      projectInfo: state => state.projectPage.projectInfo
-    } )
   },
 
   methods: {
@@ -138,7 +132,7 @@ export default {
         }, 300 )
       }
     },
-    changeData( [value] ) {
+    changeData( value ) {
       this.dataForSave = value
     },
     validateDomain( value ) {
@@ -157,6 +151,12 @@ export default {
 
       return false
     }
+  },
+
+  computed: {
+    ...mapState( {
+      projectInfo: state => state.projectPage.projectInfo
+    } )
   }
 }
 </script>

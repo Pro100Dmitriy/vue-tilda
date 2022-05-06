@@ -1,5 +1,5 @@
 <template>
-  <div class="project-pages">
+  <section class="project-pages">
     <ModalsWrapper :show="showModals"
                    titleModal="Project settings"
                    :closeFunction="closeModals">
@@ -71,7 +71,7 @@
         </div>
       </div>
     </ContainerWrapper>
-  </div>
+  </section>
 </template>
 
 <script>

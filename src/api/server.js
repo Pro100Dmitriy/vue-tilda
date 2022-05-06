@@ -1,4 +1,4 @@
-export const useHttp = () => {
+export const server = () => {
     const request = async (
         url,
         method = 'GET',
@@ -22,4 +22,4 @@ export const useHttp = () => {
 }
 
 
-export default useHttp
+export default server

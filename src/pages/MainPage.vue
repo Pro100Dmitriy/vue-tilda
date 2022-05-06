@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderSection/>
-    <ProjectSection/>
+    <ProjectsSection/>
     <FooterSection/>
   </div>
 </template>
@@ -9,13 +9,13 @@
 <script>
 import HeaderSection from "@/components/base/HeaderSection"
 import FooterSection from "@/components/base/FooterSection"
-import ProjectSection from "@/components/sections/ProjectSection"
+import ProjectsSection from "@/components/sections/ProjectsSection"
 
 export default {
   name: "MainPage",
 
   components: {
-    HeaderSection, ProjectSection, FooterSection
+    HeaderSection, ProjectsSection, FooterSection
   },
 }
 </script>

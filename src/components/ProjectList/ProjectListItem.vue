@@ -12,11 +12,7 @@
                   aria-label="Open settings popup"
                   @click.stop.prevent="openSettingPopup"
                   @blur="closeSettingPopup">
-            <svg class="dots-button__svg" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="1"/>
-              <circle cx="12" cy="12" r="1"/>
-              <circle cx="12" cy="16" r="1"/>
-            </svg>
+            <svg class="dots-button__svg" v-sprite="{hash: 'dots_icon', width: '24px', height: '24px'}"></svg>
           </button>
         </div>
         <div class="project-item__top">
@@ -60,7 +56,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import {mapActions} from 'vuex'
 
 import ContextPopup from "@/components/popups/ContextPopup"
 
@@ -69,10 +65,6 @@ export default {
 
   props: {
     project: { type: Object, required: true }
-  },
-
-  components: {
-    ContextPopup
   },
 
   data() {
@@ -84,6 +76,10 @@ export default {
       renameActive: false,
       openPopup: false,
     }
+  },
+
+  components: {
+    ContextPopup
   },
 
   methods: {

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters } from "vuex";
+import {mapState, mapGetters} from "vuex";
 
 import PageListItem from "@/components/PageList/PageListItem"
 import * as animationLoadingLottie from "@/assets/img/json/loader.json"
@@ -53,6 +53,12 @@ export default {
     PageListItem
   },
 
+  methods: {
+    handleAnimation( anim ) {
+      this.anim = anim
+    }
+  },
+
   computed: {
     ...mapState( {
       projectInfoLoading: state => state.projectPage.projectInfoLoading,
@@ -61,12 +67,6 @@ export default {
     ...mapGetters( {
       getPages: 'projectPage/getPages',
     } )
-  },
-
-  methods: {
-    handleAnimation( anim ) {
-      this.anim = anim
-    }
   }
 }
 </script>

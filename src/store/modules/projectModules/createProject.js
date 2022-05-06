@@ -1,9 +1,9 @@
-import useHttp from "@/api/useHttp"
+import server from "@/api/server"
 
 export default {
     actions: {
         async createProject( {dispatch}, projects ) {
-            const { request } = useHttp()
+            const { request } = server()
             let title
 
             if( projects.length === 0 ) {

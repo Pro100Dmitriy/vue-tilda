@@ -28,13 +28,15 @@
 
       &:hover {
         svg {
-          path {
+          path,
+          use {
             fill: @color-blue;
           }
         }
       }
       svg {
-        path {
+        path,
+        use {
           fill: @color-white;
 
           transition: @transition-all-3;

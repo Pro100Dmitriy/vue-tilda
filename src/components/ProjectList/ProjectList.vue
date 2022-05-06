@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 
 import ProjectListItem from "@/components/ProjectList/ProjectListItem"
 import * as animationLoadingLottie from "@/assets/img/json/loader.json"
@@ -56,14 +56,6 @@ export default {
     }
   },
 
-  computed: {
-    ...mapState( {
-      projectsList: state => state.mainPage.projectsList,
-      isLoading: state => state.mainPage.isProjectLoading,
-      isError: state => state.mainPage.isProjectError
-    } )
-  },
-
   methods: {
     ...mapActions({
       fetchProjects: 'mainPage/fetchProjects'
@@ -71,6 +63,14 @@ export default {
     handleAnimation( anim ) {
       this.anim = anim
     }
+  },
+
+  computed: {
+    ...mapState( {
+      projectsList: state => state.mainPage.projectsList,
+      isLoading: state => state.mainPage.isProjectLoading,
+      isError: state => state.mainPage.isProjectError
+    } )
   },
 
   mounted() {

@@ -8,15 +8,14 @@ import App from '@/App.vue'
  * @URL: @/components/UI
  * @URL: @/layouts
  */
-import ContainerWrapper from "@/layouts/ContainerWrapper";
-import PlusButton from "@/components/UI/PlusButton"
+import ContainerWrapper from "@/layouts/ContainerWrapper"
 import LottieConstructor from "@/components/UI/LottieConstructor"
 import FillButton from "@/components/UI/FillButton"
-import InputTextGroup from "@/components/UI/InputTextGroup";
+import InputTextGroup from "@/components/UI/InputTextGroup"
 
 // Components register hear
 const components = [
-    ContainerWrapper, PlusButton, LottieConstructor, FillButton, InputTextGroup
+    ContainerWrapper, LottieConstructor, FillButton, InputTextGroup
 ]
 
 

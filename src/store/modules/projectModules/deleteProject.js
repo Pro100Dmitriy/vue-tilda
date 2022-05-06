@@ -1,9 +1,9 @@
-import useHttp from "@/api/useHttp";
+import server from "@/api/server";
 
 export default {
     actions: {
         async deleteProject( {dispatch}, projectId ) {
-            const { request } = useHttp()
+            const { request } = server()
             await request( `http://localhost:8081/projects/${projectId}`, 'DELETE' )
                 .then( dispatch('fetchProjects') )
                 .catch( error => console.log( error ) )

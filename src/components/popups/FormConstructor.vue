@@ -56,7 +56,7 @@ export default {
   watch: {
     changed() {
       if( this.changed )
-        this.$emit('changeData', [this.formChangedData, this.target])
+        this.$emit('changeData', this.formChangedData)
       this.changed = false
     }
   }

@@ -3,11 +3,15 @@
     <div class="page-card">
       <div class="card-left">
         <div class="card-left__image">
-          <img class="card-left__img-tag" :src="imgSrc" alt="Page Image">
+          <router-link :to="'/page/' + pageId">
+            <img class="card-left__img-tag" :src="imgSrc" alt="Page Image">
+          </router-link>
         </div>
-        <div class="card-left__title">
-          <h3>{{ title }}</h3>
-        </div>
+        <router-link :to="'/page/' + pageId">
+          <div class="card-left__title">
+              <h3>{{ title }}</h3>
+          </div>
+        </router-link>
       </div>
       <div class="card-right">
         <div class="card-right__info">
@@ -29,11 +33,7 @@
                   aria-label="Open settings popup"
                   @click.stop.prevent="openContextPopup"
                   @blur="closeContextPopup">
-            <svg class="dots-button__svg" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="12" cy="8" r="1"/>
-              <circle cx="12" cy="12" r="1"/>
-              <circle cx="12" cy="16" r="1"/>
-            </svg>
+            <svg class="dots-button__svg" v-sprite="{hash: 'dots_icon', width: '24px', height: '24px'}"></svg>
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default {
         {id: 3, title: 'Delete', svgIcon: {hash: 'trashIcon', width: '14px', height: '14px' }, handler: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],
       listSettings: [
-        {title: 'Settings', link: '#', method: this.openModals},
+        {title: 'Settings', link: '#', method: () => this.openModals(this.pageId)},
         {title: 'Publish', link: '#'},
         {title: 'Delete', link: '#', method: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],

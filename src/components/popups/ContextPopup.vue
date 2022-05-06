@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
 import ContextPopupItem from "@/components/popups/ContextPopupItem"
 
 export default {
@@ -25,10 +24,9 @@ export default {
     openPopup: { type: Boolean }
   },
 
-  computed: mapGetters( ['getOpenPopup'] ),
-
   components: {
     ContextPopupItem
   }
+
 }
 </script>

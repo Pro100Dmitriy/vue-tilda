@@ -1,9 +1,9 @@
-import useHttp from "@/api/useHttp"
+import server from "@/api/server"
 
 export default {
     actions: {
         async updatePage( {dispatch}, [projectId, pageId, newValues] ) {
-            const { request } = useHttp()
+            const { request } = server()
             const projectData = await request( `http://localhost:8081/projects/${projectId}` )
             if( !projectData )
                 throw new Error('Error in updatePage')

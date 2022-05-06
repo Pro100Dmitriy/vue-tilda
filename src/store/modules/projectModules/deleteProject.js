@@ -6,7 +6,7 @@ export default {
             const { request } = server()
             await request( `http://localhost:8081/projects/${projectId}`, 'DELETE' )
                 .then( dispatch('fetchProjects') )
-                .catch( error => console.log( error ) )
+                .catch( dispatch('fetchProjects') )
         }
     }
 }

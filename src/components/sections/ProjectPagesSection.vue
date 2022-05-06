@@ -62,16 +62,16 @@
 
       </div>
     </ModalsWrapper>
-    <div class="imageSelectModals"
-         :class="{'imageSelectModals_open': imageSelectModalsOpen}">
-      <div class="imageSelectModals__wrapper">
-        <div class="imageSelectModals__bg"
+    <div class="image-select-modals"
+         :class="{'image-select-modals_open': imageSelectModalsOpen}">
+      <div class="image-select-modals__wrapper">
+        <div class="image-select-modals__bg"
              @click="closeImageSelector"></div>
-        <div class="imageSelectModals__content">
-          <div class="imageSelectModals__images">
-            <ul class="imageSelectModals__list">
+        <div class="image-select-modals__content">
+          <div class="image-select-modals__images">
+            <ul class="image-select-modals__list">
               <li v-for="img of imgList"
-                  class="imageSelectModals__item"
+                  class="image-select-modals__item"
                   :class="{'img-selected': img.urls.regular === selectedUrl}"
                   :key="img.id">
                 <img :src="img.urls.regular"
@@ -80,7 +80,7 @@
               </li>
             </ul>
           </div>
-          <FillButton class="imageSelectModals__button"
+          <FillButton class="image-select-modals__button"
                       ariaLabel="Close popup"
                       @click="saveSelectImage">Select</FillButton>
         </div>
@@ -191,7 +191,7 @@ export default {
     },
     async openImageSeletor() {
       this.imageSelectModalsOpen = true
-      // this.fetchPhotosFromUnsplash()
+      this.fetchPhotosFromUnsplash()
     },
     closeImageSelector() {
       this.imageSelectModalsOpen = false

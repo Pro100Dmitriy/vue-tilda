@@ -16,6 +16,8 @@ export default {
                 ...newValues
             }
 
+            console.log( changedPage )
+
             projectData.pagesList = [
                 ...otherPages,
                 changedPage

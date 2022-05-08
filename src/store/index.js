@@ -1,13 +1,13 @@
 import { createStore } from 'vuex'
 import mainPageStore from '@/store/modules/mainPage'
 import projectPageStore from '@/store/modules/projectPage'
-import editProjectPageStore from '@/store/modules/editProjectPage'
+import editPageStore from '@/store/modules/editPage'
 
 const store = createStore({
     modules: {
         mainPage: mainPageStore,
         projectPage: projectPageStore,
-        editProject: editProjectPageStore
+        editPage: editPageStore
     }
 })
 

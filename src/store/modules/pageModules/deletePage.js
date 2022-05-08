@@ -11,6 +11,7 @@ export default {
             projectData.pagesList = projectData.pagesList.filter( page => page.pageId !== deletePageId )
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', projectData )
+            await request( `http://localhost:8081/pages/${deletePageId}`, 'DELETE' )
             dispatch('fetchProjectInfo', projectId)
         }
     }

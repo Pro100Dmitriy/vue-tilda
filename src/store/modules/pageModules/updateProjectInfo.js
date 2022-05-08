@@ -14,8 +14,7 @@ export default {
             }
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', changedProject )
-                .then( dispatch('fetchProjectInfo', projectId) )
-                .catch( error => console.log( error ) )
+            dispatch('fetchProjectInfo', projectId)
         }
     }
 }

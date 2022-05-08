@@ -1,46 +1,82 @@
 {
   "projects": [
     {
-      "id": 1651843664009,
-      "title": "My Project 5",
-      "siteURL": "project1651843664009.tilda.ws",
+      "id": 1651989232540,
+      "title": "Online Shop",
+      "siteURL": "project1651989232540.tilda.ws",
       "settings": {},
-      "pagesList": []
+      "pagesList": [
+        {
+          "pageId": 1651989392713,
+          "projectId": 1651989232540,
+          "title": "Main Page",
+          "description": "",
+          "URL": "",
+          "prevImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxjYXJ8ZW58MHx8fHwxNjUxODM0MDYy&ixlib=rb-1.2.1&q=80&w=1080"
+        },
+        {
+          "pageId": 1651991408369,
+          "projectId": 1651989232540,
+          "title": "My new page 1",
+          "description": "",
+          "URL": "",
+          "prevImage": "/img/testImg.65ddc6d4.jpg"
+        },
+        {
+          "pageId": 1651991409289,
+          "projectId": 1651989232540,
+          "title": "My new page 2",
+          "description": "",
+          "URL": "",
+          "prevImage": "/img/testImg.65ddc6d4.jpg"
+        },
+        {
+          "pageId": 1651991409963,
+          "projectId": 1651989232540,
+          "title": "My new page 3",
+          "description": "",
+          "URL": "",
+          "prevImage": "/img/testImg.65ddc6d4.jpg"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "id": 1651989392713,
+      "projectId": 1651989232540,
+      "title": "Main Page",
+      "description": "",
+      "URL": "",
+      "prevImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxjYXJ8ZW58MHx8fHwxNjUxODM0MDYy&ixlib=rb-1.2.1&q=80&w=1080",
+      "layout": {}
     },
     {
-      "id": 1651843749790,
-      "title": "My Project 9",
-      "siteURL": "project1651843749790.tilda.ws",
-      "settings": {},
-      "pagesList": []
+      "id": 1651991408369,
+      "projectId": 1651989232540,
+      "title": "My new page 1",
+      "description": "",
+      "URL": "",
+      "prevImage": "/img/testImg.65ddc6d4.jpg",
+      "layout": {}
     },
     {
-      "id": 1651843749955,
-      "title": "My Project 10",
-      "siteURL": "project1651843749955.tilda.ws",
-      "settings": {},
-      "pagesList": []
+      "id": 1651991409289,
+      "projectId": 1651989232540,
+      "title": "My new page 2",
+      "description": "",
+      "URL": "",
+      "prevImage": "/img/testImg.65ddc6d4.jpg",
+      "layout": {}
     },
     {
-      "id": 1651843762011,
-      "title": "My Project 11",
-      "siteURL": "project1651843762011.tilda.ws",
-      "settings": {},
-      "pagesList": []
-    },
-    {
-      "id": 1651843762151,
-      "title": "My Project 12",
-      "siteURL": "project1651843762151.tilda.ws",
-      "settings": {},
-      "pagesList": []
-    },
-    {
-      "id": 1651843762308,
-      "title": "My Project 13",
-      "siteURL": "project1651843762308.tilda.ws",
-      "settings": {},
-      "pagesList": []
+      "id": 1651991409963,
+      "projectId": 1651989232540,
+      "title": "My new page 3",
+      "description": "",
+      "URL": "",
+      "prevImage": "/img/testImg.65ddc6d4.jpg",
+      "layout": {}
     }
   ]
 }

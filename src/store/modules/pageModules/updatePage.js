@@ -5,7 +5,8 @@ export default {
         async updatePage( {dispatch}, [projectId, pageId, newValues] ) {
             const { request } = server()
             const projectData = await request( `http://localhost:8081/projects/${projectId}` )
-            if( !projectData )
+            const pageData = await request( `http://localhost:8081/pages/${pageId}` )
+            if( !projectData && !pageData )
                 throw new Error('Error in updatePage')
 
             const [ selectedPage ] = projectData.pagesList.filter( page =>  page.pageId === pageId )
@@ -16,7 +17,10 @@ export default {
                 ...newValues
             }
 
-            console.log( changedPage )
+            const changedPageData = {
+                ...pageData,
+                ...newValues
+            }
 
             projectData.pagesList = [
                 ...otherPages,
@@ -24,8 +28,8 @@ export default {
             ]
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', projectData )
-                .then( dispatch('fetchProjectInfo', projectId) )
-                .catch( error => console.log( error ) )
+            await request( `http://localhost:8081/pages/${pageId}`, 'PUT', changedPageData )
+            dispatch('fetchProjectInfo', projectId)
         }
     }
 }

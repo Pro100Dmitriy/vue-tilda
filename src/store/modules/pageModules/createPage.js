@@ -21,9 +21,20 @@ export default {
                 prevImage: testImage
             }
 
+            const newPage = {
+                id: pageId,
+                projectId: projectId,
+                title: 'My new page ' + pagesCount,
+                description: '',
+                URL: '',
+                prevImage: testImage,
+                layout: {}
+            }
+
             projectData.pagesList.push(newPageListItem)
 
             await request( `http://localhost:8081/projects/${projectId}`, 'PUT', projectData )
+            await request( `http://localhost:8081/pages`, 'POST', newPage )
             dispatch('fetchProjectInfo', projectId)
         }
     }

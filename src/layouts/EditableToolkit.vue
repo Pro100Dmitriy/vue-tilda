@@ -1,0 +1,85 @@
+<template>
+  <div class="editable-toolkit"
+       :class="{'editable-toolkit_active': showToolkit}"
+       @mousemove="showToolkit = true"
+       @mouseleave="showToolkit = false">
+    <div class="editable-toolkit__top">
+      <div class="editable-toolkit__top-left">
+        <div class="btn-group">
+          <button class="btn-group__item" aria-label="Set up block">
+            <img :src="gearIcon" alt="Set up block" aria-hidden="true">
+            <span>Settings</span>
+          </button>
+          <button class="btn-group__item" aria-label="Change content">
+            <img :src="editIcon" alt="Change content" aria-hidden="true">
+            <span>Content</span>
+          </button>
+        </div>
+      </div>
+      <div class="editable-toolkit__top-right">
+        <div class="btn-group">
+          <button class="btn-group__item" aria-label="Copy Block">
+            <img :src="copyIcon" alt="Copy Block" aria-hidden="true">
+          </button>
+          <button class="btn-group__item" aria-label="Delete Block">
+            <img :src="trashIcon" alt="Delete Block" aria-hidden="true">
+          </button>
+          <button class="btn-group__item" aria-label="Show/hidden Block">
+            <img :src="eyeIcon" alt="Show/hidden Block" aria-hidden="true">
+          </button>
+        </div>
+        <div class="btn-group">
+          <button class="btn-group__item" aria-label="Move to up">
+            <img :src="arrowUpIcon" alt="Move to up" aria-hidden="true">
+          </button>
+          <button class="btn-group__item" aria-label="Move to down">
+            <img :src="arrowDownIcon" alt="Move to down" aria-hidden="true">
+          </button>
+        </div>
+      </div>
+    </div>
+    <slot/>
+    <div class="editable-toolkit__bottom">
+      <button class="add-item"
+              @click="() => openBuilder(positionIndex)"
+              aria-label="Add new Item">
+        <img :src="plusIcon" alt="Add new Item" aria-hidden="true">
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+import plusIcon from '@/assets/img/svg/plus.svg'
+import trashIcon from '@/assets/img/svg/trash.svg'
+import gearIcon from '@/assets/img/svg/gear.svg'
+import editIcon from '@/assets/img/svg/edit.svg'
+import arrowUpIcon from '@/assets/img/arrow-up-icon.png'
+import arrowDownIcon from '@/assets/img/arrow-down-icon.png'
+import eyeIcon from '@/assets/img/eye-icon.png'
+import copyIcon from '@/assets/img/copy-icon.png'
+
+export default {
+  name: "EditableToolkit",
+
+  props: {
+    positionIndex: { type: Number, required: true }
+  },
+
+  data() {
+    return {
+      plusIcon,
+      trashIcon,
+      gearIcon,
+      editIcon,
+      arrowUpIcon,
+      arrowDownIcon,
+      eyeIcon,
+      copyIcon,
+      showToolkit: false
+    }
+  },
+
+  inject: ['openBuilder']
+}
+</script>

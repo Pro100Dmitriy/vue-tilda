@@ -28,7 +28,7 @@ export default {
                 description: '',
                 URL: '',
                 prevImage: testImage,
-                layout: {}
+                layout: []
             }
 
             projectData.pagesList.push(newPageListItem)

@@ -247,6 +247,20 @@
 }
 
 
+.fly-setting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 155;
+
+  padding: 20px;
+
+  background: @color-white;
+
+  transform: translate(120px, 120px);
+}
+
+
 .construct-app {
   padding-top: 54px;
 }
@@ -288,6 +302,35 @@
 
       .btn-group:last-child {
         margin-left: 10px;
+      }
+    }
+  }
+  &__visibility {
+    .visibility-message {
+      padding-top: 30px;
+      padding-bottom: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(@color-gray, .4);
+
+      & > img {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        height: 20px;
+      }
+      & > p {
+        text-align: center;
+        color: @color-black;
+
+        font-family: 'Jost', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 130%;
       }
     }
   }
@@ -382,7 +425,7 @@
 
 
 
-.paragraph-block {
+.wrapper-block {
   position: relative;
 
   padding-top: 300px;
@@ -424,6 +467,39 @@
   }
   &__description {
     color: @color-white;
+
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 130%;
+  }
+}
+
+
+.paragraph-block {
+  position: relative;
+
+  padding-top: 300px;
+  padding-bottom: 300px;
+
+  background: @color-white;
+  &__wrapper {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 30px;
+
+    color: @color-black;
+
+    font-family: 'Jost', sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 100%;
+  }
+  &__description {
+    color: @color-black;
 
     font-family: 'Jost', sans-serif;
     font-size: 16px;

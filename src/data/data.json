@@ -7,33 +7,9 @@
       "settings": {},
       "pagesList": [
         {
-          "pageId": 1651989392713,
+          "pageId": 1652073819948,
           "projectId": 1651989232540,
-          "title": "Main Page",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxjYXJ8ZW58MHx8fHwxNjUxODM0MDYy&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "pageId": 1651991408369,
-          "projectId": 1651989232540,
-          "title": "My new page 1",
-          "description": "",
-          "URL": "",
-          "prevImage": "/img/testImg.65ddc6d4.jpg"
-        },
-        {
-          "pageId": 1651991409289,
-          "projectId": 1651989232540,
-          "title": "My new page 2",
-          "description": "",
-          "URL": "",
-          "prevImage": "/img/testImg.65ddc6d4.jpg"
-        },
-        {
-          "pageId": 1651991409963,
-          "projectId": 1651989232540,
-          "title": "My new page 3",
+          "title": "My new page ",
           "description": "",
           "URL": "",
           "prevImage": "/img/testImg.65ddc6d4.jpg"
@@ -43,40 +19,52 @@
   ],
   "pages": [
     {
-      "id": 1651989392713,
+      "id": 1652073819948,
       "projectId": 1651989232540,
-      "title": "Main Page",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxjYXJ8ZW58MHx8fHwxNjUxODM0MDYy&ixlib=rb-1.2.1&q=80&w=1080",
-      "layout": {}
-    },
-    {
-      "id": 1651991408369,
-      "projectId": 1651989232540,
-      "title": "My new page 1",
+      "title": "My new page ",
       "description": "",
       "URL": "",
       "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": {}
+      "layout": []
+    }
+  ],
+  "blockCategories": [
+    {
+      "id": 1,
+      "title": "Paragraphs",
+      "blockTypes": [
+        {
+          "id": 11,
+          "catId": 1,
+          "prevSrc": "https://assets.tildacdn.com/files/tplicons/tpl_18.png",
+          "title": "Paragraph Block",
+          "layout": {
+            "id": 1,
+            "type": "Paragraph",
+            "title": "Test description",
+            "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
+            "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          }
+        }
+      ]
     },
     {
-      "id": 1651991409289,
-      "projectId": 1651989232540,
-      "title": "My new page 2",
-      "description": "",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": {}
-    },
-    {
-      "id": 1651991409963,
-      "projectId": 1651989232540,
-      "title": "My new page 3",
-      "description": "",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": {}
+      "id": 2,
+      "title": "Wrapper",
+      "blockTypes": [
+        {
+          "id": 22,
+          "catId": 2,
+          "prevSrc": "https://assets.tildacdn.com/files/tplicons/tpl_18.png",
+          "title": "Paragraph Block",
+          "layout": {
+            "id": 1,
+            "type": "Paragraph",
+            "title": "Test description",
+            "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
+          }
+        }
+      ]
     }
   ]
 }

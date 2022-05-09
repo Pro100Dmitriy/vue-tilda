@@ -18,30 +18,48 @@
       </div>
       <div class="editable-toolkit__top-right">
         <div class="btn-group">
-          <button class="btn-group__item" aria-label="Copy Block">
+          <button class="btn-group__item"
+                  @click="copyLayout( positionIndex )"
+                  aria-label="Copy Block">
             <img :src="copyIcon" alt="Copy Block" aria-hidden="true">
           </button>
-          <button class="btn-group__item" aria-label="Delete Block">
+          <button class="btn-group__item"
+                  @click="deleteLayout( positionIndex )"
+                  aria-label="Delete Block">
             <img :src="trashIcon" alt="Delete Block" aria-hidden="true">
           </button>
-          <button class="btn-group__item" aria-label="Show/hidden Block">
+          <button class="btn-group__item"
+                  @click="visibilityLayout( positionIndex )"
+                  aria-label="Show/hidden Block">
             <img :src="eyeIcon" alt="Show/hidden Block" aria-hidden="true">
           </button>
         </div>
         <div class="btn-group">
-          <button class="btn-group__item" aria-label="Move to up">
+          <button class="btn-group__item"
+                  @click="changePositionLayout('up', positionIndex)"
+                  aria-label="Move to up">
             <img :src="arrowUpIcon" alt="Move to up" aria-hidden="true">
           </button>
-          <button class="btn-group__item" aria-label="Move to down">
+          <button class="btn-group__item"
+                  @click="changePositionLayout('down', positionIndex)"
+                  aria-label="Move to down">
             <img :src="arrowDownIcon" alt="Move to down" aria-hidden="true">
           </button>
         </div>
       </div>
     </div>
     <slot/>
+    <div v-if="!visibility"
+         class="editable-toolkit__visibility">
+      <div class="visibility-message">
+        <p><b>{{ blockName }}.</b></p>
+        <img :src="eyeIcon" alt="Eye icon" aria-hidden="true">
+        <p>Block hidden!</p>
+      </div>
+    </div>
     <div class="editable-toolkit__bottom">
       <button class="add-item"
-              @click="() => openBuilder(positionIndex)"
+              @click="openBuilder(positionIndex)"
               aria-label="Add new Item">
         <img :src="plusIcon" alt="Add new Item" aria-hidden="true">
       </button>
@@ -63,7 +81,9 @@ export default {
   name: "EditableToolkit",
 
   props: {
-    positionIndex: { type: Number, required: true }
+    positionIndex: { type: Number, required: true },
+    visibility: { type: Boolean, required: true },
+    blockName: { type: String, required: true }
   },
 
   data() {
@@ -80,6 +100,6 @@ export default {
     }
   },
 
-  inject: ['openBuilder']
+  inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout']
 }
 </script>

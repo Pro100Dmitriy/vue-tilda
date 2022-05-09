@@ -1,11 +1,12 @@
 <template>
-  <section class="paragraph-block">
+  <section class="wrapper-block"
+           :style='`background-image: url("${ scheme.imgSrc }")`'>
     <div class="container">
-      <div class="paragraph-block__wrapper">
-        <div class="paragraph-block__title">
+      <div class="wrapper-block__wrapper">
+        <div class="wrapper-block__title">
           <h2>{{ scheme.title }}</h2>
         </div>
-        <div class="paragraph-block__description">
+        <div class="wrapper-block__description">
           <p>{{ scheme.description }}</p>
         </div>
       </div>
@@ -15,7 +16,7 @@
 
 <script>
 export default {
-  name: "ParagraphBlock",
+  name: "WrapperBlock",
 
   props: {
     scheme: { type: Object, required: true }

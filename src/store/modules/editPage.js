@@ -1,4 +1,9 @@
+import saveLayout from "@/store/modules/editModules/saveLayout"
+
 export default {
+    modules: {
+        saveLayout
+    },
     actions: {
         async fetchPageInfo( {commit}, id ) {
             try {
@@ -25,8 +30,19 @@ export default {
     state: {
         pageInfo: {},
         pageInfoLoading: true,
-        pageInfoError: false
+        pageInfoError: false,
+
+        layoutIsSaved: false
     },
-    getters: {},
+    getters: {
+        getLayout( state ) {
+            if( state.pageInfo.layout.length && !state.pageInfoLoading ){
+                console.log( 1 )
+                return state.pageInfo.layout
+            } else {
+                return []
+            }
+        }
+    },
     namespaced: true
 }

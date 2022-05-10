@@ -10,7 +10,9 @@
             <img :src="gearIcon" alt="Set up block" aria-hidden="true">
             <span>Settings</span>
           </button>
-          <button class="btn-group__item" aria-label="Change content">
+          <button class="btn-group__item"
+                  @click="openContentSettings( positionIndex )"
+                  aria-label="Change content">
             <img :src="editIcon" alt="Change content" aria-hidden="true">
             <span>Content</span>
           </button>
@@ -100,6 +102,6 @@ export default {
     }
   },
 
-  inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout']
+  inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout', 'openContentSettings']
 }
 </script>

@@ -35,6 +35,6 @@ export default {
   components: {
     WrapperBlock,
     ParagraphBlock, EditableToolkit
-  }
+  },
 }
 </script>

@@ -1,10 +1,18 @@
-import saveLayout from "@/store/modules/editModules/saveLayout"
+import server from "@/api/server"
 
 export default {
-    modules: {
-        saveLayout
-    },
     actions: {
+        async saveLayout( {commit}, [pageId, layout] ) {
+            const { request } = server()
+            const pageData = await request( `http://localhost:8081/pages/${pageId}` )
+            if( !pageData )
+                throw new Error('Error in save layout')
+
+            pageData.layout = layout
+
+            await request( `http://localhost:8081/pages/${pageId}`, 'PUT', pageData )
+            commit('layoutSaved')
+        },
         async fetchPageInfo( {commit}, id ) {
             try {
                 const response = await fetch(`http://localhost:8081/pages/${id}`)
@@ -25,6 +33,12 @@ export default {
             state.pageInfoLoading = false
             state.pageInfoError = true
             state.pageInfo = {}
+        },
+        layoutEdited( state ) {
+            state.layoutIsSaved = false
+        },
+        layoutSaved( state ) {
+            state.layoutIsSaved = true
         }
     },
     state: {
@@ -32,12 +46,11 @@ export default {
         pageInfoLoading: true,
         pageInfoError: false,
 
-        layoutIsSaved: false
+        layoutIsSaved: true
     },
     getters: {
         getLayout( state ) {
             if( state.pageInfo.layout.length && !state.pageInfoLoading ){
-                console.log( 1 )
                 return state.pageInfo.layout
             } else {
                 return []

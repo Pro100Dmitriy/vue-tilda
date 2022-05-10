@@ -52,31 +52,51 @@
       </div>
     </div>
   </div>
-  <div v-if="!pageInfoLoading">
-    <PageConstructor :layout="layoutScheme"/>
+  <div class="construct-page">
+
+    <div v-if="!layoutLoading && !pageInfoLoading && !pageInfoError">
+      <PageConstructor :layout="layoutScheme"/>
+    </div>
+
+    <div class="error"
+         v-else-if="pageInfoError">
+      <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+    </div>
+
+    <div class="loader"
+         v-else>
+      <LottieConstructor :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+    </div>
+
   </div>
-  <div class="fly-setting"
-       @dragstart="moveFlySetting"
-       @dragend="stopFlySetting">
-    <input type="text" value="Test">
-  </div>
+  <DragSettings :show="showContentSettings"/>
 </template>
 
 <script>
-import {mapActions, mapGetters, mapState} from 'vuex'
+import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
+
 import PageConstructor from "@/components/page/PageConstructor"
+import DragSettings from "@/components/popups/DragSettings"
 
 import searchIcon from '@/assets/img/svg/search.svg'
+import * as animationBuildingLottie from "@/assets/img/json/building.json"
+import * as animationErrorLottie from "@/assets/img/json/error.json"
+import * as animationEmptyLottie from "@/assets/img/json/empty.json"
 
 export default {
   name: "EditablePageSection",
 
   data() {
     return {
+      lottieLoadingOptions: {animationData: animationBuildingLottie},
+      lottieErrorOptions: {animationData: animationErrorLottie},
+      lottieEmptyOptions: {animationData: animationEmptyLottie},
+
       searchIcon,
       showBuilder: false,
       showBuilderResult: false,
-      libraryList: [{id:1, title: 'Wrapper'}, {id:2, title: 'Paragraphs'}, {id:3, title: 'About'}, {id:4, title: 'Headers'}, {id:5, title: 'Images'}, 'Gallery', 'Crucial phrase', 'Advantages', 'Columns', 'Dividers', 'Menus', 'Links', 'Footers', 'Video', 'Forms', 'Buttons', 'Shop', 'Team', 'Comments', 'Stages', 'Contacts', 'Social', 'Services', 'News', 'Others'],
+      showContentSettings: false,
+      libraryList: [{id:1, title: 'Wrapper'}, {id:2, title: 'Paragraphs'}, {id:3, title: 'About'}, {id:4, title: 'Headers'}, {id:5, title: 'Images'}, {id:6, title: 'Gallery'}, {id:7, title: 'Crucial phrase'}, {id:8, title: 'Advantages'}, {id:9, title: 'Columns'}, {id:10, title: 'Dividers'}, {id:11, title: 'Menus'}, {id:12, title: 'Links'}, {id:13, title: 'Footers'}, {id:14, title: 'Video'}, {id:15, title: 'Forms'}, {id:16, title: 'Buttons'}, {id:17, title: 'Shop'}, {id:18, title: 'Team'}, {id:19, title: 'Comments'}, {id:20, title: 'Stages'}, {id:21, title: 'Contacts'}, {id:22, title: 'Social'}, {id:23, title: 'Services'}, {id:24, title: 'News'}, {id:25, title: 'Others'}],
       activeCategory: null,
 
       allBlocks: [
@@ -108,9 +128,10 @@ export default {
           }
         }
       ],
-
       blockContent: [],
 
+      layoutLoading: false,
+      layoutChanged: false,
       activePosition: null,
       layoutScheme: []
     }
@@ -122,18 +143,26 @@ export default {
       deleteLayout: this.deleteLayout,
       changePositionLayout: this.changePositionLayout,
       copyLayout: this.copyLayout,
-      visibilityLayout: this.visibilityLayout
+      visibilityLayout: this.visibilityLayout,
+      openContentSettings: this.openContentSettings,
+      closeContentSettings: this.closeContentSettings
     }
   },
 
   components: {
-    PageConstructor
+    PageConstructor, DragSettings
   },
 
   methods: {
     ...mapActions( {
       saveLayout: 'editPage/saveLayout'
     } ),
+    ...mapMutations( {
+      layoutEdited: 'editPage/layoutEdited'
+    } ),
+    handleAnimation( anim ) {
+      this.anim = anim
+    },
     openBuilder( positionIndex ) {
       console.log( this.getLayout )
       console.log( positionIndex )
@@ -153,20 +182,12 @@ export default {
       this.blockContent = this.allBlocks.filter( block => block.catId === this.activeCategory )
       this.showBuilderResult = true
     },
-    moveFlySetting( event ) {
-      const target = event.target
-      console.log(target)
-      document.addEventListener('mousemove', eventMouse => {
-        let x = eventMouse.pageX
-        let y = eventMouse.pageY
-
-        console.log(x, y)
-
-        target.style.transform = `translate(${x}px,${y}px)`
-      })
+    openContentSettings( currentPosition ) {
+      console.log( currentPosition )
+      this.showContentSettings = true
     },
-    stopFlySetting( event ) {
-      event.target.style = ''
+    closeContentSettings() {
+      this.showContentSettings = false
     },
     addLayout( layout ) {
       let before = this.layoutScheme.slice(0, this.activePosition + 1)
@@ -230,7 +251,7 @@ export default {
           break
       }
 
-      this.layoutScheme = newLayout
+      this.layoutScheme = newLayout ? newLayout : this.layoutScheme
       this.layoutChanged = true
     },
     copyLayout( currentPosition ) {
@@ -264,28 +285,55 @@ export default {
   },
 
   computed: {
+    ...mapState( {
+      pageInfo: state => state.editPage.pageInfo,
+      pageInfoLoading: state => state.editPage.pageInfoLoading,
+      pageInfoError: state => state.editPage.pageInfoError,
+      layoutIsSaved: state => state.editPage.layoutIsSaved
+    } ),
     ...mapGetters( {
       getLayout: 'editPage/getLayout'
     } ),
-    ...mapState( {
-      pageInfo: state => state.editPage.pageInfo,
-      pageInfoLoading: state => state.editPage.pageInfoLoading
-    } )
   },
 
   mounted() {
     if ( !this.pageInfoLoading ) {
-      console.log(this.getLayout)
-      this.layoutScheme = [
-        ...this.getLayout
-      ]
+      if( Number(this.pageInfo.id) === Number(this.$route.params.pageId) ) {
+        this.layoutScheme = [
+          ...this.getLayout
+        ]
+      } else {
+        this.layoutLoading = true
+      }
+    } else {
+      this.layoutLoading = true
     }
   },
 
   watch: {
-    layoutChanged(changed) {
+    layoutLoading() {
+      if ( !this.pageInfoLoading ) {
+        if( Number(this.pageInfo.id) === Number(this.$route.params.pageId) ) {
+          this.layoutScheme = [
+            ...this.getLayout
+          ]
+        } else {
+          setTimeout( () => {
+            this.layoutLoading = !this.layoutLoading
+          }, 500 )
+        }
+      } else {
+        setTimeout( () => {
+          this.layoutLoading = !this.layoutLoading
+        }, 500 )
+      }
+    },
+    async layoutChanged(changed) {
       if( changed ){
-        // this.saveLayout([this.pageInfo.id, this.layoutScheme])
+        console.log( 'changed' )
+        this.layoutEdited()
+        await this.saveLayout([this.pageInfo.id, this.layoutScheme])
+        console.log( this.layoutIsSaved )
       }
       this.layoutChanged = false
     }

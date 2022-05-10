@@ -36,6 +36,9 @@
             </div>
           </div>
         </div>
+        <div class="page-status">
+          {{ layoutIsSaved }}
+        </div>
       </div>
       <div class="edit-header__right">
         <div class="edit-routes">
@@ -102,7 +105,8 @@ export default {
   computed: {
     ...mapState( {
       pageInfo: state => state.editPage.pageInfo,
-      projectInfo: state => state.projectPage.projectInfo
+      projectInfo: state => state.projectPage.projectInfo,
+      layoutIsSaved: state => state.editPage.layoutIsSaved
     } ),
     ...mapGetters( {
       getPages: 'projectPage/getPages'

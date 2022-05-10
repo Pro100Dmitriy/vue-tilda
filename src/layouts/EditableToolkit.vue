@@ -51,10 +51,10 @@
       </div>
     </div>
     <slot/>
-    <div v-if="!visibility"
+    <div v-if="!blockData.show"
          class="editable-toolkit__visibility">
       <div class="visibility-message">
-        <p><b>{{ blockName }}.</b></p>
+        <p><b>{{ blockData.title }}.</b></p>
         <img :src="eyeIcon" alt="Eye icon" aria-hidden="true">
         <p>Block hidden!</p>
       </div>
@@ -67,6 +67,12 @@
       </button>
     </div>
   </div>
+
+  <ParagraphSettings v-if="blockData.type === 'Paragraph' && blockData.show"
+                     :scheme="blockData"
+                     :show="showContentSettings"
+                     :currentPosition="positionIndex"/>
+
 </template>
 
 <script>
@@ -79,13 +85,14 @@ import arrowDownIcon from '@/assets/img/arrow-down-icon.png'
 import eyeIcon from '@/assets/img/eye-icon.png'
 import copyIcon from '@/assets/img/copy-icon.png'
 
+import ParagraphSettings from '@/components/page/blockTypes/ParagraphSettings'
+
 export default {
   name: "EditableToolkit",
 
   props: {
     positionIndex: { type: Number, required: true },
-    visibility: { type: Boolean, required: true },
-    blockName: { type: String, required: true }
+    blockData: { type: Object, required: true }
   },
 
   data() {
@@ -98,10 +105,30 @@ export default {
       arrowDownIcon,
       eyeIcon,
       copyIcon,
-      showToolkit: false
+      showToolkit: false,
+      showContentSettings: false
     }
   },
 
-  inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout', 'openContentSettings']
+  provide() {
+    return {
+      closeContentSettings: this.closeContentSettings
+    }
+  },
+
+  inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout'],
+
+  components: {
+    ParagraphSettings
+  },
+
+  methods: {
+    openContentSettings() {
+      this.showContentSettings = true
+    },
+    closeContentSettings() {
+      this.showContentSettings = false
+    },
+  }
 }
 </script>

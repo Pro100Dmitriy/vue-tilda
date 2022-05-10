@@ -69,14 +69,12 @@
     </div>
 
   </div>
-  <DragSettings :show="showContentSettings"/>
 </template>
 
 <script>
 import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 
 import PageConstructor from "@/components/page/PageConstructor"
-import DragSettings from "@/components/popups/DragSettings"
 
 import searchIcon from '@/assets/img/svg/search.svg'
 import * as animationBuildingLottie from "@/assets/img/json/building.json"
@@ -144,13 +142,14 @@ export default {
       changePositionLayout: this.changePositionLayout,
       copyLayout: this.copyLayout,
       visibilityLayout: this.visibilityLayout,
-      openContentSettings: this.openContentSettings,
-      closeContentSettings: this.closeContentSettings
+      saveNewContent: this.saveNewContent
+      // openContentSettings: this.openContentSettings,
+      // closeContentSettings: this.closeContentSettings
     }
   },
 
   components: {
-    PageConstructor, DragSettings
+    PageConstructor
   },
 
   methods: {
@@ -181,13 +180,6 @@ export default {
       this.activeCategory = catId
       this.blockContent = this.allBlocks.filter( block => block.catId === this.activeCategory )
       this.showBuilderResult = true
-    },
-    openContentSettings( currentPosition ) {
-      console.log( currentPosition )
-      this.showContentSettings = true
-    },
-    closeContentSettings() {
-      this.showContentSettings = false
     },
     addLayout( layout ) {
       let before = this.layoutScheme.slice(0, this.activePosition + 1)
@@ -277,6 +269,24 @@ export default {
       this.layoutScheme = [
         ...before,
         visibilityElement,
+        ...after
+      ]
+
+      this.layoutChanged = true
+    },
+    saveNewContent( newContent, currentPosition ) {
+      const editableElement = { ...this.layoutScheme[currentPosition] }
+      const newElement = {
+        ...editableElement,
+        ...newContent
+      }
+
+      let before = this.layoutScheme.slice(0, currentPosition)
+      let after = this.layoutScheme.slice(currentPosition + 1)
+
+      this.layoutScheme = [
+        ...before,
+        newElement,
         ...after
       ]
 

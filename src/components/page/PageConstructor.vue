@@ -3,7 +3,7 @@
     <div v-if="layout.length">
       <div v-for="(block, index) of layout"
            :key="block.id">
-        <EditableToolkit :positionIndex="index" :visibility="block.show" :blockName="block.title">
+        <EditableToolkit :positionIndex="index" :blockData="block">
           <ParagraphBlock v-if="block.type === 'Paragraph' && block.show"
                           :scheme="block"/>
           <WrapperBlock v-if="block.type === 'Wrapper'  && block.show"
@@ -33,8 +33,7 @@ export default {
   inject: ['openBuilder'],
 
   components: {
-    WrapperBlock,
-    ParagraphBlock, EditableToolkit
+    WrapperBlock, ParagraphBlock, EditableToolkit
   },
 }
 </script>

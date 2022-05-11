@@ -8,9 +8,10 @@ export default {
         createPage, deletePage, updatePage, updateProjectInfo
     },
     actions: {
-        async fetchPhotosFromUnsplash( {commit} ) {
+        async fetchPhotosFromUnsplash( {commit}, query ) {
             try {
-                const response = await fetch( 'https://api.unsplash.com/search/photos?query=car&client_id=2fVf60IoM7v4K9Vzmjzfta_SLmISel2eWh4YkFouAJc' )
+                let mainQuery = query === '' ? 'mountain' : query
+                const response = await fetch( `https://api.unsplash.com/search/photos?query=${mainQuery}&client_id=2fVf60IoM7v4K9Vzmjzfta_SLmISel2eWh4YkFouAJc` )
                 if( !response.ok )
                     commit('errorSaveImagesList')
 

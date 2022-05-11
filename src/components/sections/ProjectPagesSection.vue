@@ -36,7 +36,7 @@
                     <p class="tab-uploader__desc-paragraph">By default, the first image on the page is used for the badge. You can upload your own image.</p>
                     <input type="file" hidden>
                     <button class="tab-uploader__desc-button"
-                            @click.prevent="openImageSeletor">Upload file</button>
+                            @click.prevent="openImageSelector">Upload file</button>
                   </div>
                   <div class="tab-uploader__image-wrapper">
                     <img class="tab-uploader__image" :src="currentMainImg" alt="Test Image">
@@ -62,51 +62,8 @@
 
       </div>
     </ModalsWrapper>
-    <div class="image-select-modals"
-         :class="{'image-select-modals_open': imageSelectModalsOpen}">
-      <div class="image-select-modals__wrapper">
-        <div class="image-select-modals__bg"
-             @click="closeImageSelector"></div>
-        <div class="image-select-modals__content">
-          <div class="image-select-modals__images">
-
-            <ul v-if="imgList.length && !imgListLoading && !imgListError"
-                class="image-select-modals__list">
-              <li v-for="img of imgList"
-                  class="image-select-modals__item"
-                  :class="{'img-selected': img.urls.regular === selectedUrl}"
-                  :key="img.id">
-                <img :src="img.urls.regular"
-                     @click="selectImage"
-                     :alt="img.alt_description">
-              </li>
-            </ul>
-
-            <div class="empty"
-                 v-else-if="!imgListLoading && !imgListError && !imgList.length">
-              <LottieConstructor :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
-              <div class="empty__subscribe">
-                <h2>Projects are not created, click the "Create a new project"</h2>
-              </div>
-            </div>
-
-            <div class="error"
-                 v-else-if="imgListError">
-              <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
-            </div>
-
-            <div class="loader"
-                 v-else>
-                <LottieConstructor :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
-            </div>
-
-          </div>
-          <FillButton class="image-select-modals__button"
-                      ariaLabel="Close popup"
-                      @click="saveSelectImage">Select</FillButton>
-        </div>
-      </div>
-    </div>
+    <ImageDownloader :show="imageSelectModalsOpen"
+                     @getSelectedImage="saveSelectImage"/>
     <ContainerWrapper>
       <div class="project-pages__wrapper">
         <div class="project-pages__small">
@@ -121,17 +78,14 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 import ModalsWrapper from "@/layouts/ModalsWrapper";
 import PageList from "@/components/PageList/PageList"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/popups/FormConstructor"
-
-import * as animationLoadingLottie from "@/assets/img/json/loader.json";
-import * as animationErrorLottie from "@/assets/img/json/error.json";
-import * as animationEmptyLottie from "@/assets/img/json/empty.json";
+import ImageDownloader from "@/components/popups/ImageDownloader"
 
 export default {
   name: "ProjectPagesSection",
@@ -149,24 +103,20 @@ export default {
       showModals: false,
       modalLoad: true,
 
-      lottieLoadingOptions: {animationData: animationLoadingLottie},
-      lottieErrorOptions: {animationData: animationErrorLottie},
-      lottieEmptyOptions: {animationData: animationEmptyLottie},
-
       imageSelectModalsOpen: false,
-      selectedUrl: '',
       currentMainImg: ''
     }
   },
 
   provide() {
     return {
-      openModals: this.openModals
+      openModals: this.openModals,
+      closeImageSelector: this.closeImageSelector
     }
   },
 
   components: {
-    ModalsWrapper, PageList, PopupTabNav, PopupTab, FormConstructor
+    ModalsWrapper, PageList, PopupTabNav, PopupTab, FormConstructor, ImageDownloader
   },
 
   methods: {
@@ -218,19 +168,15 @@ export default {
     changeData( value ) {
       this.dataForSave = value
     },
-    async openImageSeletor() {
+    openImageSelector() {
       this.imageSelectModalsOpen = true
-      this.fetchPhotosFromUnsplash()
     },
     closeImageSelector() {
       this.imageSelectModalsOpen = false
     },
-    selectImage( event ) {
-      this.selectedUrl = event.target.getAttribute('src')
-    },
-    saveSelectImage() {
-      if( this.selectedUrl ) {
-        this.currentMainImg = this.selectedUrl
+    saveSelectImage( selectedUrl ) {
+      if( selectedUrl ) {
+        this.currentMainImg = selectedUrl
       }
       this.imageSelectModalsOpen = false
     },
@@ -248,18 +194,10 @@ export default {
         this.currentMainImg = ''
         this.modalLoad = true
       }, 300 )
-    },
-    handleAnimation( anim ) {
-      this.anim = anim
     }
   },
 
   computed: {
-    ...mapState( {
-      imgList: state => state.projectPage.imgList,
-      imgListLoading: state => state.projectPage.imgListLoading,
-      imgListError: state => state.projectPage.imgListError
-    } ),
     ...mapGetters( {
       getPageActiveInfo: 'projectPage/getPageActiveInfo'
     } )

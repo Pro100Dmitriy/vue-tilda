@@ -8,8 +8,8 @@
     <input class="input-group__input"
            :id="inputId"
            type="text"
-           @focus="inputFocus = true"
-           @blur="inputFocus = false"
+           @focus="onFocus"
+           @blur="onBlur"
            @input="onInput"
            :value="modelValue">
   </div>
@@ -40,6 +40,14 @@ export default {
 
       this.$emit('changeChecker')
       this.$emit('update:modelValue', event.target.value)
+    },
+    onFocus() {
+      this.inputFocus = true
+      this.$emit('focusChecker')
+    },
+    onBlur() {
+      this.inputFocus = false
+      this.$emit('blurChecker')
     }
   }
 }

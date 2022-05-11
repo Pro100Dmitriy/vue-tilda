@@ -39,9 +39,8 @@
     padding-top: 20px;
     padding-bottom: 20px;
 
-    width: 800px;
+    width: 1400px;
 
-    background: @color-white;
     text-align: center;
     opacity: 0;
     visibility: hidden;
@@ -53,43 +52,188 @@
       width: 90vw;
     }
   }
-  &__form {
-    text-align: left;
-  }
-  &__images {
-    margin-bottom: 20px;
-
-    max-height: 80vh;
-    width: 100%;
-    overflow: auto;
-  }
-  &__list {
-    margin: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-
+  &__columns {
     display: flex;
-    flex-direction: column;
-  }
-  &__item {
-    margin-bottom: 20px;
+    flex-direction: row;
+    .unsplash {
+      padding-left: 25px;
+      padding-right: 25px;
 
-    display: inline-flex;
-    width: 100%;
-    height: 250px;
+      flex: 1 0 46%;
 
-    border: 5px solid @color-white;
-    overflow: hidden;
+      border-top: 1px solid @color-blue;
+      border-bottom: 1px solid @color-blue;
+      border-left: 1px solid @color-blue;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      backdrop-filter: blur(15px);
+      background: rgba(@color-black, .3);
 
-    transition: @transition-all-3;
+      &__form {
+        margin-bottom: 25px;
+        padding-right: 8px;
+        padding-left: 8px;
 
-    & > img {
-      width: 100%;
-      object-fit: cover;
+        text-align: left;
+        .input-group {
+          &__label {
+            color: @color-white;
+          }
+          &__input {
+            color: @color-white;
+            background: transparent;
+          }
+        }
+      }
+      &__images {
+        margin-bottom: 20px;
+
+        max-height: 80vh;
+        width: 100%;
+        overflow: hidden;
+      }
+      &__hidden-scroll {
+        margin-right: -17px;
+
+        height: 75vh;
+        overflow-Y: scroll;
+      }
+      &__list {
+        padding-top: 2px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      &__item {
+        position: relative;
+
+        margin-bottom: 16px;
+        margin-left: 8px;
+        margin-right: 8px;
+
+        flex: 1 0 auto;
+
+        display: inline-flex;
+        width: calc(50% - 16px);
+        height: 400px;
+
+        transition: @transition-all-3;
+
+        & > img {
+          width: 100%;
+          object-fit: cover;
+        }
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+
+          content: '';
+          width: calc( 100% );
+          height: calc( 100% );
+          display: block;
+          border: 1px solid @color-blue;
+          opacity: 0;
+
+          transform: translate(-50%, -50%);
+          transition: @transition-all-3;
+        }
+      }
+      .img-selected {
+        &::before {
+          opacity: 1;
+        }
+      }
     }
-  }
-  .img-selected {
-    border: 5px solid @color-blue;
+    .yourself {
+      flex: 1 0 50%;
+      display: flex;
+      flex-direction: column;
+
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      background: @color-white;
+      &__top {
+        flex: 1;
+
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      &__uploader-title {
+        padding-bottom: 40px;
+        color: rgba( @color-gray, .4 );
+
+        font-family: 'Jost', sans-serif;
+        font-size: 25px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 100%;
+      }
+      &__uploader {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        border: 2px dashed rgba( @color-gray, .4 );
+        border-radius: 7px;
+      }
+      &__upload-btn {}
+      &__bottom {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        flex: auto;
+
+        text-align: left;
+      }
+      &__bottom-title {
+        margin-bottom: 30px;
+
+        font-family: 'Jost', sans-serif;
+        font-size: 33px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 100%;
+      }
+      &__saved {
+        margin-right: -5px;
+        margin-left: -5px;
+        height: 100%;
+
+        overflow: hidden;
+      }
+      &__saved-hid-scroll {
+        margin-right: -17px;
+
+        height: 45vh;
+        overflow-Y: scroll;
+      }
+      &__item {
+        margin: 5px;
+        display: inline-flex;
+        width: calc( (100% / 4) - 20px );
+        height: 150px;
+
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      &__accept {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      &__accept-btn {
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 <template>
   <EditHeader/>
+  <EditableSettingSection :show="showPageSettings"/>
   <EditablePageSection/>
 </template>
 
@@ -7,20 +8,36 @@
 import {mapActions, mapState} from 'vuex'
 
 import EditHeader from '@/components/base/EditHeader'
+import EditableSettingSection from "@/components/sections/EditableSettingSection"
 import EditablePageSection from '@/components/sections/EditablePageSection'
 
 export default {
   name: "EditProjectPage",
 
+  data() {
+    return {
+      showPageSettings: false
+    }
+  },
+
+  provide() {
+    return {
+      openPageSettings: this.openPageSettings
+    }
+  },
+
   components: {
-    EditHeader, EditablePageSection
+    EditHeader, EditableSettingSection, EditablePageSection
   },
 
   methods: {
     ...mapActions( {
       fetchPageInfo: 'editPage/fetchPageInfo',
       fetchProjectInfo: 'projectPage/fetchProjectInfo'
-    } )
+    } ),
+    openPageSettings() {
+      this.showPageSettings = true
+    }
   },
 
   computed: {

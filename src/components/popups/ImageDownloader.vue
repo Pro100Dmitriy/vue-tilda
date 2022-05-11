@@ -71,13 +71,33 @@
                 <h4>Uploaded images</h4>
               </div>
               <div class="yourself__saved">
-                <div class="yourself__saved-hid-scroll">
+                <div v-if="!hostFilesLoading && !hostFilesError && hostFiles.length"
+                     class="yourself__saved-hid-scroll">
                   <div v-for="file of hostFiles"
                        :key="file.name"
                        class="yourself__item">
                     <img :src="file.url" :alt="file.name">
                   </div>
                 </div>
+
+                <div class="empty"
+                     v-else-if="!hostFilesLoading && !hostFilesError && !hostFiles.length">
+                  <LottieConstructor :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+                  <div class="empty__subscribe">
+                    <h2>Projects are not created, click the "Create a new project"</h2>
+                  </div>
+                </div>
+
+                <div class="error"
+                     v-else-if="hostFilesError">
+                  <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+                </div>
+
+                <div class="loader"
+                     v-else>
+                  <LottieConstructor :options="lottieLoadingOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
+                </div>
+
               </div>
             </div>
             <div class="yourself__accept">
@@ -105,7 +125,6 @@ import FormConstructor from "@/components/popups/FormConstructor"
 import * as animationLoadingLottie from "@/assets/img/json/loader.json";
 import * as animationErrorLottie from "@/assets/img/json/error.json";
 import * as animationEmptyLottie from "@/assets/img/json/empty.json";
-import testimg from '@/assets/img/testImg.jpg';
 
 export default {
   name: "ImageDownloader",
@@ -119,14 +138,16 @@ export default {
       lottieLoadingOptions: {animationData: animationLoadingLottie},
       lottieErrorOptions: {animationData: animationErrorLottie},
       lottieEmptyOptions: {animationData: animationEmptyLottie},
-      testimg,
 
       formSearch: {
         query: {type: 'input', propName: 'query', inputId: 'image-select-query', inputLabel: 'Your query', inputValue: ''}
       },
+
       selectedUrl: '',
       searchQuery: '',
-      hostFilesLoaded: true,
+
+      hostFilesLoading: true,
+      hostFilesError: false,
       hostFiles: [],
       uploadedFiles: []
     }
@@ -145,17 +166,21 @@ export default {
     async getImages() {
       await this.fetchPhotosFromUnsplash( this.searchQuery )
       this.firebase.onFetching()
-          .then( res => {
-            res.forEach( promise => {
-              promise.then( res => {
-                this.hostFiles.push(res)
-              } )
+        .then( res => {
+          Promise.all(res)
+            .then( res => {
+              this.hostFiles = res
+              this.hostFilesLoading = false
             } )
-          } )
+            .catch( error => {
+              this.hostFilesError = true
+              this.hostFilesLoading = false
+              console.error( 'Promise all', error )
+            } )
+        } )
     },
     searchImageQuery( {query} ) {
       this.searchQuery = query
-      console.log( this.searchQuery )
       this.fetchPhotosFromUnsplash( this.searchQuery )
     },
     selectImage( event ) {
@@ -184,14 +209,17 @@ export default {
         const reader = new FileReader()
 
         reader.onload = readEvent => {
-          console.log(readEvent)
-          // this.uploadedFiles.push({
-          //   name: file.name,
-          //   src: readEvent.target.result
-          // })
           if( this.uploadedFiles.length === files.length ) {
-            console.log( this.uploadedFiles )
-            this.firebase.onUpload(this.uploadedFiles)
+            Promise.all( this.firebase.onUpload(this.uploadedFiles) )
+              .then( snapshot => {
+                console.log( snapshot )
+                console.log('Uploaded a blob or file!');
+                this.hostFiles.push( {
+                  name: file.name,
+                  url: readEvent.target.result
+                } )
+              } )
+              .catch( error => console.error( error ) )
           }
         }
 
@@ -205,21 +233,14 @@ export default {
       imgList: state => state.projectPage.imgList,
       imgListLoading: state => state.projectPage.imgListLoading,
       imgListError: state => state.projectPage.imgListError
-    } ),
+    } )
   },
 
   watch: {
     show( visibility ) {
       if( visibility )
         this.getImages()
-    },
-    hostFilesLoaded() {
-
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

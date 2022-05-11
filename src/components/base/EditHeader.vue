@@ -69,7 +69,8 @@
                   :class="{'child-list_open': showMoreList}"
                   @mouseleave="showMoreList = false">
                 <li class="child-list__item">
-                  <router-link to="/">Settings</router-link>
+                  <a href="javascript:void(0)"
+                     @click.prevent="openPageSettings">Settings</a>
                 </li>
                 <li class="child-list__item">
                   <router-link to="/">Exit</router-link>
@@ -101,6 +102,8 @@ export default {
       showMoreList: false
     }
   },
+
+  inject: ['openPageSettings'],
 
   computed: {
     ...mapState( {

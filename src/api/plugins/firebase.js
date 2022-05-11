@@ -8,14 +8,9 @@ export default {
         const refCopy = ref
 
         const onUpload = (files) => {
-            console.log( files )
-            files.forEach( file => {
+            return files.map( file => {
                 const ref = refCopy(storage, `images/${file.name}`)
-                uploadBytes(ref, file)
-                    .then( snapshot => {
-                        console.log( snapshot )
-                        console.log('Uploaded a blob or file!');
-                    } );
+                return uploadBytes(ref, file)
             } )
         }
 
@@ -24,22 +19,17 @@ export default {
                 const listRef = refCopy(storage, 'images')
                 listAll(listRef)
                     .then( res => {
-                        try {
-                            const images = res.items.map( async itemRef => {
-                                const metadata = await getMetadata( itemRef )
-                                const url = await getDownloadURL( itemRef )
-                                return {
-                                    ...metadata,
-                                    url
-                                }
-                            } )
-                            resolve(images)
-                        } catch(error) {
-                            console.log( 'Error connected with metadata', error )
-                            reject(error)
-                        }
+                        const images = res.items.map( async itemRef => {
+                            const metadata = await getMetadata( itemRef )
+                            const url = await getDownloadURL( itemRef )
+                            return {
+                                ...metadata,
+                                url
+                            }
+                        } )
+                        resolve(images)
                     } )
-                    .catch( error => console.log( 'Uh-oh, an error occurred!', error ) )
+                    .catch( error => reject(error) )
             } )
         }
 

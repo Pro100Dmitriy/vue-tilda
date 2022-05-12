@@ -74,7 +74,7 @@ export default {
 
   async mounted() {
     await this.fetchPageInfo( this.$route.params.pageId )
-    if( this.projectInfo.id )
+    if( !this.projectInfo.id )
       await this.fetchProjectInfo( this.pageInfo.projectId )
   }
 }

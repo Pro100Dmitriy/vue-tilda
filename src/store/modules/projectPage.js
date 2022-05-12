@@ -25,6 +25,9 @@ export default {
         async fetchProjectInfo( {commit}, id ) {
             try {
                 const response = await fetch(`http://localhost:8081/projects/${id}`)
+                if( !response.ok )
+                    throw new Error('Error in fetching project info')
+
                 const data = await response.json()
                 commit('updateProjectsInfo', data)
             }catch( error ){

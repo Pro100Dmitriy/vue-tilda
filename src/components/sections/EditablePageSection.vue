@@ -318,6 +318,7 @@ export default {
 
   watch: {
     layoutLoading() {
+      if( this.pageInfoError ) return
       if ( !this.pageInfoLoading ) {
         if( Number(this.pageInfo.id) === Number(this.$route.params.pageId) ) {
           this.layoutScheme = [

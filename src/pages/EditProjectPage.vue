@@ -59,6 +59,7 @@ export default {
       this.imageSelectModalsOpen = true
     },
     closeImageSelector() {
+      document.body.style.overflow = 'auto'
       this.callbackImageSelector = null
       this.imageSelectModalsOpen = false
     }
@@ -73,7 +74,7 @@ export default {
 
   async mounted() {
     await this.fetchPageInfo( this.$route.params.pageId )
-    if( !this.projectInfo.id )
+    if( this.projectInfo.id )
       await this.fetchProjectInfo( this.pageInfo.projectId )
   }
 }

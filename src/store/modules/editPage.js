@@ -20,6 +20,9 @@ export default {
         async fetchPageInfo( {commit}, id ) {
             try {
                 const response = await fetch(`http://localhost:8081/pages/${id}`)
+                if( !response.ok )
+                    throw new Error('Error in fetch layout')
+
                 const data = await response.json()
                 commit('updatePageInfo', data)
             }catch( error ){

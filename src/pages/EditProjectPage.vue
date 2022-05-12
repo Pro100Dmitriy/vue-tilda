@@ -1,6 +1,8 @@
 <template>
   <EditHeader/>
   <EditableSettingSection :show="showPageSettings"/>
+  <ImageDownloader :show="imageSelectModalsOpen"
+                   @getSelectedImage="callbackImageSelector"/>
   <EditablePageSection/>
 </template>
 
@@ -9,6 +11,7 @@ import {mapActions, mapState} from 'vuex'
 
 import EditHeader from '@/components/base/EditHeader'
 import EditableSettingSection from "@/components/sections/EditableSettingSection"
+import ImageDownloader from "@/components/popups/ImageDownloader"
 import EditablePageSection from '@/components/sections/EditablePageSection'
 
 export default {
@@ -16,18 +19,24 @@ export default {
 
   data() {
     return {
-      showPageSettings: false
+      showPageSettings: false,
+      imageSelectModalsOpen: false,
+      callbackImageSelector: null
     }
   },
 
   provide() {
     return {
-      openPageSettings: this.openPageSettings
+      openPageSettings: this.openPageSettings,
+      closePageSettings: this.closePageSettings,
+      closeAndSavePageSettings: this.closeAndSavePageSettings,
+      openImageSelector: this.openImageSelector,
+      closeImageSelector: this.closeImageSelector
     }
   },
 
   components: {
-    EditHeader, EditableSettingSection, EditablePageSection
+    EditHeader, EditableSettingSection, ImageDownloader, EditablePageSection
   },
 
   methods: {
@@ -37,6 +46,21 @@ export default {
     } ),
     openPageSettings() {
       this.showPageSettings = true
+    },
+    closePageSettings() {
+      this.showPageSettings = false
+    },
+    async closeAndSavePageSettings() {
+      this.showPageSettings = false
+      await this.fetchProjectInfo( this.pageInfo.projectId )
+    },
+    openImageSelector( callback ) {
+      this.callbackImageSelector = callback
+      this.imageSelectModalsOpen = true
+    },
+    closeImageSelector() {
+      this.callbackImageSelector = null
+      this.imageSelectModalsOpen = false
     }
   },
 

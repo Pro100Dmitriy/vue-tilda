@@ -72,6 +72,10 @@
                      :scheme="blockData"
                      :show="showContentSettings"
                      :currentPosition="positionIndex"/>
+  <WrapperSettings v-if="blockData.type === 'Wrapper' && blockData.show"
+                   :scheme="blockData"
+                   :show="showContentSettings"
+                   :currentPosition="positionIndex"/>
 
 </template>
 
@@ -86,6 +90,7 @@ import eyeIcon from '@/assets/img/eye-icon.png'
 import copyIcon from '@/assets/img/copy-icon.png'
 
 import ParagraphSettings from '@/components/page/blockTypes/ParagraphSettings'
+import WrapperSettings from "@/components/page/blockTypes/WrapperSettings"
 
 export default {
   name: "EditableToolkit",
@@ -119,7 +124,7 @@ export default {
   inject: ['openBuilder', 'deleteLayout', 'changePositionLayout', 'copyLayout', 'visibilityLayout'],
 
   components: {
-    ParagraphSettings
+    ParagraphSettings, WrapperSettings
   },
 
   methods: {

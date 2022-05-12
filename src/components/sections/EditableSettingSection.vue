@@ -106,13 +106,15 @@ export default {
     }
   },
 
+  inject: ['closePageSettings', 'closeAndSavePageSettings'],
+
   components: {
     ModalsWrapper, PopupTabNav, PopupTab, FormConstructor, ImageDownloader
   },
 
   methods: {
     ...mapActions( {
-      updateProjectInfo: 'projectPage/updateProjectInfo',
+      pageUpdateAndFetch: 'editPage/pageUpdateAndFetch',
     } ),
     openModals() {
       if( this.pageInfo ) {
@@ -134,17 +136,19 @@ export default {
       setTimeout( () => {
         this.dataForSave = {}
         this.modalLoad = true
+        this.closePageSettings()
       }, 300 )
     },
     saveAndCloseModals() {
       document.body.style.overflow = 'auto'
       this.showModals = false
 
-      // this.updatePage( [this.pageInfo.projectId, this.pageInfo.pageId, this.dataForSave] )
+      this.pageUpdateAndFetch( [this.pageInfo.projectId, this.pageInfo.id, this.dataForSave] )
 
       setTimeout( () => {
         this.dataForSave = {}
         this.modalLoad = true
+        this.closeAndSavePageSettings()
       }, 300 )
     },
     setSelected( tab ) {
@@ -169,11 +173,11 @@ export default {
       document.body.style.overflow = 'auto'
       this.showModals = false
 
-      // const newImage = {
-      //   prevImage: this.currentMainImg
-      // }
+      const newImage = {
+        prevImage: this.currentMainImg
+      }
 
-      // this.updatePage( [this.pageInfo.projectId, this.pageInfo.pageId, newImage] )
+      this.pageUpdateAndFetch( [this.pageInfo.projectId, this.pageInfo.id, newImage] )
 
       setTimeout( () => {
         this.currentMainImg = ''
@@ -192,7 +196,6 @@ export default {
     show( value ) {
       if( value )
         this.openModals()
-      console.log( 2 )
     }
   }
 }

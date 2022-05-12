@@ -148,6 +148,8 @@
         position: relative;
         &__open-button {
           padding: 22px 15px;
+          margin-left: 10px;
+          margin-right: 10px;
 
           display: inline-flex;
           align-items: center;
@@ -228,8 +230,10 @@
 
           transition: @transition-all-3;
 
-          & > a {
+          & > button {
             color: @color-black;
+            background: transparent;
+            border: none;
 
             font-family: 'Jost', sans-serif;
             font-size: 16px;
@@ -249,7 +253,77 @@
       }
     }
     .page-status {
+      position: relative;
+      &__saved {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        opacity: 0;
+
+        transform: translateY(-50%);
+        transition: @transition-all-3;
+
+        img {
+          width: 25px;
+
+          opacity: .4;
+        }
+        p {
+          margin-left: 5px;
+
+          color: rgba(@color-black, .4);
+          white-space: nowrap;
+
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          font-style: normal;
+          line-height: 100%;
+        }
+      }
+      &__saving {
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        opacity: 1;
+
+        transform: translateY(-50%);
+        transition: @transition-all-3;
+
+        .spinner {
+          opacity: .4;
+        }
+        p {
+          margin-left: 5px;
+
+          white-space: nowrap;
+          color: rgba(@color-black, .4);
+
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          font-weight: 300;
+          font-style: normal;
+          line-height: 100%;
+        }
+      }
+    }
+    .saved-status {
+      .page-status__saved {
+        opacity: 1;
+      }
+      .page-status__saving {
+        opacity: 0;
+      }
     }
   }
   &__right {

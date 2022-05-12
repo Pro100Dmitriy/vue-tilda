@@ -1,6 +1,10 @@
 import server from "@/api/server"
+import pageUpdateAndFetch from '@/store/modules/editModules/pageUpdateAndFetch'
 
 export default {
+    modules: {
+        pageUpdateAndFetch
+    },
     actions: {
         async saveLayout( {commit}, [pageId, layout] ) {
             const { request } = server()

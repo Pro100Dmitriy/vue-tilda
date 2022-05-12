@@ -20,6 +20,15 @@
             </div>
             <FormConstructor :formData="formData"
                              @changeData="changeData"/>
+            <div class="drag-content__image"
+                 @click="openImageSelector( setImage )">
+              <div class="drag-content__image-overlay">
+                <svg v-sprite="{hash: 'publishPageIcon', width: '23px', height: '20px' }"></svg>
+              </div>
+              <div class="drag-content__image-wrapper">
+                <img :src="selectedImg ? selectedImg : currentImg" :alt="`Block ${scheme.type} image`">
+              </div>
+            </div>
             <div class="drag-content__submit">
               <FillButton class="drag-submit-btn"
                           ariaLabel="Close popup"
@@ -36,10 +45,10 @@
 </template>
 
 <script>
-import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/popups/FormConstructor";
 
 export default {
-  name: "ParagraphSettings",
+  name: "WrapperSettings",
 
   props: {
     show: { type: Boolean, required: true },
@@ -53,11 +62,13 @@ export default {
         title: {type: 'input', propName: 'title', inputId: 'block-title', inputLabel: 'Title', inputValue: ''},
         description: {type: 'input', propName: 'description', inputId: 'block-description', inputLabel: 'Description', inputValue: ''}
       },
+      currentImg: this.scheme.imgSrc,
+      selectedImg: '',
       dataForSave: {}
     }
   },
 
-  inject: ['closeContentSettings', 'saveNewContent'],
+  inject: ['closeContentSettings', 'saveNewContent', 'openImageSelector'],
 
   components: {
     FormConstructor
@@ -83,6 +94,13 @@ export default {
     setDefaultValues() {
       this.formData.title.inputValue = this.scheme.title
       this.formData.description.inputValue = this.scheme.description
+    },
+    setImage( value ) {
+      this.selectedImg = value ? value : this.currentImg
+      this.dataForSave = {
+        ...this.dataForSave,
+        imgSrc: this.selectedImg
+      }
     }
   },
 
@@ -94,3 +112,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

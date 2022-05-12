@@ -1,0 +1,28 @@
+.spinner {
+  width: 25px;
+  height: 25px;
+  display: block;
+
+  border-top: 2px solid @color-black;
+  border-left: 2px solid @color-black;
+  border-bottom: 2px solid @color-black;
+  border-right: 2px solid transparent;
+  border-radius: 100px;
+
+  animation-name: sinner-rotation;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes sinner-rotation {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

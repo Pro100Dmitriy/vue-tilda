@@ -30,41 +30,49 @@
                 <li v-for="page of getPages"
                     :key="page.pageId"
                     class="bread-popup__item">
-                  <router-link :to="'/page/' + page.pageId">{{ page.title }}</router-link>
+                  <button @click="$router.push(`/page/${page.pageId}`)">{{ page.title }}</button>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="page-status">
-          {{ layoutIsSaved }}
+        <div class="page-status"
+             :class="{'saved-status': layoutIsSaved}">
+          <div class="page-status__saved">
+            <img :src="cloudUploadIcon" alt="All changes saved!">
+            <p>Saved!</p>
+          </div>
+          <div class="page-status__saving">
+            <span class="spinner"></span>
+            <p>Saving...</p>
+          </div>
         </div>
       </div>
       <div class="edit-header__right">
         <div class="edit-routes">
           <ul class="edit-routes__list">
             <li class="edit-routes__item">
-              <router-link to="/">Chanel</router-link>
+              <a href="javascript:void(0)">Chanel</a>
             </li>
             <li class="edit-routes__item">
-              <router-link to="/">Preview</router-link>
+              <router-link :to="`/preview/${pageInfo.id}`">Preview</router-link>
             </li>
             <li class="edit-routes__item">
-              <router-link to="/">Publish</router-link>
+              <a href="javascript:void(0)">Publish</a>
             </li>
             <li class="edit-routes__item">
-              <router-link to="/">Settings</router-link>
+              <a href="javascript:void(0)">Settings</a>
             </li>
             <li class="edit-routes__item">
-              <router-link to="/">Support</router-link>
+              <a href="javascript:void(0)">Support</a>
             </li>
             <li class="edit-routes__item">
-              <router-link to=""
-                           @blur="showMoreList = false"
-                           @click.prevent.stop="showMoreList = !showMoreList">
+              <a href="javascript:void(0)"
+                 @blur="showMoreList = false"
+                 @click="showMoreList = !showMoreList">
                 More
                 <img class="link-img" :src="downIcon" alt="Button arrow icon" aria-hidden="true">
-              </router-link>
+              </a>
               <ul class="child-list"
                   :class="{'child-list_open': showMoreList}"
                   @mouseleave="showMoreList = false">
@@ -88,14 +96,16 @@
 import {mapState, mapGetters} from "vuex"
 import downIcon from '@/assets/img/svg/down.svg'
 import houseIcon from '@/assets/img/house-icon.png'
+import cloudUploadIcon from '@/assets/img/cloud-upload.png'
 
 export default {
   name: "EditHeader",
 
   data() {
     return {
-      downIcon: downIcon,
-      houseIcon: houseIcon,
+      downIcon,
+      houseIcon,
+      cloudUploadIcon,
       projectName: 'testProject',
 
       showPageList: false,

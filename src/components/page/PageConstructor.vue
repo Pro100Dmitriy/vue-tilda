@@ -11,8 +11,10 @@
         </EditableToolkit>
       </div>
     </div>
-    <div v-else>
-      <button class="add-layout"
+    <div v-else
+         class="empty-layout">
+      <button class="empty-layout__btn"
+              aria-label="Add new layout block"
               @click="openBuilder(0)">Add new block</button>
     </div>
   </div>

@@ -143,8 +143,6 @@ export default {
       copyLayout: this.copyLayout,
       visibilityLayout: this.visibilityLayout,
       saveNewContent: this.saveNewContent
-      // openContentSettings: this.openContentSettings,
-      // closeContentSettings: this.closeContentSettings
     }
   },
 
@@ -163,8 +161,6 @@ export default {
       this.anim = anim
     },
     openBuilder( positionIndex ) {
-      console.log( this.getLayout )
-      console.log( positionIndex )
       this.activePosition = positionIndex
       this.showBuilder = true
     },
@@ -340,10 +336,8 @@ export default {
     },
     async layoutChanged(changed) {
       if( changed ){
-        console.log( 'changed' )
         this.layoutEdited()
         await this.saveLayout([this.pageInfo.id, this.layoutScheme])
-        console.log( this.layoutIsSaved )
       }
       this.layoutChanged = false
     }

@@ -1,7 +1,7 @@
 import createPage from "@/store/modules/pageModules/createPage"
 import deletePage from "@/store/modules/pageModules/deletePage"
 import updatePage from "@/store/modules/pageModules/updatePage"
-import updateProjectInfo from "@/store/modules/pageModules/updateProjectInfo"
+import updateProjectInfo from "@/store/modules/projectModules/updateProjectInfo"
 
 export default {
     modules: {

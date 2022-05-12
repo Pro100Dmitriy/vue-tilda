@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from "vue-router"
 import MainPage from "@/pages/MainPage"
 import ProjectPage from "@/pages/ProjectPage"
 import EditProjectPage from "@/pages/EditProjectPage"
+import PreviewPage from "@/pages/PreviewPage"
 import ProfilePage from "@/pages/ProfilePage"
 
 const router = createRouter({
@@ -26,8 +27,13 @@ const router = createRouter({
         },
         {
             path: '/page/:pageId',
-            name: 'Edit Project',
+            name: 'Edit Page',
             component: EditProjectPage
+        },
+        {
+            path: '/preview/:pageId',
+            name: 'Preview Page',
+            component: PreviewPage
         }
     ]
 })

@@ -25,7 +25,7 @@
                 <svg v-sprite="{hash: 'publishPageIcon', width: '23px', height: '20px' }"></svg>
               </div>
               <div class="drag-content__image-wrapper">
-                <img :src="selectedImg ? selectedImg : currentImg" :alt="`Block ${scheme.type} image`">
+                <img :src="currentImg" :alt="`Block ${scheme.type} image`">
               </div>
             </div>
             <div class="drag-content__submit">
@@ -74,15 +74,22 @@ export default {
     setDefaultValues() {
       this.formData.title.inputValue = this.scheme.title
       this.formData.description.inputValue = this.scheme.description
+      this.currentImg = this.scheme.imgSrc
     },
     changeData( value ) {
       this.dataForSave = {
         ...value,
-        imgSrc: this.selectedImg
+        imgSrc: this.currentImg
       }
     },
     setImage( value ) {
-      this.selectedImg = value ? value : this.currentImg
+      if( value ) {
+        this.currentImg = value
+      }
+      this.dataForSave = {
+        ...this.dataForSave,
+        imgSrc: this.currentImg
+      }
     }
   },
 

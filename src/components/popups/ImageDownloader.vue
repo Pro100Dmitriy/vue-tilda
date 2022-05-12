@@ -163,7 +163,9 @@ export default {
     ...mapActions( {
       fetchPhotosFromUnsplash: 'projectPage/fetchPhotosFromUnsplash'
     } ),
-    async getImages() {
+    async initialize() {
+      document.body.style.overflowY = 'hidden'
+
       await this.fetchPhotosFromUnsplash( this.searchQuery )
       this.firebase.onFetching()
         .then( res => {
@@ -188,6 +190,8 @@ export default {
     },
     returnSelectedImage() {
       this.$emit('getSelectedImage', this.selectedUrl)
+      this.closeImageSelector()
+      document.body.style.overflowY = 'auto'
     },
     handleAnimation( anim ) {
       this.anim = anim
@@ -239,7 +243,7 @@ export default {
   watch: {
     show( visibility ) {
       if( visibility )
-        this.getImages()
+        this.initialize()
     }
   }
 }

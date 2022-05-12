@@ -14,7 +14,7 @@
           </router-link>
         </div>
         <ul class="header__nav-list">
-          <li class="header__nav-item"><router-link to="/">My pages</router-link></li>
+          <li class="header__nav-item"><router-link to="/">My projects</router-link></li>
           <li class="header__nav-item"><router-link to="/profile">Profile</router-link></li>
         </ul>
       </div>

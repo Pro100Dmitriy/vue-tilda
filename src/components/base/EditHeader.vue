@@ -81,7 +81,10 @@
                      @click.prevent="openPageSettings">Settings</a>
                 </li>
                 <li class="child-list__item">
-                  <router-link to="/">Exit</router-link>
+                  <router-link to="/">My projects</router-link>
+                </li>
+                <li class="child-list__item">
+                  <router-link to="/profile">Profile</router-link>
                 </li>
               </ul>
             </li>

@@ -323,6 +323,7 @@ export default {
           this.layoutScheme = [
             ...this.getLayout
           ]
+          this.layoutLoading = false
         } else {
           setTimeout( () => {
             this.layoutLoading = !this.layoutLoading

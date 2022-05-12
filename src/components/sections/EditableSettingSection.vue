@@ -35,7 +35,7 @@
                   <p class="tab-uploader__desc-paragraph">By default, the first image on the page is used for the badge. You can upload your own image.</p>
                   <input type="file" hidden>
                   <button class="tab-uploader__desc-button"
-                          @click.prevent="openImageSelector">Upload file</button>
+                          @click.prevent="openImageSelector( saveSelectImage )">Upload file</button>
                 </div>
                 <div class="tab-uploader__image-wrapper">
                   <img class="tab-uploader__image" :src="currentMainImg" alt="Test Image">
@@ -61,8 +61,6 @@
 
     </div>
   </ModalsWrapper>
-  <ImageDownloader :show="imageSelectModalsOpen"
-                   @getSelectedImage="saveSelectImage"/>
 </template>
 
 <script>
@@ -72,7 +70,6 @@ import ModalsWrapper from "@/layouts/ModalsWrapper"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/popups/FormConstructor"
-import ImageDownloader from "@/components/popups/ImageDownloader"
 
 export default {
   name: "EditableSettingSection",
@@ -94,22 +91,13 @@ export default {
       showModals: false,
       modalLoad: true,
 
-      imageSelectModalsOpen: false,
       currentMainImg: ''
     }
   },
-
-  provide() {
-    return {
-      openModals: this.openModals,
-      closeImageSelector: this.closeImageSelector
-    }
-  },
-
-  inject: ['closePageSettings', 'closeAndSavePageSettings'],
+  inject: ['closePageSettings', 'openImageSelector'],
 
   components: {
-    ModalsWrapper, PopupTabNav, PopupTab, FormConstructor, ImageDownloader
+    ModalsWrapper, PopupTabNav, PopupTab, FormConstructor
   },
 
   methods: {
@@ -148,7 +136,7 @@ export default {
       setTimeout( () => {
         this.dataForSave = {}
         this.modalLoad = true
-        this.closeAndSavePageSettings()
+        this.closePageSettings()
       }, 300 )
     },
     setSelected( tab ) {
@@ -157,12 +145,7 @@ export default {
     changeData( value ) {
       this.dataForSave = value
     },
-    openImageSelector() {
-      this.imageSelectModalsOpen = true
-    },
-    closeImageSelector() {
-      this.imageSelectModalsOpen = false
-    },
+
     saveSelectImage( selectedUrl ) {
       if( selectedUrl ) {
         this.currentMainImg = selectedUrl

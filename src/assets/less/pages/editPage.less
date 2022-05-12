@@ -460,9 +460,9 @@
   border-radius: 8px;
   box-shadow: 0 7px 25px rgba(@color-black, .08);
 
-  transform-origin: top left;
-  transform: translate(120px, 120px);
-  transition: opacity, visibility .3s ease;
+  transform-origin: center center;
+  transform: translate(120px, 120px) scale(0);
+  transition: @transition-all-3;
   &__wrapper {}
   &__controls {
     position: relative;
@@ -544,6 +544,10 @@
           opacity: 1;
           svg {
             transform: scale(1);
+
+            &:hover {
+              transform: scale(1.2);
+            }
           }
         }
         .drag-content__image-wrapper {
@@ -616,6 +620,8 @@
 .drag-setting_open {
   opacity: 1;
   visibility: visible;
+
+  transform: translate(120px, 120px) scale(1);
 }
 
 

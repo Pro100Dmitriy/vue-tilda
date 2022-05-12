@@ -1,15 +1,14 @@
 <template>
   <div v-if="show"
        class="drag-setting"
-       :class="{'drag-setting_open': show}"
        ref="dragSetting">
     <div class="drag-setting__wrapper">
       <div class="drag-setting__controls"
-           @mousedown="moveFlySetting"
-           @dragstart="moveFlySetting"
-           @mouseup="stopFlySetting"
-           @dragleave="stopFlySetting"
-           @dragend="stopFlySetting">
+           @mousedown="moveDrag"
+           @dragstart="moveDrag"
+           @mouseup="stopDrag"
+           @dragleave="stopDrag"
+           @dragend="stopDrag">
         <span class="gragstart"></span>
       </div>
       <div class="drag-content drag-setting__content">
@@ -26,7 +25,7 @@
                           @click.prevent="saveNewContent(dataForSave, currentPosition)">Save</FillButton>
               <FillButton class="drag-submit-btn fill-button_stroke"
                           ariaLabel="Close popup"
-                          @click.prevent="closeContentSettings">Close</FillButton>
+                          @click.prevent="closeContentSettings(closeTransition)">Close</FillButton>
             </div>
           </div>
         </div>
@@ -36,16 +35,11 @@
 </template>
 
 <script>
+import dragSetting from "@/mixins/page/blockMixins/dragSetting"
 import FormConstructor from "@/components/popups/FormConstructor"
 
 export default {
   name: "ParagraphSettings",
-
-  props: {
-    show: { type: Boolean, required: true },
-    scheme: { type: Object, required: true },
-    currentPosition: { type: Number, required: true }
-  },
 
   data() {
     return {
@@ -59,30 +53,19 @@ export default {
 
   inject: ['closeContentSettings', 'saveNewContent'],
 
+  mixins: [dragSetting],
+
   components: {
     FormConstructor
   },
 
   methods: {
-    mouseMove( {clientX, clientY} ) {
-      let x = clientX - 120
-      let y = clientY - 10
-
-      this.$refs.dragSetting.style.transform = `translate(${x}px,${y}px)`
-    },
-    moveFlySetting() {
-      // const {left, top} = this.$refs.dragSetting.getBoundingClientRect()
-      document.addEventListener('mousemove', this.mouseMove )
-    },
-    stopFlySetting() {
-      document.removeEventListener( 'mousemove', this.mouseMove )
-    },
-    changeData( value ) {
-      this.dataForSave = value
-    },
     setDefaultValues() {
       this.formData.title.inputValue = this.scheme.title
       this.formData.description.inputValue = this.scheme.description
+    },
+    changeData( value ) {
+      this.dataForSave = value
     }
   },
 

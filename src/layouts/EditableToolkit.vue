@@ -131,8 +131,12 @@ export default {
     openContentSettings() {
       this.showContentSettings = true
     },
-    closeContentSettings() {
-      this.showContentSettings = false
+    closeContentSettings( transition ) {
+      if( transition )
+        transition()
+      setTimeout( () => {
+        this.showContentSettings = false
+      }, 300 )
     },
   }
 }

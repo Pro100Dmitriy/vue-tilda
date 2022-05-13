@@ -20,7 +20,7 @@
       </div>
       <div class="header__nav-right">
         <ul class="header__nav-list">
-          <li class="header__nav-item"><router-link to="/">Exit</router-link></li>
+          <li class="header__nav-item"><button>Exit</button></li>
         </ul>
       </div>
     </nav>
@@ -29,12 +29,6 @@
 
 <script>
 export default {
-  name: "HeaderSection",
-
-  data() {
-    return {
-
-    }
-  }
+  name: "HeaderOrigin"
 }
 </script>

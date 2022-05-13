@@ -78,9 +78,11 @@ export default {
     ControlsList, ContextPopup
   },
 
-  computed: mapState({
-    projectInfo: state => state.projectPage.projectInfo
-  }),
+  computed: {
+    ...mapState({
+      projectInfo: state => state.projectPage.projectInfo
+    })
+  },
 
   methods: {
     ...mapActions({

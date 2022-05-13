@@ -7,40 +7,59 @@ export default {
     },
     actions: {
         async saveLayout( {commit}, [pageId, layout] ) {
+            commit('layoutEdited')
             const { request } = server()
             const pageData = await request( `http://localhost:8081/pages/${pageId}` )
             if( !pageData )
-                throw new Error('Error in save layout')
+                throw new Error('Error => "@/store/modules/editPage" => saveLayout( {commit}, [pageId, layout] )')
 
             pageData.layout = layout
 
             await request( `http://localhost:8081/pages/${pageId}`, 'PUT', pageData )
             commit('layoutSaved')
         },
-        async fetchPageInfo( {commit}, id ) {
+        async fetchPage( {commit}, id ) {
+            try {
+                commit('beforeFetching')
+                const response = await fetch(`http://localhost:8081/pages/${id}`)
+                if( !response.ok )
+                    throw new Error('Error => "@/store/modules/editPage" => fetchPage({commit}, id)')
+
+                const data = await response.json()
+                commit('uploadedInfo', data)
+            }catch( error ){
+                commit('errorFetching')
+            }
+        },
+        async updateInfo( {commit}, id ) {
             try {
                 const response = await fetch(`http://localhost:8081/pages/${id}`)
                 if( !response.ok )
-                    throw new Error('Error in fetch layout')
+                    throw new Error('Error => "@/store/modules/editPage" => updateInfo(state, data)')
 
                 const data = await response.json()
-                commit('updatePageInfo', data)
+                commit('uploadedInfo', data)
             }catch( error ){
-                commit('errorUpdatePageInfo')
+                commit('errorFetching')
             }
         }
     },
     mutations: {
-        updatePageInfo( state, data ) {
+        beforeFetching( state ) {
+            state.pageInfoLoading = true
+            state.pageInfoError = false
+        },
+        uploadedInfo( state, data ) {
             state.pageInfoLoading = false
             state.pageInfoError = false
             state.pageInfo = data
         },
-        errorUpdatePageInfo( state ) {
+        errorFetching( state ) {
             state.pageInfoLoading = false
             state.pageInfoError = true
             state.pageInfo = {}
         },
+
         layoutEdited( state ) {
             state.layoutIsSaved = false
         },

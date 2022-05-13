@@ -62,6 +62,6 @@
 
 <script>
 export default {
-  name: "FooterSection"
+  name: "FooterOrigin"
 }
 </script>

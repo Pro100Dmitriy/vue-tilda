@@ -69,7 +69,7 @@ import {mapActions, mapState} from 'vuex'
 import ModalsWrapper from "@/layouts/ModalsWrapper"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
-import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/forms/FormConstructor"
 
 export default {
   name: "EditableSettingSection",
@@ -165,6 +165,7 @@ export default {
       setTimeout( () => {
         this.currentMainImg = ''
         this.modalLoad = true
+        this.closePageSettings()
       }, 300 )
     }
   },

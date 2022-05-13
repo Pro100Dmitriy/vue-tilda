@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata } from 'firebase/storage'
+import { getStorage, ref, uploadBytesResumable, listAll, getDownloadURL, getMetadata, deleteObject  } from 'firebase/storage'
 
 export default {
     install(app, firebaseConfig) {
@@ -7,14 +7,35 @@ export default {
         const storage = getStorage()
         const refCopy = ref
 
-        const onUpload = (files) => {
+        const onUpload = ( files, inTheProgress, inTheError, inTheEnd ) => {
             return files.map( file => {
                 const ref = refCopy(storage, `images/${file.name}`)
-                return uploadBytes(ref, file)
+                const uploadTask = uploadBytesResumable(ref, file)
+
+                uploadTask.on('state_changed',
+                    // Progress
+                    snapshot => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        if( inTheProgress )
+                            inTheProgress( progress )
+                    },
+                    // Error
+                    error => {
+                        if( inTheError )
+                            inTheError( error )
+                    },
+                    // Complete
+                    () => {
+                        if(inTheEnd)
+                            inTheEnd()
+                    }
+                )
+
+                return uploadTask
             } )
         }
 
-        const onFetching = () => {
+        const onFetch = () => {
             return new Promise( (resolve, reject) => {
                 const listRef = refCopy(storage, 'images')
                 listAll(listRef)
@@ -33,10 +54,16 @@ export default {
             } )
         }
 
+        const onDelete = ( name ) => {
+            const ref = refCopy(storage, `images/${name}`)
+            return deleteObject(ref)
+        }
+
         const firebaseApp = {
             instance: firebase,
             onUpload,
-            onFetching
+            onFetch,
+            onDelete
         }
 
         app.provide('firebase', firebaseApp)

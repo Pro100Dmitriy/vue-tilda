@@ -45,7 +45,7 @@
 
 <script>
 import dragSetting from "@/mixins/page/blockMixins/dragSetting"
-import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/forms/FormConstructor"
 
 export default {
   name: "WrapperSettings",

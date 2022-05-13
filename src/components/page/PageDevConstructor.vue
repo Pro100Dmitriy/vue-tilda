@@ -26,7 +26,7 @@ import WrapperBlock from "@/components/page/blockTypes/WrapperBlock";
 import EditableToolkit from "@/layouts/EditableToolkit"
 
 export default {
-  name: "PageConstructor",
+  name: "PageDevConstructor",
 
   props: {
     layout: { type: Array, required: true }

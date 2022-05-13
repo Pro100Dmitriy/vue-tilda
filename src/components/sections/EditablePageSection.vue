@@ -54,8 +54,8 @@
   </div>
   <div class="construct-page">
 
-    <div v-if="!layoutLoading && !pageInfoLoading && !pageInfoError">
-      <PageConstructor :layout="layoutScheme"/>
+    <div v-if="!pageInfoLoading && !pageInfoError">
+      <PageDevConstructor :layout="layoutScheme"/>
     </div>
 
     <div class="error"
@@ -74,7 +74,7 @@
 <script>
 import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 
-import PageConstructor from "@/components/page/PageConstructor"
+import PageDevConstructor from "@/components/page/PageDevConstructor"
 
 import searchIcon from '@/assets/img/svg/search.svg'
 import * as animationBuildingLottie from "@/assets/img/json/building.json"
@@ -128,7 +128,6 @@ export default {
       ],
       blockContent: [],
 
-      layoutLoading: false,
       layoutChanged: false,
       activePosition: null,
       layoutScheme: []
@@ -147,7 +146,7 @@ export default {
   },
 
   components: {
-    PageConstructor
+    PageDevConstructor
   },
 
   methods: {
@@ -302,43 +301,16 @@ export default {
     } ),
   },
 
-  mounted() {
-    if ( !this.pageInfoLoading ) {
-      if( Number(this.pageInfo.id) === Number(this.$route.params.pageId) ) {
+  watch: {
+    pageInfoLoading( loading ) {
+      if( !loading && !this.pageInfoError ) {
         this.layoutScheme = [
           ...this.getLayout
         ]
-      } else {
-        this.layoutLoading = true
-      }
-    } else {
-      this.layoutLoading = true
-    }
-  },
-
-  watch: {
-    layoutLoading() {
-      if( this.pageInfoError ) return
-      if ( !this.pageInfoLoading ) {
-        if( Number(this.pageInfo.id) === Number(this.$route.params.pageId) ) {
-          this.layoutScheme = [
-            ...this.getLayout
-          ]
-          this.layoutLoading = false
-        } else {
-          setTimeout( () => {
-            this.layoutLoading = !this.layoutLoading
-          }, 500 )
-        }
-      } else {
-        setTimeout( () => {
-          this.layoutLoading = !this.layoutLoading
-        }, 500 )
       }
     },
     async layoutChanged(changed) {
       if( changed ){
-        this.layoutEdited()
         await this.saveLayout([this.pageInfo.id, this.layoutScheme])
       }
       this.layoutChanged = false

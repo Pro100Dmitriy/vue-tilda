@@ -84,7 +84,7 @@ import ModalsWrapper from "@/layouts/ModalsWrapper";
 import PageList from "@/components/PageList/PageList"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
-import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/forms/FormConstructor"
 import ImageDownloader from "@/components/popups/ImageDownloader"
 
 export default {

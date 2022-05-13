@@ -19,7 +19,7 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchPageInfo: 'editPage/fetchPageInfo',
+      fetchPage: 'editPage/fetchPage',
     } ),
   },
 
@@ -30,7 +30,7 @@ export default {
   },
 
   async mounted() {
-    await this.fetchPageInfo( this.$route.params.pageId )
+    await this.fetchPage( this.$route.params.pageId )
   }
 }
 </script>

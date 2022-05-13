@@ -41,7 +41,7 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchPageInfo: 'editPage/fetchPageInfo',
+      fetchPage: 'editPage/fetchPage',
       fetchProjectInfo: 'projectPage/fetchProjectInfo'
     } ),
     openPageSettings() {
@@ -73,7 +73,11 @@ export default {
   },
 
   async mounted() {
-    await this.fetchPageInfo( this.$route.params.pageId )
+    await this.fetchPage( this.$route.params.pageId )
+
+    if( Number(this.pageInfo.id) !== Number(this.$route.params.pageId) )
+      await this.fetchPage(this.$route.params.pageId)
+
     if( !this.projectInfo.id )
       await this.fetchProjectInfo( this.pageInfo.projectId )
   }

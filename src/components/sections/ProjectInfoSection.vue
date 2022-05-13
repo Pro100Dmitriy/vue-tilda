@@ -60,7 +60,7 @@
 import {mapState, mapActions} from 'vuex'
 
 import ControlsList from "@/components/ControlsList/ControlsList"
-import FormConstructor from "@/components/popups/FormConstructor"
+import FormConstructor from "@/components/forms/FormConstructor"
 import ModalsWrapper from "@/layouts/ModalsWrapper"
 
 import plusIcon from '@/assets/img/svg/plus.svg'

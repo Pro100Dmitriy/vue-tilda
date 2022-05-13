@@ -699,6 +699,7 @@
     line-height: 100%;
   }
   &__description {
+    position: relative;
     color: @color-black;
 
     font-family: 'Jost', sans-serif;
@@ -706,5 +707,37 @@
     font-weight: 400;
     font-style: normal;
     line-height: 130%;
+  }
+  .edit-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    opacity: .5;
+    textarea {
+      margin: 0;
+      padding: 0;
+      display: block;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+
+      width: 100%;
+      height: 110%;
+      text-align: center;
+      color: @color-black;
+      border: none;
+      outline: none;
+
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 130%;
+    }
   }
 }

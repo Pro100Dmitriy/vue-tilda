@@ -1,21 +1,21 @@
 <template>
   <div>
-    <HeaderSection/>
+    <HeaderOrigin/>
     <ProjectsSection/>
-    <FooterSection/>
+    <FooterOrigin/>
   </div>
 </template>
 
 <script>
-import HeaderSection from "@/components/base/HeaderSection"
-import FooterSection from "@/components/base/FooterSection"
+import HeaderOrigin from "@/components/base/HeaderOrigin"
+import FooterOrigin from "@/components/base/FooterOrigin"
 import ProjectsSection from "@/components/sections/ProjectsSection"
 
 export default {
   name: "MainPage",
 
   components: {
-    HeaderSection, ProjectsSection, FooterSection
+    HeaderOrigin, ProjectsSection, FooterOrigin
   },
 }
 </script>

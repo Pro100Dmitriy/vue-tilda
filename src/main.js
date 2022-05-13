@@ -28,7 +28,7 @@ const firebaseConfig = {
 import ContainerWrapper from "@/layouts/ContainerWrapper"
 import LottieConstructor from "@/components/UI/LottieConstructor"
 import FillButton from "@/components/UI/FillButton"
-import InputTextGroup from "@/components/UI/InputTextGroup"
+import InputTextGroup from "@/components/forms/formItems/InputTextGroup"
 
 // Components register hear
 const components = [

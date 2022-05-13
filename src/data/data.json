@@ -1,136 +1,24 @@
 {
   "projects": [
     {
-      "id": 1651989232540,
-      "title": "Online Shop",
-      "siteURL": "project1651989232540.tilda.ws",
+      "id": 1652452674171,
+      "title": "Original project",
+      "siteURL": "project.ws",
       "settings": {},
       "pagesList": [
         {
-          "pageId": 1652073819948,
-          "projectId": 1651989232540,
-          "title": "Test title",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=fa3c236e-1611-4d91-bcfc-9a463f0579db"
-        },
-        {
-          "pageId": 1652153949885,
-          "projectId": 1651989232540,
-          "title": "Page about 123",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw0fHxtb3VudGFpbnxlbnwwfHx8fDE2NTI0MjIwODk&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "pageId": 1652163298264,
-          "projectId": 1651989232540,
-          "title": "test 1312",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=fa3c236e-1611-4d91-bcfc-9a463f0579db"
-        }
-      ]
-    },
-    {
-      "id": 1652185734321,
-      "title": "My Project 1",
-      "siteURL": "project1652185734321.tilda.ws",
-      "settings": {},
-      "pagesList": [
-        {
-          "pageId": 1652185736360,
-          "projectId": 1652185734321,
-          "title": "Abotut",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://images.unsplash.com/photo-1511497584788-876760111969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw1fHxmb3Jlc3R8ZW58MHx8fHwxNjUyMzAwNzA0&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "pageId": 1652185746281,
-          "projectId": 1652185734321,
-          "title": "Test fetching",
-          "description": "sfasdfagasdfsd",
-          "URL": "",
-          "prevImage": "/img/testImg.65ddc6d4.jpg"
-        }
-      ]
-    },
-    {
-      "id": 1652327688360,
-      "title": "Test",
-      "siteURL": "project1652327688360.tilda.ws",
-      "settings": {},
-      "pagesList": [
-        {
-          "pageId": 1652331651145,
-          "projectId": 1652327688360,
-          "title": "About us tttsetagasdfsfsadbsfghs",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwyfHxDYXR8ZW58MHx8fHwxNjUyMzMzMjg5&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "pageId": 1652327700535,
-          "projectId": 1652327688360,
-          "title": "Main Page",
-          "description": "",
-          "URL": "",
-          "prevImage": "https://images.unsplash.com/photo-1542662565-7e4b66bae529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        }
-      ]
-    },
-    {
-      "id": 1652348455209,
-      "title": "new 01",
-      "siteURL": "projec.ws",
-      "settings": {},
-      "pagesList": [
-        {
-          "pageId": 1652430732127,
-          "projectId": 1652348455209,
-          "title": "Adventages page",
-          "description": "",
-          "URL": "",
-          "prevImage": "/img/testImg.65ddc6d4.jpg"
-        },
-        {
-          "pageId": 1652429674420,
-          "projectId": 1652348455209,
+          "pageId": 1652452698511,
+          "projectId": 1652452674171,
           "title": "Main page",
           "description": "",
           "URL": "",
-          "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2FmacOS-Big-Sur-wallpapers-1-scaled.jpg?alt=media&token=67a81cc8-e7d1-4097-b238-1dc432a5e665"
+          "prevImage": "https://images.unsplash.com/photo-1594502184342-2e12f877aa73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw0fHw5MTF8ZW58MHx8fHwxNjUyNDUyODQz&ixlib=rb-1.2.1&q=80&w=1080"
         },
         {
-          "pageId": 1652348472335,
-          "projectId": 1652348455209,
-          "title": "Contact",
+          "pageId": 1652452843321,
+          "projectId": 1652452674171,
+          "title": "About page",
           "description": "Something",
-          "URL": "",
-          "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fmacos_sierra_stock_mountains_4k-3840x2160.jpg?alt=media&token=c28bd409-c407-4257-80fa-ec72324075a7"
-        }
-      ]
-    },
-    {
-      "id": 1652351166729,
-      "title": "My Project 2",
-      "siteURL": "project1652351166729.tilda.ws",
-      "settings": {},
-      "pagesList": [
-        {
-          "pageId": 1652351169158,
-          "projectId": 1652351166729,
-          "title": "My new page ",
-          "description": "",
-          "URL": "",
-          "prevImage": "/img/testImg.65ddc6d4.jpg"
-        },
-        {
-          "pageId": 1652351169401,
-          "projectId": 1652351166729,
-          "title": "My new page 1",
-          "description": "",
           "URL": "",
           "prevImage": "/img/testImg.65ddc6d4.jpg"
         }
@@ -139,369 +27,62 @@
   ],
   "pages": [
     {
-      "id": 1652073819948,
-      "projectId": 1651989232540,
-      "title": "Test title",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=fa3c236e-1611-4d91-bcfc-9a463f0579db",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fv4dzzzwk4yp61.jpg?alt=media&token=d2e7a5a2-cd00-4f82-9cb2-6bf6c1d0498f"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Else",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": false,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652153949885,
-      "projectId": 1651989232540,
-      "title": "Page about 123",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw0fHxtb3VudGFpbnxlbnwwfHx8fDE2NTI0MjIwODk&ixlib=rb-1.2.1&q=80&w=1080",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Other title",
-          "description": "test",
-          "imgSrc": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw1fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Other title 2",
-          "description": "test",
-          "imgSrc": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw1fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Test description test",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652163298264,
-      "projectId": 1651989232540,
-      "title": "test 1312",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=fa3c236e-1611-4d91-bcfc-9a463f0579db",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Something 3",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652185736360,
-      "projectId": 1652185734321,
-      "title": "Abotut",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://images.unsplash.com/photo-1511497584788-876760111969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw1fHxmb3Jlc3R8ZW58MHx8fHwxNjUyMzAwNzA0&ixlib=rb-1.2.1&q=80&w=1080",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652185746281,
-      "projectId": 1652185734321,
-      "title": "Test fetching",
-      "description": "sfasdfagasdfsd",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": [
-        {
-          "id": 1,
-          "show": false,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/flagged/photo-1564419188205-4a8e1bc1adc3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MXwxfHNlYXJjaHw4fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description 123",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1542662565-7e4b66bae529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Another title",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652327700535,
-      "projectId": 1652327688360,
-      "title": "Main Page",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://images.unsplash.com/photo-1542662565-7e4b66bae529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "New description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1554629947-334ff61d85dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw3fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652331651145,
-      "projectId": 1652327688360,
-      "title": "About us tttsetagasdfsfsadbsfghs",
-      "description": "",
-      "URL": "",
-      "prevImage": "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwyfHxDYXR8ZW58MHx8fHwxNjUyMzMzMjg5&ixlib=rb-1.2.1&q=80&w=1080",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "New Title 2 13124",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1534270804882-6b5048b1c1fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwxfHxuZXd8ZW58MHx8fHwxNjUyMzQ1MjQ3&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "New wrapper 3",
-          "description": "Реализовать на странице «Редактирование конкретной страницы» в шапке drop down list (скрин 1).  В нем должны быть 3 обязательных пункта «Настройки страницы», «Мои сайты», «Профиль». По нажатию на пункт «Настройки страницы» должен появляться попап настроек (который мы уже реализовывали ранее, скрин 2). Реализовать страницу «Предпросмотр» (скрин 3). Это должна быть отдельная страница куда передаются все добавленные блоки на страницу. Так же там должна быть реализована кнопка «Вернутся к редактированию» На странице «Редактирование конкретной страницы» при наведении на блок должны быть реализованы все кнопки которые помечены на скрине 4 (логику этих кнопок смотреть в тильде).",
-          "imgSrc": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw1fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Paragraph",
-          "title": "Paragraph Block 2",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
-        }
-      ]
-    },
-    {
-      "id": 1652348472335,
-      "projectId": 1652348455209,
-      "title": "Contact",
-      "description": "Something",
-      "URL": "",
-      "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fmacos_sierra_stock_mountains_4k-3840x2160.jpg?alt=media&token=c28bd409-c407-4257-80fa-ec72324075a7",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description 1234",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1519681393784-d120267933ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwyfHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1542662565-7e4b66bae529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw2fHxtb3VudGFpbnxlbnwwfHx8fDE2NTI0MjIwODk&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description 123",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description 456",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1554629947-334ff61d85dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw3fHxtb3VudGFpbnxlbnwwfHx8fDE2NTIzMzMyNjI&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test 123",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1574950578143-858c6fc58922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwxMXx8bW91bnRhaW58ZW58MHx8fHwxNjUyMzMzMjYy&ixlib=rb-1.2.1&q=80&w=1080"
-        }
-      ]
-    },
-    {
-      "id": 1652351169158,
-      "projectId": 1652351166729,
-      "title": "My new page ",
-      "description": "",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": []
-    },
-    {
-      "id": 1652351169401,
-      "projectId": 1652351166729,
-      "title": "My new page 1",
-      "description": "",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": [
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test 1",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwxMHx8bW91bnRhaW58ZW58MHx8fHwxNjUyMzMzMjYy&ixlib=rb-1.2.1&q=80&w=1080"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test 2",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://images.unsplash.com/photo-1574950578143-858c6fc58922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHwxMXx8bW91bnRhaW58ZW58MHx8fHwxNjUyMzMzMjYy&ixlib=rb-1.2.1&q=80&w=1080"
-        }
-      ]
-    },
-    {
-      "id": 1652429674420,
-      "projectId": 1652348455209,
+      "id": 1652452698511,
+      "projectId": 1652452674171,
       "title": "Main page",
       "description": "",
       "URL": "",
-      "prevImage": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2FmacOS-Big-Sur-wallpapers-1-scaled.jpg?alt=media&token=67a81cc8-e7d1-4097-b238-1dc432a5e665",
+      "prevImage": "https://images.unsplash.com/photo-1594502184342-2e12f877aa73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjY0MjV8MHwxfHNlYXJjaHw0fHw5MTF8ZW58MHx8fHwxNjUyNDUyODQz&ixlib=rb-1.2.1&q=80&w=1080",
       "layout": [
         {
           "id": 1,
           "show": true,
+          "type": "Wrapper",
+          "title": "Main Information",
+          "description": "First section",
+          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fbacground_windows3.jpg?alt=media&token=e4601df4-b98b-4ab6-b640-22501f185277"
+        },
+        {
+          "id": 1,
+          "show": true,
           "type": "Paragraph",
-          "title": "New paragraph",
+          "title": "Second Section",
+          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
+        }
+      ]
+    },
+    {
+      "id": 1652452843321,
+      "projectId": 1652452674171,
+      "title": "About page",
+      "description": "Something",
+      "URL": "",
+      "prevImage": "/img/testImg.65ddc6d4.jpg",
+      "layout": [
+        {
+          "id": 1,
+          "show": true,
+          "type": "Wrapper",
+          "title": "First Section",
+          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
+          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fv4dzzzwk4yp61.jpg?alt=media&token=41ac21f2-0044-4b64-b77f-da3bcac91ee3"
+        },
+        {
+          "id": 1,
+          "show": true,
+          "type": "Paragraph",
+          "title": "Test description",
           "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\""
         },
         {
           "id": 1,
           "show": true,
           "type": "Wrapper",
-          "title": "Test description",
+          "title": "Second sectoin",
           "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=fa3c236e-1611-4d91-bcfc-9a463f0579db"
-        },
-        {
-          "id": 1,
-          "show": true,
-          "type": "Wrapper",
-          "title": "Test description",
-          "description": "\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"",
-          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fbacground_windows3.jpg?alt=media&token=6e023077-7927-4df9-b737-94b13936df57"
+          "imgSrc": "https://firebasestorage.googleapis.com/v0/b/vuetilda.appspot.com/o/images%2Fdownload.jpg?alt=media&token=2e3d76dd-cab5-4ea8-b22e-e4f15641d250"
         }
       ]
-    },
-    {
-      "id": 1652430732127,
-      "projectId": 1652348455209,
-      "title": "Adventages page",
-      "description": "",
-      "URL": "",
-      "prevImage": "/img/testImg.65ddc6d4.jpg",
-      "layout": []
     }
   ],
   "blockCategories": [

@@ -1,11 +1,12 @@
 <template>
-  <EditHeader/>
-
-  <PageSettings :show="showPageSettings"
-                :pageInfo="activeInfo"/>
-  <ImageDownloader :show="imageSelectModalsOpen"
-                   @getSelectedImage="callbackImageSelector"/>
-  <EditablePageSection/>
+  <div>
+    <EditHeader/>
+    <PageSettings :show="showPageSettings"
+                  :pageInfo="activeInfo"/>
+    <ImageDownloader :show="imageSelectModalsOpen"
+                     @getSelectedImage="callbackImageSelector"/>
+    <EditablePageSection/>
+  </div>
 </template>
 
 <script>

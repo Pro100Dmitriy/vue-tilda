@@ -5,8 +5,12 @@
            :key="block.id">
         <EditableToolkit :positionIndex="index" :blockData="block">
           <ParagraphBlock v-if="block.type === 'Paragraph' && block.show"
+                          mode="Edit"
+                          :positionIndex="index"
                           :scheme="block"/>
           <WrapperBlock v-if="block.type === 'Wrapper'  && block.show"
+                        mode="Edit"
+                        :positionIndex="index"
                         :scheme="block"/>
         </EditableToolkit>
       </div>

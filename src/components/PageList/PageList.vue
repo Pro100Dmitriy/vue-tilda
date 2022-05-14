@@ -2,11 +2,13 @@
   <div class="pages-list">
     <div class="pages-list-wrapper"
          v-if="!projectInfoLoading && !projectInfoError && getPages.length">
-      <PageListItem v-for="page of getPages"
-                    :key="page.pageId"
-                    :pageId="page.pageId"
-                    :imgSrc="page.prevImage"
-                    :title="page.title"/>
+      <transition-group name="projects-list">
+        <PageListItem v-for="page of getPages"
+                      :key="page.pageId"
+                      :pageId="page.pageId"
+                      :imgSrc="page.prevImage"
+                      :title="page.title"/>
+      </transition-group>
     </div>
 
 
@@ -70,3 +72,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.projects-list-item {
+  display: inline-block;
+}
+.projects-list-enter-active,
+.projects-list-leave-active {
+  transition: all .3s ease;
+}
+.projects-list-enter-from,
+.projects-list-leave-to {
+  opacity: 0;
+  margin-top: -121px;
+}
+</style>

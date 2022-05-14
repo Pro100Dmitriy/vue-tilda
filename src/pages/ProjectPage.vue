@@ -1,14 +1,14 @@
 <template>
-  <HeaderOrigin/>
-
-  <ProjectInfoSection/>
-  <PageSettings :show="showPageSettings"
-                :pageInfo="activeInfo"/>
-  <ImageDownloader :show="imageSelectModalsOpen"
-                   @getSelectedImage="callbackImageSelector"/>
-  <ProjectPagesSection/>
-
-  <FooterOrigin/>
+  <div>
+    <HeaderOrigin/>
+    <ProjectInfoSection/>
+    <PageSettings :show="showPageSettings"
+                  :pageInfo="activeInfo"/>
+    <ImageDownloader :show="imageSelectModalsOpen"
+                     @getSelectedImage="callbackImageSelector"/>
+    <ProjectPagesSection/>
+    <FooterOrigin/>
+  </div>
 </template>
 
 <script>

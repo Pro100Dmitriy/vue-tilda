@@ -1,8 +1,10 @@
 <template>
-  <PageProdConstructor :layout="pageInfo.layout"/>
-  <FillButton class="preview-back"
-              ariaLabel="Edit this page"
-              @click.prevent="$router.push(`/page/${this.$route.params.pageId}`)">Edit this page</FillButton>
+  <div>
+    <PageProdConstructor :layout="pageInfo.layout"/>
+    <FillButton class="preview-back"
+                ariaLabel="Edit this page"
+                @click.prevent="$router.push(`/page/${this.$route.params.pageId}`)">Edit this page</FillButton>
+  </div>
 </template>
 
 <script>

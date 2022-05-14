@@ -10,14 +10,13 @@
           <div class="unsplash">
             <div class="unsplash__form">
               <FormConstructor :formData="formSearch"
-                               @blurInput="searchImageQuery"
                                @submitForm="searchImageQuery"/>
             </div>
             <div class="unsplash__images">
-              <div v-if="imgList.length && !imgListLoading && !imgListError"
+              <div v-if="photosList.length && !photosLoading && !photosError"
                    class="unsplash__hidden-scroll">
                 <ul class="unsplash__list">
-                  <li v-for="img of imgList"
+                  <li v-for="img of photosList"
                       class="unsplash__item"
                       :class="{'img-selected': img.urls.regular === selectedUrl}"
                       :key="img.id"
@@ -29,7 +28,7 @@
               </div>
 
               <div class="empty"
-                   v-else-if="!imgListLoading && !imgListError && !imgList.length">
+                   v-else-if="!photosLoading && !photosError && !photosList.length">
                 <LottieConstructor :options="lottieEmptyOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
                 <div class="empty__subscribe">
                   <h2>Projects are not created, click the "Create a new project"</h2>
@@ -37,7 +36,7 @@
               </div>
 
               <div class="error"
-                   v-else-if="imgListError">
+                   v-else-if="photosError">
                 <LottieConstructor :options="lottieErrorOptions" :width="400" :height="400" @animCreated="handleAnimation"/>
               </div>
 
@@ -199,13 +198,13 @@ export default {
 
   methods: {
     ...mapActions( {
-      fetchPhotosFromUnsplash: 'projectPage/fetchPhotosFromUnsplash'
+      fetchPhotosFromUnsplash: 'fetchPhotosFromUnsplash'
     } ),
 
-    async initialize() {
+    initialize() {
       document.body.style.overflowY = 'hidden'
 
-      await this.fetchPhotosFromUnsplash( this.searchQuery )
+      this.fetchPhotosFromUnsplash( this.searchQuery )
       this.fetchPhotosFromFirebase()
     },
     fetchPhotosFromFirebase() {
@@ -276,7 +275,6 @@ export default {
         if( !file.type.match('image') )
           return
 
-
         const reader = new FileReader()
 
         reader.onload = readEvent => {
@@ -289,23 +287,18 @@ export default {
 
           this.newFiles[i] = ( item )
 
-          const inTheProgress = (progress) => {
+          const inTheProgress = progress => {
             if( this.newFiles[i] )
               this.newFiles[i].progress = 100 - progress
           }
-
-          const inTheError = ( error ) => console.error( error )
-
+          const inTheError = error => console.error( error )
           const inTheEnd = () => this.newFiles = []
 
           if( this.uploadedFiles.length === files.length ) {
-
-            Promise.all( this.firebase.onUpload(this.uploadedFiles, inTheProgress, inTheError, inTheEnd) )
-              .then( () => {
-                this.fetchPhotosFromFirebase()
-              } )
+            Promise
+                .all( this.firebase.onUpload(this.uploadedFiles, inTheProgress, inTheError, inTheEnd) )
+              .then( () => this.fetchPhotosFromFirebase() )
               .catch( error => console.error( error ) )
-
           }
         }
 
@@ -322,9 +315,9 @@ export default {
 
   computed: {
     ...mapState( {
-      imgList: state => state.projectPage.imgList,
-      imgListLoading: state => state.projectPage.imgListLoading,
-      imgListError: state => state.projectPage.imgListError
+      photosList: state => state.photosList,
+      photosLoading: state => state.photosLoading,
+      photosError: state => state.photosError
     } ),
     getHostFiles() {
       return this.hostFiles

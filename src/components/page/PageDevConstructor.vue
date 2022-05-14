@@ -23,7 +23,7 @@
 <script>
 import ParagraphBlock from "@/components/page/blockTypes/ParagraphBlock"
 import WrapperBlock from "@/components/page/blockTypes/WrapperBlock";
-import EditableToolkit from "@/layouts/EditableToolkit"
+import EditableToolkit from "@/components/page/EditableToolkit"
 
 export default {
   name: "PageDevConstructor",

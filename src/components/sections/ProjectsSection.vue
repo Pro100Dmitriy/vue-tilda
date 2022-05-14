@@ -1,6 +1,6 @@
 <template>
   <section class="projects">
-    <ContainerWrapper>
+    <div class="container">
 
       <div class="projects__wrapper">
 
@@ -32,7 +32,7 @@
 
       </div>
 
-    </ContainerWrapper>
+    </div>
   </section>
 </template>
 

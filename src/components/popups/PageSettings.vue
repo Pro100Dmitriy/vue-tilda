@@ -64,9 +64,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
-
-import ModalsWrapper from "@/layouts/ModalsWrapper"
+import ModalsWrapper from "@/components/popups/ModalsWrapper"
 import PopupTabNav from "@/components/popups/PopupTabNav"
 import PopupTab from "@/components/popups/PopupTab"
 import FormConstructor from "@/components/forms/FormConstructor"
@@ -75,38 +73,38 @@ export default {
   name: "EditableSettingSection",
 
   props: {
-    show: { type: Boolean, required: true }
+    show: { type: Boolean, required: true },
+    pageInfo: { type: [Object, Boolean], required: true }
   },
 
   data() {
     return {
+      showModals: false,
+      modalLoad: true,
+
       tabsNav: ['Main', 'Preview'],
       selected: 'Main',
+
       formData: {
         title: {type: 'input', propName: 'title', inputId: 'page-title', inputLabel: 'Title', inputValue: ''},
         description: {type: 'input', propName: 'description', inputId: 'page-description', inputLabel: 'Description', inputValue: ''},
         URL: {type: 'input', propName: 'URL', inputId: 'page-URL', inputLabel: 'URL', inputValue: ''}
       },
       dataForSave: {},
-      showModals: false,
-      modalLoad: true,
-
       currentMainImg: ''
     }
   },
-  inject: ['closePageSettings', 'openImageSelector'],
+  inject: ['closePageSettings', 'openImageSelector', 'beforeSavingPageSettings'],
 
   components: {
     ModalsWrapper, PopupTabNav, PopupTab, FormConstructor
   },
 
   methods: {
-    ...mapActions( {
-      pageUpdateAndFetch: 'editPage/pageUpdateAndFetch',
-    } ),
-    openModals() {
+    // Common Modals Tasks
+    initialize() {
+      document.body.style.overflow = 'hidden'
       if( this.pageInfo ) {
-        document.body.style.overflow = 'hidden'
         this.selected = 'Main'
 
         this.formData.title.inputValue = this.pageInfo.title
@@ -121,6 +119,7 @@ export default {
     closeModals() {
       document.body.style.overflow = 'auto'
       this.showModals = false
+
       setTimeout( () => {
         this.dataForSave = {}
         this.modalLoad = true
@@ -131,7 +130,7 @@ export default {
       document.body.style.overflow = 'auto'
       this.showModals = false
 
-      this.pageUpdateAndFetch( [this.pageInfo.projectId, this.pageInfo.id, this.dataForSave] )
+      this.beforeSavingPageSettings( this.dataForSave )
 
       setTimeout( () => {
         this.dataForSave = {}
@@ -139,17 +138,18 @@ export default {
         this.closePageSettings()
       }, 300 )
     },
+    // Form Tab Tasks
     setSelected( tab ) {
       this.selected = tab
     },
     changeData( value ) {
       this.dataForSave = value
     },
-
+    // Image Tab Tasks
     saveSelectImage( selectedUrl ) {
-      if( selectedUrl ) {
+      if( selectedUrl )
         this.currentMainImg = selectedUrl
-      }
+
       this.imageSelectModalsOpen = false
     },
     saveAndCloseImageTabModals() {
@@ -160,7 +160,7 @@ export default {
         prevImage: this.currentMainImg
       }
 
-      this.pageUpdateAndFetch( [this.pageInfo.projectId, this.pageInfo.id, newImage] )
+      this.beforeSavingPageSettings( newImage )
 
       setTimeout( () => {
         this.currentMainImg = ''
@@ -170,16 +170,10 @@ export default {
     }
   },
 
-  computed: {
-    ...mapState( {
-      pageInfo: state => state.editPage.pageInfo,
-    } )
-  },
-
   watch: {
     show( value ) {
       if( value )
-        this.openModals()
+        this.initialize()
     }
   }
 }

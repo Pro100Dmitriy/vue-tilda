@@ -59,12 +59,12 @@ export default {
   data() {
     return {
       buttonList: [
-        {id: 1, title: 'Settings', svgIcon: {hash: 'gearIcon', width: '14px', height: '14px' }, handler: () => this.openModals(this.pageId)},
+        {id: 1, title: 'Settings', svgIcon: {hash: 'gearIcon', width: '14px', height: '14px' }, handler: () => this.openPageSettings(this.pageId)},
         {id: 2, title: 'Publish', svgIcon: {hash: 'publishCloud', width: '14px', height: '14px' }},
         {id: 3, title: 'Delete', svgIcon: {hash: 'trashIcon', width: '14px', height: '14px' }, handler: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],
       listSettings: [
-        {title: 'Settings', link: '#', method: () => this.openModals(this.pageId)},
+        {title: 'Settings', link: '#', method: () => this.openPageSettings(this.pageId)},
         {title: 'Publish', link: '#'},
         {title: 'Delete', link: '#', method: () => this.deletePage( [this.projectInfo.id, this.pageId])},
       ],
@@ -72,7 +72,7 @@ export default {
     }
   },
 
-  inject: ['openModals'],
+  inject: ['openPageSettings'],
 
   components: {
     ControlsList, ContextPopup

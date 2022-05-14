@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <ContainerWrapper>
+    <div class="container">
       <div class="footer__wrapper">
         <div class="social">
           <ul class="social__list">
@@ -56,7 +56,7 @@
           <p>Если у вас есть вопросы, пожалуйста, пишите: <a href="#">team@tilda.cc</a> <router-link to="/">Пользовательское соглашение</router-link></p>
         </div>
       </div>
-    </ContainerWrapper>
+    </div>
   </footer>
 </template>
 

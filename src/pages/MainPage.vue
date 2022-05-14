@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <HeaderOrigin/>
-    <ProjectsSection/>
-    <FooterOrigin/>
-  </div>
+  <HeaderOrigin/>
+
+  <ProjectsSection/>
+
+  <FooterOrigin/>
 </template>
 
 <script>

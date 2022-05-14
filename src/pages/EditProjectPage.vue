@@ -1,6 +1,8 @@
 <template>
   <EditHeader/>
-  <EditableSettingSection :show="showPageSettings"/>
+
+  <PageSettings :show="showPageSettings"
+                :pageInfo="activeInfo"/>
   <ImageDownloader :show="imageSelectModalsOpen"
                    @getSelectedImage="callbackImageSelector"/>
   <EditablePageSection/>
@@ -9,59 +11,36 @@
 <script>
 import {mapActions, mapState} from 'vuex'
 
+import PageSettingsAdapter from '@/mixins/pages/PageSettingsAdapter'
+
 import EditHeader from '@/components/base/EditHeader'
-import EditableSettingSection from "@/components/sections/EditableSettingSection"
+import PageSettings from "@/components/popups/PageSettings"
 import ImageDownloader from "@/components/popups/ImageDownloader"
 import EditablePageSection from '@/components/sections/EditablePageSection'
 
 export default {
   name: "EditProjectPage",
 
-  data() {
-    return {
-      showPageSettings: false,
-      imageSelectModalsOpen: false,
-      callbackImageSelector: null
-    }
-  },
-
-  provide() {
-    return {
-      openPageSettings: this.openPageSettings,
-      closePageSettings: this.closePageSettings,
-      closeAndSavePageSettings: this.closeAndSavePageSettings,
-      openImageSelector: this.openImageSelector,
-      closeImageSelector: this.closeImageSelector
-    }
-  },
+  mixins: [PageSettingsAdapter],
 
   components: {
-    EditHeader, EditableSettingSection, ImageDownloader, EditablePageSection
+    EditHeader, PageSettings, ImageDownloader, EditablePageSection
   },
 
   methods: {
     ...mapActions( {
       fetchPage: 'editPage/fetchPage',
-      fetchProjectInfo: 'projectPage/fetchProjectInfo'
+      fetchProjectInfo: 'projectPage/fetchProjectInfo',
+      pageUpdateAndFetch: 'editPage/pageUpdateAndFetch'
     } ),
-    openPageSettings() {
-      this.showPageSettings = true
+    initialization() {
+      this.activeInfo = this.pageInfo
     },
-    closePageSettings() {
-      this.showPageSettings = false
+    processSavingData( dataForSave ) {
+      this.pageUpdateAndFetch( [this.activeInfo.projectId, this.activeInfo.id, dataForSave] )
     },
-    async closeAndSavePageSettings() {
-      this.showPageSettings = false
+    async reacquisition() {
       await this.fetchProjectInfo( this.pageInfo.projectId )
-    },
-    openImageSelector( callback ) {
-      this.callbackImageSelector = callback
-      this.imageSelectModalsOpen = true
-    },
-    closeImageSelector() {
-      document.body.style.overflow = 'auto'
-      this.callbackImageSelector = null
-      this.imageSelectModalsOpen = false
     }
   },
 

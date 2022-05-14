@@ -22,7 +22,7 @@
         </div>
       </div>
     </ModalsWrapper>
-    <ContainerWrapper>
+    <div class="container">
       <div class="project-info__wrapper">
         <div class="info-top">
           <ControlsList :buttonList="buttonList"/>
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-    </ContainerWrapper>
+    </div>
   </section>
 </template>
 
@@ -61,7 +61,7 @@ import {mapState, mapActions} from 'vuex'
 
 import ControlsList from "@/components/ControlsList/ControlsList"
 import FormConstructor from "@/components/forms/FormConstructor"
-import ModalsWrapper from "@/layouts/ModalsWrapper"
+import ModalsWrapper from "@/components/popups/ModalsWrapper"
 
 import plusIcon from '@/assets/img/svg/plus.svg'
 

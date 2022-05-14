@@ -4,10 +4,9 @@
       <li class="tabs-nav__item"
           v-for="tab of tabsNav"
           :key="tab">
-        <a class="tabs-nav__link"
+        <span class="tabs-nav__link"
            :class="{ 'tabs-nav-active': tab === selected }"
-           href="#"
-           @click.prevent="setTab(tab)">{{ tab }}</a>
+           @click.prevent="setTab(tab)">{{ tab }}</span>
       </li>
     </ul>
   </div>
